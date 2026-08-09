@@ -1,0 +1,17 @@
+export const colors = [
+	{ id: "96aef1cb-76e3-4514-9ef6-b8b36df7eb8f", name: "1015" },
+	{ id: "cbf6d9a2-38d2-4e9d-a7a6-26df00a132d1", name: "3005" },
+	{ id: "03f595a8-7106-40c0-9dd8-bcc77e7640ab", name: "5005" },
+	{ id: "9b669dad-c95d-4cb6-bd2f-860bc620bc2b", name: "5011" },
+	{ id: "3a2d5206-6b89-49e8-a7f4-bd5d4dfb4b6f", name: "6005" },
+	{ id: "0bce7d0a-bad8-4fb8-93d0-2c41dc565fd7", name: "6020" },
+	{ id: "65e27509-91c3-48e6-b6c6-5c8c3cf645fd", name: "7016" },
+	{ id: "877e4179-0fe0-4fb7-8900-f4f81641818c", name: "8004" },
+	{ id: "bdaaf9dd-d8b5-46b8-bfe8-d22f2cbcf00f", name: "8017" },
+	{ id: "61bb62f3-9e89-4517-8f77-4172e5d3d5b2", name: "8019" },
+	{ id: "af4e6581-85eb-4b0b-bfc3-feb1b1d5b16d", name: "9003" },
+	{ id: "ec706b5c-2d4d-4dcb-a1d8-88522db63fc8", name: "9005" },
+	{ id: "8b5fded0-f5d3-434b-b3e8-30b7dc80c6ff", name: "9006" },
+	{ id: "31d7b44d-f1f7-4264-b9cc-b6fb97eb5dc7", name: "Золотий дуб" },
+	{ id: "8e76e3b9-5238-45df-9a50-7fcd2f5a7c71", name: "Темний дуб" },
+];

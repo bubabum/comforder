@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="37.642799mm"
+   height="31.038803mm"
+   viewBox="0 0 37.642799 31.038803"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient1"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#4f46e5;stop-opacity:1;"
+         offset="0"
+         id="stop1" />
+      <stop
+         style="stop-color:#daaeef;stop-opacity:1;"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1"
+       id="linearGradient2"
+       x1="275.16394"
+       y1="493.39185"
+       x2="417.43594"
+       y2="493.39185"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Шар 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-72.803789,-115.02385)">
+    <path
+       style="font-weight:900;font-size:192px;font-family:Unbounded;-inkscape-font-specification:'Unbounded Heavy';text-align:center;letter-spacing:0px;text-anchor:middle;white-space:pre;fill:url(#linearGradient2);fill-opacity:1;stroke-width:1.51181;stroke-linecap:round;stroke-linejoin:round"
+       d="m 417.43595,500.01586 q -1.344,15.552 -10.944,27.264 -9.6,11.712 -25.152,18.24 -15.36,6.528 -34.752,6.528 -21.12,0 -37.248,-7.296 -16.128,-7.488 -25.152,-20.736 -9.024,-13.248 -9.024,-30.528 0,-17.472 9.024,-30.528 9.024,-13.248 25.152,-20.736 16.128,-7.488 37.248,-7.488 19.392,0 34.752,6.528 15.552,6.528 25.152,18.24 9.6,11.52 10.944,27.264 h -48.192 q -1.728,-8.256 -7.872,-12.288 -5.952,-4.224 -14.784,-4.224 -6.72,0 -11.904,2.688 -4.992,2.496 -7.68,7.68 -2.688,5.184 -2.688,12.864 0,7.68 2.688,12.864 2.688,4.992 7.68,7.68 5.184,2.496 11.904,2.496 8.832,0 14.784,-4.416 6.144,-4.608 7.872,-12.096 z"
+       id="text1"
+       inkscape:label="text1"
+       transform="scale(0.26458333)"
+       aria-label="c" />
+  </g>
+</svg>

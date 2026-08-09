@@ -1,0 +1,2863 @@
+[
+	{
+		"id": "gladkyy-lyst",
+		"name": "Гладкий лист",
+		"type": "sheet",
+		"unitId": "square-meter",
+		"width": 1.25,
+		"categoryId": "metaloproduktsiya",
+		"priceMultiplier": 0
+	},
+	{
+		"id": "profnastyl-ps-10",
+		"name": "Профнастил ПС-10",
+		"type": "sheet",
+		"unitId": "square-meter",
+		"width": 1.19,
+		"categoryId": "metaloproduktsiya",
+		"priceMultiplier": 0
+	},
+	{
+		"id": "profnastyl-pk-10",
+		"name": "Профнастил ПК-10",
+		"type": "sheet",
+		"unitId": "square-meter",
+		"width": 1.19,
+		"categoryId": "metaloproduktsiya",
+		"priceMultiplier": 0
+	},
+	{
+		"id": "profnastyl-ps-20",
+		"name": "Профнастил ПС-20",
+		"type": "sheet",
+		"unitId": "square-meter",
+		"width": 1.15,
+		"categoryId": "metaloproduktsiya",
+		"priceMultiplier": 1
+	},
+	{
+		"id": "profnastyl-pk-20",
+		"name": "Профнастил ПК-20",
+		"type": "sheet",
+		"unitId": "square-meter",
+		"width": 1.15,
+		"categoryId": "metaloproduktsiya",
+		"priceMultiplier": 1
+	},
+	{
+		"id": "profnastyl-pk-35",
+		"name": "Профнастил ПК-35",
+		"type": "sheet",
+		"unitId": "square-meter",
+		"width": 1.11,
+		"categoryId": "metaloproduktsiya",
+		"priceMultiplier": 2
+	},
+	{
+		"id": "metalocherepytsya",
+		"name": "Металочерепиця",
+		"type": "sheet",
+		"unitId": "square-meter",
+		"width": 1.19,
+		"categoryId": "metaloproduktsiya",
+		"priceMultiplier": 2
+	},
+	{
+		"id": "faltseva-pokrivlya",
+		"name": "Фальцева покрівля",
+		"type": "sheet",
+		"unitId": "square-meter",
+		"width": 0.55,
+		"categoryId": "metaloproduktsiya",
+		"priceMultiplier": 14
+	},
+	{
+		"id": "fasadna-kaseta",
+		"name": "Фасадна касета",
+		"type": "option",
+		"unitId": "square-meter",
+		"categoryId": "metaloproduktsiya",
+		"quantityStep": 1,
+		"optionGroup": {
+			"label": "покриття",
+			"options": [
+				{
+					"label": "глянцева",
+					"price": 600
+				},
+				{
+					"label": "матова",
+					"price": 650
+				}
+			]
+		}
+	},
+	{
+		"id": "samoriz-pokrivelnyy-4-8h19",
+		"name": "Саморіз покрівельний 4.8х19",
+		"type": "option",
+		"unitId": "piece",
+		"categoryId": "metaloproduktsiya",
+		"quantityStep": 1,
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "1015",
+					"price": 1.2
+				},
+				{
+					"label": "3005",
+					"price": 1.2
+				},
+				{
+					"label": "5005",
+					"price": 1.2
+				},
+				{
+					"label": "5011",
+					"price": 1.4
+				},
+				{
+					"label": "6005",
+					"price": 1.2
+				},
+				{
+					"label": "6020",
+					"price": 1.2
+				},
+				{
+					"label": "7016",
+					"price": 1.2
+				},
+				{
+					"label": "8004",
+					"price": 1.2
+				},
+				{
+					"label": "8017",
+					"price": 1.2
+				},
+				{
+					"label": "8019",
+					"price": 1.2
+				},
+				{
+					"label": "9003",
+					"price": 1.2
+				},
+				{
+					"label": "9005",
+					"price": 1.2
+				},
+				{
+					"label": "9006",
+					"price": 1.2
+				},
+				{
+					"label": "Золотий дуб",
+					"price": 1.4
+				}
+			]
+		}
+	},
+	{
+		"id": "samoriz-pokrivelnyy-4-8h35",
+		"name": "Саморіз покрівельний 4.8х35",
+		"type": "option",
+		"unitId": "piece",
+		"categoryId": "metaloproduktsiya",
+		"quantityStep": 1,
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "1015",
+					"price": 1.2
+				},
+				{
+					"label": "3005",
+					"price": 1.2
+				},
+				{
+					"label": "5005",
+					"price": 1.2
+				},
+				{
+					"label": "5011",
+					"price": 1.4
+				},
+				{
+					"label": "6005",
+					"price": 1.2
+				},
+				{
+					"label": "6020",
+					"price": 1.2
+				},
+				{
+					"label": "7016",
+					"price": 1.2
+				},
+				{
+					"label": "8004",
+					"price": 1.2
+				},
+				{
+					"label": "8017",
+					"price": 1.2
+				},
+				{
+					"label": "8019",
+					"price": 1.2
+				},
+				{
+					"label": "9003",
+					"price": 1.2
+				},
+				{
+					"label": "9005",
+					"price": 1.2
+				},
+				{
+					"label": "9006",
+					"price": 1.2
+				},
+				{
+					"label": "Золотий дуб",
+					"price": 1.4
+				}
+			]
+		}
+	},
+	{
+		"id": "truba-profilna-20h40",
+		"name": "Труба профільна 20х40",
+		"type": "quantity",
+		"unitId": "linear-meter",
+		"categoryId": "metaloproduktsiya",
+		"quantityStep": 1,
+		"price": 105
+	},
+	{
+		"id": "truba-profilna-40h40",
+		"name": "Труба профільна 40х40",
+		"type": "quantity",
+		"unitId": "linear-meter",
+		"categoryId": "metaloproduktsiya",
+		"quantityStep": 1,
+		"price": 140
+	},
+	{
+		"id": "truba-profilna-50h50",
+		"name": "Труба профільна 50х50",
+		"type": "quantity",
+		"unitId": "linear-meter",
+		"categoryId": "metaloproduktsiya",
+		"quantityStep": 1,
+		"price": 165
+	},
+	{
+		"id": "planka-vitrova",
+		"name": "Планка вітрова",
+		"type": "trim",
+		"unitId": "linear-meter",
+		"categoryId": "dobirni-elementy",
+		"priceType": "fixed",
+		"width": 250,
+		"prices": {
+			"gloss": 84,
+			"mat": 101,
+			"mat05": 120
+		}
+	},
+	{
+		"id": "planka-konka",
+		"name": "Планка конька",
+		"type": "trim",
+		"unitId": "linear-meter",
+		"categoryId": "dobirni-elementy",
+		"priceType": "fixed",
+		"width": 312,
+		"prices": {
+			"gloss": 106,
+			"mat": 128,
+			"mat05": 153
+		}
+	},
+	{
+		"id": "planka-karnyzna",
+		"name": "Планка карнизна",
+		"type": "trim",
+		"unitId": "linear-meter",
+		"categoryId": "dobirni-elementy",
+		"priceType": "fixed",
+		"width": 156,
+		"prices": {
+			"gloss": 58,
+			"mat": 70,
+			"mat05": 84
+		}
+	},
+	{
+		"id": "planka-prymykannia",
+		"name": "Планка примикання",
+		"type": "trim",
+		"unitId": "linear-meter",
+		"categoryId": "dobirni-elementy",
+		"priceType": "fixed",
+		"width": 250,
+		"prices": {
+			"gloss": 84,
+			"mat": 101,
+			"mat05": 120
+		}
+	},
+	{
+		"id": "snigozatrymuvach",
+		"name": "Снігозатримувач",
+		"type": "trim",
+		"unitId": "linear-meter",
+		"categoryId": "dobirni-elementy",
+		"priceType": "fixed",
+		"width": 250,
+		"prices": {
+			"gloss": 106,
+			"mat": 128,
+			"mat05": 153
+		}
+	},
+	{
+		"id": "yendova",
+		"name": "Єндова",
+		"type": "trim",
+		"unitId": "linear-meter",
+		"categoryId": "dobirni-elementy",
+		"priceType": "fixed",
+		"width": 312,
+		"prices": {
+			"gloss": 106,
+			"mat": 128,
+			"mat05": 153
+		}
+	},
+	{
+		"id": "planka-parkanna",
+		"name": "Планка парканна",
+		"type": "trim",
+		"unitId": "linear-meter",
+		"categoryId": "dobirni-elementy",
+		"priceType": "fixed",
+		"width": 75,
+		"prices": {
+			"gloss": 28,
+			"mat": 34,
+			"mat05": 41
+		}
+	},
+	{
+		"id": "planka-spetsialna",
+		"name": "Планка спеціальна",
+		"type": "trim",
+		"unitId": "linear-meter",
+		"categoryId": "dobirni-elementy",
+		"priceType": "widthBased"
+	},
+	{
+		"id": "vidlyv",
+		"name": "Відлив",
+		"type": "trim",
+		"unitId": "linear-meter",
+		"categoryId": "dobirni-elementy",
+		"priceType": "widthBased"
+	},
+	{
+		"id": "kut-vnutrishniy",
+		"name": "Кут внутрішній",
+		"type": "trim",
+		"unitId": "linear-meter",
+		"categoryId": "dobirni-elementy",
+		"priceType": "widthBased"
+	},
+	{
+		"id": "kut-zovnishniy",
+		"name": "Кут зовнішній",
+		"type": "trim",
+		"unitId": "linear-meter",
+		"categoryId": "dobirni-elementy",
+		"priceType": "widthBased"
+	},
+	{
+		"id": "8f58c220-1d31-43f4-a40d-7d28f24d2d29",
+		"name": "Заглушка ринви універсальна",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "покриття",
+			"options": [
+				{
+					"label": "Цинк",
+					"price": 40
+				},
+				{
+					"label": "Глянцевий",
+					"price": 45
+				},
+				{
+					"label": "Матовий",
+					"price": 50
+				},
+				{
+					"label": "Матовий двосторонній",
+					"price": 60
+				}
+			]
+		}
+	},
+	{
+		"id": "d5f8d0a1-1d7b-4b8b-92d9-cf32b81b3b62",
+		"name": "Коліно верхнє d100",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "покриття",
+			"options": [
+				{
+					"label": "Цинк",
+					"price": 90
+				},
+				{
+					"label": "Глянцевий",
+					"price": 105
+				},
+				{
+					"label": "Матовий",
+					"price": 115
+				},
+				{
+					"label": "Матовий двосторонній",
+					"price": 130
+				}
+			]
+		}
+	},
+	{
+		"id": "bc85c5d7-f8e6-4d53-a1a4-f8d16c4b2f9b",
+		"name": "Коліно нижнє d100",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "покриття",
+			"options": [
+				{
+					"label": "Цинк",
+					"price": 85
+				},
+				{
+					"label": "Глянцевий",
+					"price": 100
+				},
+				{
+					"label": "Матовий",
+					"price": 110
+				},
+				{
+					"label": "Матовий двосторонній",
+					"price": 120
+				}
+			]
+		}
+	},
+	{
+		"id": "5a37f8c4-5d18-42f2-b27d-5b0b3b8d8df8",
+		"name": "Кут ринви універсальний d125",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "покриття",
+			"options": [
+				{
+					"label": "Цинк",
+					"price": 150
+				},
+				{
+					"label": "Глянцевий",
+					"price": 200
+				},
+				{
+					"label": "Матовий",
+					"price": 220
+				},
+				{
+					"label": "Матовий двосторонній",
+					"price": 250
+				}
+			]
+		}
+	},
+	{
+		"id": "0c81e5d4-68e0-46fd-b00d-7cb39d8d2d7a",
+		"name": "Лійка кошикова",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "покриття",
+			"options": [
+				{
+					"label": "Цинк",
+					"price": 150
+				},
+				{
+					"label": "Глянцевий",
+					"price": 150
+				},
+				{
+					"label": "Матовий",
+					"price": 160
+				},
+				{
+					"label": "Матовий двосторонній",
+					"price": 200
+				}
+			]
+		}
+	},
+	{
+		"id": "7dfb12d5-bcc9-49d3-bf4f-c0fdadbc6d77",
+		"name": "Лійка прохідна",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "покриття",
+			"options": [
+				{
+					"label": "Цинк",
+					"price": 100
+				},
+				{
+					"label": "Глянцевий",
+					"price": 110
+				},
+				{
+					"label": "Матовий",
+					"price": 120
+				},
+				{
+					"label": "Матовий двосторонній",
+					"price": 140
+				}
+			]
+		}
+	},
+	{
+		"id": "23b8b0de-0b9c-4ef8-96ec-c82d8e67b0b6",
+		"name": "Ринва d125 1250мм",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "покриття",
+			"options": [
+				{
+					"label": "Цинк",
+					"price": 105
+				},
+				{
+					"label": "Глянцевий",
+					"price": 120
+				},
+				{
+					"label": "Матовий",
+					"price": 130
+				},
+				{
+					"label": "Матовий двосторонній",
+					"price": 150
+				}
+			]
+		}
+	},
+	{
+		"id": "48e44d81-42b3-4cb2-a2a3-26713ddce54c",
+		"name": "Тримач ринви довгий",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "покриття",
+			"options": [
+				{
+					"label": "Цинк",
+					"price": 65
+				},
+				{
+					"label": "Глянцевий",
+					"price": 70
+				},
+				{
+					"label": "Матовий",
+					"price": 70
+				},
+				{
+					"label": "Матовий двосторонній",
+					"price": 70
+				}
+			]
+		}
+	},
+	{
+		"id": "1ef37b53-dc1c-4548-a690-f2ef91d6c19d",
+		"name": "Тримач ринви короткий",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "покриття",
+			"options": [
+				{
+					"label": "Цинк",
+					"price": 55
+				},
+				{
+					"label": "Глянцевий",
+					"price": 60
+				},
+				{
+					"label": "Матовий",
+					"price": 60
+				},
+				{
+					"label": "Матовий двосторонній",
+					"price": 60
+				}
+			]
+		}
+	},
+	{
+		"id": "abeb54d8-1ca8-48d0-9d3f-3b6320a8b6b4",
+		"name": "Тримач труби d100",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "покриття",
+			"options": [
+				{
+					"label": "Цинк",
+					"price": 30
+				},
+				{
+					"label": "Глянцевий",
+					"price": 35
+				},
+				{
+					"label": "Матовий",
+					"price": 35
+				},
+				{
+					"label": "Матовий двосторонній",
+					"price": 40
+				}
+			]
+		}
+	},
+	{
+		"id": "59fbb98e-8d67-42de-8db7-2bdbb2d3b54a",
+		"name": "Трійник d100",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "покриття",
+			"options": [
+				{
+					"label": "Цинк",
+					"price": 200
+				}
+			]
+		}
+	},
+	{
+		"id": "f724aaef-3a68-45f0-8c18-cf95c9310a17",
+		"name": "Труба водостічна d100 1250мм",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "покриття",
+			"options": [
+				{
+					"label": "Цинк",
+					"price": 160
+				},
+				{
+					"label": "Глянцевий",
+					"price": 170
+				},
+				{
+					"label": "Матовий",
+					"price": 180
+				},
+				{
+					"label": "Матовий двосторонній",
+					"price": 200
+				}
+			]
+		}
+	},
+	{
+		"id": "8a72a5a8-7fd8-4c84-8cb3-d2d4b64af03f",
+		"name": "Труба водостічна d100 625мм",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "покриття",
+			"options": [
+				{
+					"label": "Цинк",
+					"price": 85
+				},
+				{
+					"label": "Глянцевий",
+					"price": 90
+				},
+				{
+					"label": "Матовий",
+					"price": 95
+				},
+				{
+					"label": "Матовий двосторонній",
+					"price": 110
+				}
+			]
+		}
+	},
+	{
+		"id": "rynva-130-3m",
+		"name": "Ринва Ø130, 3м Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 450
+				},
+				{
+					"label": "Графіт",
+					"price": 450
+				},
+				{
+					"label": "Білий",
+					"price": 450
+				},
+				{
+					"label": "Червоний",
+					"price": 450
+				}
+			]
+		}
+	},
+	{
+		"id": "truba-vodostichna-100-3m",
+		"name": "Труба водостічна Ø100, 3м Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 555
+				},
+				{
+					"label": "Графіт",
+					"price": 555
+				},
+				{
+					"label": "Білий",
+					"price": 555
+				},
+				{
+					"label": "Червоний",
+					"price": 555
+				}
+			]
+		}
+	},
+	{
+		"id": "kut-zovnishniy-z-90-130",
+		"name": "Кут зовнішній \"Z\" 90º Ø130 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 460
+				},
+				{
+					"label": "Графіт",
+					"price": 460
+				},
+				{
+					"label": "Білий",
+					"price": 460
+				},
+				{
+					"label": "Червоний",
+					"price": 460
+				}
+			]
+		}
+	},
+	{
+		"id": "kut-vnutrishniy-w-90-130",
+		"name": "Кут внутрішній \"W\" 90º Ø130 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 460
+				},
+				{
+					"label": "Графіт",
+					"price": 460
+				},
+				{
+					"label": "Білий",
+					"price": 460
+				},
+				{
+					"label": "Червоний",
+					"price": 460
+				}
+			]
+		}
+	},
+	{
+		"id": "zaglushka-rynvy-prava-r-130",
+		"name": "Заглушка ринви права Р Ø130 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 175
+				},
+				{
+					"label": "Графіт",
+					"price": 175
+				},
+				{
+					"label": "Білий",
+					"price": 175
+				},
+				{
+					"label": "Червоний",
+					"price": 175
+				}
+			]
+		}
+	},
+	{
+		"id": "zaglushka-rynvy-liva-l-130",
+		"name": "Заглушка ринви ліва L Ø130 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 175
+				},
+				{
+					"label": "Графіт",
+					"price": 175
+				},
+				{
+					"label": "Білий",
+					"price": 175
+				},
+				{
+					"label": "Червоний",
+					"price": 175
+				}
+			]
+		}
+	},
+	{
+		"id": "liyka-prohidna-130-100",
+		"name": "Лійка прохідна Ø130/100 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 480
+				},
+				{
+					"label": "Графіт",
+					"price": 480
+				},
+				{
+					"label": "Білий",
+					"price": 480
+				},
+				{
+					"label": "Червоний",
+					"price": 480
+				}
+			]
+		}
+	},
+	{
+		"id": "kolino-100-60",
+		"name": "Коліно Ø100/60º Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 325
+				},
+				{
+					"label": "Графіт",
+					"price": 325
+				},
+				{
+					"label": "Білий",
+					"price": 325
+				},
+				{
+					"label": "Червоний",
+					"price": 325
+				}
+			]
+		}
+	},
+	{
+		"id": "kolino-dvorostrubne-100-67",
+		"name": "Коліно дворострубне Ø100/67º Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 360
+				},
+				{
+					"label": "Графіт",
+					"price": 360
+				},
+				{
+					"label": "Білий",
+					"price": 360
+				},
+				{
+					"label": "Червоний",
+					"price": 360
+				}
+			]
+		}
+	},
+	{
+		"id": "zyednuvach-truby-100",
+		"name": "З'єднувач труби Ø100 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 150
+				},
+				{
+					"label": "Графіт",
+					"price": 150
+				},
+				{
+					"label": "Білий",
+					"price": 150
+				},
+				{
+					"label": "Червоний",
+					"price": 150
+				}
+			]
+		}
+	},
+	{
+		"id": "zyednuvach-rynvy-130",
+		"name": "З'єднувач ринви Ø130 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 400
+				},
+				{
+					"label": "Графіт",
+					"price": 400
+				},
+				{
+					"label": "Білий",
+					"price": 400
+				},
+				{
+					"label": "Червоний",
+					"price": 400
+				}
+			]
+		}
+	},
+	{
+		"id": "triynyk-100-67",
+		"name": "Трійник Ø100/67º Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 700
+				},
+				{
+					"label": "Графіт",
+					"price": 700
+				},
+				{
+					"label": "Білий",
+					"price": 700
+				},
+				{
+					"label": "Червоний",
+					"price": 700
+				}
+			]
+		}
+	},
+	{
+		"id": "derzhak-rynvy-plast-130",
+		"name": "Держак ринви пласт. Ø130 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 145
+				},
+				{
+					"label": "Графіт",
+					"price": 145
+				},
+				{
+					"label": "Білий",
+					"price": 145
+				},
+				{
+					"label": "Червоний",
+					"price": 145
+				}
+			]
+		}
+	},
+	{
+		"id": "derzhak-rynvy-metal-130",
+		"name": "Держак ринви метал. Ø130 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 125
+				},
+				{
+					"label": "Графіт",
+					"price": 125
+				},
+				{
+					"label": "Білий",
+					"price": 125
+				},
+				{
+					"label": "Червоний",
+					"price": 125
+				}
+			]
+		}
+	},
+	{
+		"id": "derzhak-rynvy-metal-dovgyy-130",
+		"name": "Держак ринви метал. довгий Ø130 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 150
+				},
+				{
+					"label": "Графіт",
+					"price": 150
+				},
+				{
+					"label": "Білий",
+					"price": 150
+				},
+				{
+					"label": "Червоний",
+					"price": 150
+				}
+			]
+		}
+	},
+	{
+		"id": "derzhak-truby-metal-l100-100",
+		"name": "Держак труби метал. L100 Ø100 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 150
+				},
+				{
+					"label": "Графіт",
+					"price": 150
+				},
+				{
+					"label": "Білий",
+					"price": 150
+				},
+				{
+					"label": "Червоний",
+					"price": 150
+				}
+			]
+		}
+	},
+	{
+		"id": "derzhak-truby-metal-l220-100",
+		"name": "Держак труби метал. L220 Ø100 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 210
+				},
+				{
+					"label": "Графіт",
+					"price": 210
+				},
+				{
+					"label": "Білий",
+					"price": 210
+				},
+				{
+					"label": "Червоний",
+					"price": 210
+				}
+			]
+		}
+	},
+	{
+		"id": "rynva-90-3m",
+		"name": "Ринва Ø90, 3м Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 360
+				},
+				{
+					"label": "Графіт",
+					"price": 360
+				},
+				{
+					"label": "Білий",
+					"price": 360
+				},
+				{
+					"label": "Червоний",
+					"price": 360
+				}
+			]
+		}
+	},
+	{
+		"id": "truba-vodostichna-75-3m",
+		"name": "Труба водостічна Ø75, 3м Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 405
+				},
+				{
+					"label": "Графіт",
+					"price": 405
+				},
+				{
+					"label": "Білий",
+					"price": 405
+				},
+				{
+					"label": "Червоний",
+					"price": 405
+				}
+			]
+		}
+	},
+	{
+		"id": "kut-zovnishniy-z-90-90",
+		"name": "Кут зовнішній \"Z\" 90º Ø90 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 400
+				},
+				{
+					"label": "Графіт",
+					"price": 400
+				},
+				{
+					"label": "Білий",
+					"price": 400
+				},
+				{
+					"label": "Червоний",
+					"price": 400
+				}
+			]
+		}
+	},
+	{
+		"id": "kut-vnutrishniy-w-135-90",
+		"name": "Кут внутрішній \"W\" 135º Ø90 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 660
+				},
+				{
+					"label": "Графіт",
+					"price": 660
+				},
+				{
+					"label": "Білий",
+					"price": 660
+				},
+				{
+					"label": "Червоний",
+					"price": 660
+				}
+			]
+		}
+	},
+	{
+		"id": "zaglushka-rynvy-prava-r-90",
+		"name": "Заглушка ринви права Р Ø90 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 135
+				},
+				{
+					"label": "Графіт",
+					"price": 135
+				},
+				{
+					"label": "Білий",
+					"price": 135
+				},
+				{
+					"label": "Червоний",
+					"price": 135
+				}
+			]
+		}
+	},
+	{
+		"id": "zaglushka-rynvy-liva-l-90",
+		"name": "Заглушка ринви ліва L Ø90 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 135
+				},
+				{
+					"label": "Графіт",
+					"price": 135
+				},
+				{
+					"label": "Білий",
+					"price": 135
+				},
+				{
+					"label": "Червоний",
+					"price": 135
+				}
+			]
+		}
+	},
+	{
+		"id": "liyka-prohidna-90-75",
+		"name": "Лійка прохідна Ø90/75 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 350
+				},
+				{
+					"label": "Графіт",
+					"price": 350
+				},
+				{
+					"label": "Білий",
+					"price": 350
+				},
+				{
+					"label": "Червоний",
+					"price": 350
+				}
+			]
+		}
+	},
+	{
+		"id": "kolino-75-60",
+		"name": "Коліно Ø75/60º Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 285
+				},
+				{
+					"label": "Графіт",
+					"price": 285
+				},
+				{
+					"label": "Білий",
+					"price": 285
+				},
+				{
+					"label": "Червоний",
+					"price": 285
+				}
+			]
+		}
+	},
+	{
+		"id": "kolino-dvorostrubne-75-60",
+		"name": "Коліно дворострубне Ø75/60º Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 320
+				},
+				{
+					"label": "Графіт",
+					"price": 320
+				},
+				{
+					"label": "Білий",
+					"price": 320
+				},
+				{
+					"label": "Червоний",
+					"price": 320
+				}
+			]
+		}
+	},
+	{
+		"id": "zyednuvach-truby-75",
+		"name": "З'єднувач труби Ø75 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 115
+				},
+				{
+					"label": "Графіт",
+					"price": 115
+				},
+				{
+					"label": "Білий",
+					"price": 115
+				},
+				{
+					"label": "Червоний",
+					"price": 115
+				}
+			]
+		}
+	},
+	{
+		"id": "zyednuvach-rynvy-90",
+		"name": "З'єднувач ринви Ø90 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 330
+				},
+				{
+					"label": "Графіт",
+					"price": 330
+				},
+				{
+					"label": "Білий",
+					"price": 330
+				},
+				{
+					"label": "Червоний",
+					"price": 330
+				}
+			]
+		}
+	},
+	{
+		"id": "triynyk-75-67",
+		"name": "Трійник Ø75/67º Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 420
+				},
+				{
+					"label": "Графіт",
+					"price": 420
+				},
+				{
+					"label": "Білий",
+					"price": 420
+				},
+				{
+					"label": "Червоний",
+					"price": 420
+				}
+			]
+		}
+	},
+	{
+		"id": "derzhak-rynvy-plast-90",
+		"name": "Держак ринви пласт. Ø90 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 110
+				},
+				{
+					"label": "Графіт",
+					"price": 110
+				},
+				{
+					"label": "Білий",
+					"price": 110
+				},
+				{
+					"label": "Червоний",
+					"price": 110
+				}
+			]
+		}
+	},
+	{
+		"id": "derzhak-rynvy-metal-90",
+		"name": "Держак ринви метал. Ø90 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 105
+				},
+				{
+					"label": "Графіт",
+					"price": 105
+				},
+				{
+					"label": "Білий",
+					"price": 105
+				},
+				{
+					"label": "Червоний",
+					"price": 105
+				}
+			]
+		}
+	},
+	{
+		"id": "derzhak-rynvy-metal-dovgyy-90",
+		"name": "Держак ринви метал. довгий Ø90 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 150
+				},
+				{
+					"label": "Графіт",
+					"price": 150
+				},
+				{
+					"label": "Білий",
+					"price": 150
+				},
+				{
+					"label": "Червоний",
+					"price": 150
+				}
+			]
+		}
+	},
+	{
+		"id": "derzhak-truby-metal-l100-75",
+		"name": "Держак труби метал. L100 Ø75 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 170
+				},
+				{
+					"label": "Графіт",
+					"price": 170
+				},
+				{
+					"label": "Білий",
+					"price": 170
+				},
+				{
+					"label": "Червоний",
+					"price": 170
+				}
+			]
+		}
+	},
+	{
+		"id": "derzhak-truby-metal-l220-75",
+		"name": "Держак труби метал. L220 Ø75 Profil",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "vodostichni-systemy",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Коричневий",
+					"price": 200
+				},
+				{
+					"label": "Графіт",
+					"price": 200
+				},
+				{
+					"label": "Білий",
+					"price": 200
+				},
+				{
+					"label": "Червоний",
+					"price": 200
+				}
+			]
+		}
+	},
+	{
+		"id": "gidrobaryer-silver",
+		"name": "Гідробар'єр Silver",
+		"type": "quantity",
+		"unitId": "piece",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 550
+	},
+	{
+		"id": "gidrobaryer-aerotop",
+		"name": "Гідробар'єр Aerotop",
+		"type": "quantity",
+		"unitId": "square-meter",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 16.5
+	},
+	{
+		"id": "parobaryer-aerotop",
+		"name": "Паробар'єр Aerotop",
+		"type": "quantity",
+		"unitId": "square-meter",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 17
+	},
+	{
+		"id": "membrana-aerotop",
+		"name": "Мембрана Aerotop",
+		"type": "quantity",
+		"unitId": "square-meter",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 25
+	},
+	{
+		"id": "membrana-roofer-l55",
+		"name": "Мембрана Roofer L55",
+		"type": "quantity",
+		"unitId": "square-meter",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 18
+	},
+	{
+		"id": "membrana-roofer-h80",
+		"name": "Мембрана Roofer H80",
+		"type": "quantity",
+		"unitId": "square-meter",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 23
+	},
+	{
+		"id": "vitrobaryer-roofer",
+		"name": "Вітробар'єр Roofer",
+		"type": "quantity",
+		"unitId": "square-meter",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 23
+	},
+	{
+		"id": "superdyfuziyna-membrana-roofer-rs115",
+		"name": "Супердифузійна мембрана Roofer RS115",
+		"type": "quantity",
+		"unitId": "square-meter",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 28
+	},
+	{
+		"id": "strichka-lt-200mm",
+		"name": "Стрічка ЛТ 200мм",
+		"type": "quantity",
+		"unitId": "linear-meter",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 70
+	},
+	{
+		"id": "strichka-lt-m-200mm",
+		"name": "Стрічка ЛТ-М 200мм",
+		"type": "quantity",
+		"unitId": "linear-meter",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 70
+	},
+	{
+		"id": "strichka-lt-oa-200mm",
+		"name": "Стрічка ЛТ-ОА 200мм",
+		"type": "quantity",
+		"unitId": "linear-meter",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 80
+	},
+	{
+		"id": "germetyzuyucha-strichka-150mm",
+		"name": "Герметизуюча стрічка 150мм",
+		"type": "option",
+		"unitId": "linear-meter",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Графітовий",
+					"price": 100
+				},
+				{
+					"label": "Коричневий",
+					"price": 100
+				},
+				{
+					"label": "Зелений",
+					"price": 100
+				},
+				{
+					"label": "Червоний",
+					"price": 100
+				}
+			]
+		}
+	},
+	{
+		"id": "strichka-konkova-230mm-x-5m",
+		"name": "Стрічка конькова 230мм x 5м",
+		"type": "quantity",
+		"unitId": "piece",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 350
+	},
+	{
+		"id": "germetyk-aqua-protect-0-8kg",
+		"name": "Герметик Aqua Protect 0,8кг",
+		"type": "quantity",
+		"unitId": "piece",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 130
+	},
+	{
+		"id": "ushchilnyuvach-universalnyy-1m",
+		"name": "Ущільнювач універсальний 1м",
+		"type": "quantity",
+		"unitId": "piece",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 25
+	},
+	{
+		"id": "mayster-flesh-pryamyy-100-180-chornyy",
+		"name": "Майстер Флеш прямий Ø100-180 чорний",
+		"type": "quantity",
+		"unitId": "piece",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 1000
+	},
+	{
+		"id": "mayster-flesh-pryamyy-160-330-chornyy",
+		"name": "Майстер Флеш прямий Ø160-330 чорний",
+		"type": "quantity",
+		"unitId": "piece",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 1700
+	},
+	{
+		"id": "mayster-flesh-pryamyy-160-330-korychnevyy",
+		"name": "Майстер Флеш прямий Ø160-330 коричневий",
+		"type": "quantity",
+		"unitId": "piece",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 1700
+	},
+	{
+		"id": "mayster-flesh-kutovyy-160-280-chornyy",
+		"name": "Майстер Флеш кутовий Ø160-280 чорний",
+		"type": "quantity",
+		"unitId": "piece",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 1800
+	},
+	{
+		"id": "mayster-flesh-kutovyy-160-280-korychnevyy",
+		"name": "Майстер Флеш кутовий Ø160-280 коричневий",
+		"type": "quantity",
+		"unitId": "piece",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 1800
+	},
+	{
+		"id": "mayster-flesh-kutovyy-ovalnyy-160-330-chornyy",
+		"name": "Майстер Флеш кутовий овальний Ø160-330 чорний",
+		"type": "quantity",
+		"unitId": "piece",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 1800
+	},
+	{
+		"id": "mayster-flesh-kutovyy-70-200-chornyy",
+		"name": "Майстер Флеш кутовий Ø70-200 чорний",
+		"type": "quantity",
+		"unitId": "piece",
+		"categoryId": "germetyzatsiya-pokrivli",
+		"quantityStep": 1,
+		"price": 1300
+	},
+	{
+		"id": "nasadka-magnitna-8mm",
+		"name": "Насадка магнітна 8мм",
+		"type": "quantity",
+		"unitId": "piece",
+		"categoryId": "ruchnyy-insturment",
+		"quantityStep": 1,
+		"price": 80
+	},
+	{
+		"id": "skoba-gartovana",
+		"name": "Скоба гартована",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "ruchnyy-insturment",
+		"optionGroup": {
+			"label": "розмір",
+			"options": [
+				{
+					"label": "6мм",
+					"price": 26
+				},
+				{
+					"label": "8мм",
+					"price": 28
+				},
+				{
+					"label": "10мм",
+					"price": 30
+				},
+				{
+					"label": "12мм",
+					"price": 32
+				}
+			]
+		}
+	},
+	{
+		"id": "skobozabyvnyy-pistolet-rt-0201",
+		"name": "Скобозабивний пістолет RT-0201",
+		"type": "quantity",
+		"unitId": "piece",
+		"categoryId": "ruchnyy-insturment",
+		"quantityStep": 1,
+		"price": 450
+	},
+	{
+		"id": "zaklepky-alyuminiyevi",
+		"name": "Заклепки алюмінієві",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "ruchnyy-insturment",
+		"optionGroup": {
+			"label": "розмір",
+			"options": [
+				{
+					"label": "4 x 6мм",
+					"price": 26
+				},
+				{
+					"label": "4 x 8мм",
+					"price": 28
+				},
+				{
+					"label": "4 x 10мм",
+					"price": 30
+				},
+				{
+					"label": "4 x 12мм",
+					"price": 32
+				},
+				{
+					"label": "4 x 16мм",
+					"price": 34
+				}
+			]
+		}
+	},
+	{
+		"id": "pistolet-zaklepuvalnyy",
+		"name": "Пістолет заклепувальний",
+		"type": "quantity",
+		"unitId": "piece",
+		"categoryId": "ruchnyy-insturment",
+		"quantityStep": 1,
+		"price": 250
+	},
+	{
+		"id": "ruletka-rt-0005",
+		"name": "Рулетка з фіксатором RT-0005",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "ruchnyy-insturment",
+		"optionGroup": {
+			"label": "розмір",
+			"options": [
+				{
+					"label": "3м x 16мм",
+					"price": 90
+				},
+				{
+					"label": "5м x 19мм",
+					"price": 120
+				},
+				{
+					"label": "10м x 25мм",
+					"price": 250
+				}
+			]
+		}
+	},
+	{
+		"id": "panel-aydaho-bez-perforatsiyi-3m-0-90m",
+		"name": "Панель Айдахо без перфорації 3м, 0.90м²",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "sofit",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Графітовий",
+					"price": 445
+				},
+				{
+					"label": "Коричнквий",
+					"price": 445
+				},
+				{
+					"label": "Білий",
+					"price": 445
+				}
+			]
+		}
+	},
+	{
+		"id": "panel-aydaho-z-perforatsiyeyu-3m-0-90m",
+		"name": "Панель Айдахо з перфорацією 3м, 0.90м²",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "sofit",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Графітовий",
+					"price": 445
+				},
+				{
+					"label": "Коричнквий",
+					"price": 445
+				},
+				{
+					"label": "Білий",
+					"price": 445
+				}
+			]
+		}
+	},
+	{
+		"id": "j-planka-aydaho-3-05m",
+		"name": "J-планка Айдахо 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "sofit",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Графітовий",
+					"price": 320
+				},
+				{
+					"label": "Коричнквий",
+					"price": 320
+				},
+				{
+					"label": "Білий",
+					"price": 320
+				}
+			]
+		}
+	},
+	{
+		"id": "h-planka-aydaho-bila-3-05m",
+		"name": "H-планка Айдахо біла 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "sofit",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Графітовий",
+					"price": 600
+				},
+				{
+					"label": "Коричнквий",
+					"price": 600
+				},
+				{
+					"label": "Білий",
+					"price": 600
+				}
+			]
+		}
+	},
+	{
+		"id": "panel-vinilova-fasiding-3-85m",
+		"name": "Панель вінілова FaSiding 3.85м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Арахіс",
+					"price": 500
+				},
+				{
+					"label": "Бавовна",
+					"price": 500
+				},
+				{
+					"label": "Грецький горіх",
+					"price": 500
+				},
+				{
+					"label": "Какао",
+					"price": 500
+				},
+				{
+					"label": "Льон",
+					"price": 500
+				},
+				{
+					"label": "Макові зерна",
+					"price": 500
+				},
+				{
+					"label": "Мімоза",
+					"price": 500
+				},
+				{
+					"label": "Мигдаль",
+					"price": 500
+				},
+				{
+					"label": "Папороть",
+					"price": 500
+				},
+				{
+					"label": "Пшениця",
+					"price": 500
+				}
+			]
+		}
+	},
+	{
+		"id": "panel-vinilova-fasiding-blockhouse-3-66m",
+		"name": "Панель вінілова FaSiding Blockhouse 3.66м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Арахіс",
+					"price": 475
+				},
+				{
+					"label": "Грецький горіх",
+					"price": 475
+				},
+				{
+					"label": "Мімоза",
+					"price": 475
+				},
+				{
+					"label": "Мигдаль",
+					"price": 475
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-startova-fasiding-3-66m",
+		"name": "Планка стартова FaSiding 3.66м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Бавовна",
+					"price": 335
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-finishna-fasiding-3-66m",
+		"name": "Планка фінішна FaSiding 3.66м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Арахіс",
+					"price": 370
+				},
+				{
+					"label": "Бавовна",
+					"price": 370
+				},
+				{
+					"label": "Грецький горіх",
+					"price": 370
+				},
+				{
+					"label": "Какао",
+					"price": 370
+				},
+				{
+					"label": "Коричневий",
+					"price": 410
+				},
+				{
+					"label": "Льон",
+					"price": 370
+				},
+				{
+					"label": "Макові зерна",
+					"price": 370
+				},
+				{
+					"label": "Мімоза",
+					"price": 370
+				},
+				{
+					"label": "Мигдаль",
+					"price": 370
+				},
+				{
+					"label": "Папороть",
+					"price": 370
+				},
+				{
+					"label": "Пшениця",
+					"price": 370
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-j-trim-fasiding-3-66m",
+		"name": "Планка J-trim FaSiding 3.66м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Арахіс",
+					"price": 385
+				},
+				{
+					"label": "Бавовна",
+					"price": 385
+				},
+				{
+					"label": "Грецький горіх",
+					"price": 385
+				},
+				{
+					"label": "Какао",
+					"price": 385
+				},
+				{
+					"label": "Коричневий",
+					"price": 440
+				},
+				{
+					"label": "Льон",
+					"price": 385
+				},
+				{
+					"label": "Макові зерна",
+					"price": 385
+				},
+				{
+					"label": "Мімоза",
+					"price": 385
+				},
+				{
+					"label": "Мигдаль",
+					"price": 385
+				},
+				{
+					"label": "Папороть",
+					"price": 385
+				},
+				{
+					"label": "Пшениця",
+					"price": 385
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-z-yednuvalna-fasiding-3-05m",
+		"name": "Планка з'єднувальна FaSiding 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Арахіс",
+					"price": 660
+				},
+				{
+					"label": "Бавовна",
+					"price": 660
+				},
+				{
+					"label": "Грецький горіх",
+					"price": 660
+				},
+				{
+					"label": "Какао",
+					"price": 660
+				},
+				{
+					"label": "Коричневий",
+					"price": 820
+				},
+				{
+					"label": "Льон",
+					"price": 660
+				},
+				{
+					"label": "Макові зерна",
+					"price": 660
+				},
+				{
+					"label": "Мімоза",
+					"price": 660
+				},
+				{
+					"label": "Мигдаль",
+					"price": 660
+				},
+				{
+					"label": "Папороть",
+					"price": 660
+				},
+				{
+					"label": "Пшениця",
+					"price": 660
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-zovnishniy-kut-fasiding-3-05m",
+		"name": "Планка зовнішній кут FaSiding 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Арахіс",
+					"price": 830
+				},
+				{
+					"label": "Бавовна",
+					"price": 830
+				},
+				{
+					"label": "Грецький горіх",
+					"price": 830
+				},
+				{
+					"label": "Какао",
+					"price": 830
+				},
+				{
+					"label": "Коричневий",
+					"price": 1000
+				},
+				{
+					"label": "Льон",
+					"price": 830
+				},
+				{
+					"label": "Макові зерна",
+					"price": 830
+				},
+				{
+					"label": "Мімоза",
+					"price": 830
+				},
+				{
+					"label": "Мигдаль",
+					"price": 830
+				},
+				{
+					"label": "Папороть",
+					"price": 830
+				},
+				{
+					"label": "Пшениця",
+					"price": 830
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-vnutrishniy-kut-fasiding-3-05m",
+		"name": "Планка внутрішній кут FaSiding 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Арахіс",
+					"price": 680
+				},
+				{
+					"label": "Бавовна",
+					"price": 680
+				},
+				{
+					"label": "Грецький горіх",
+					"price": 680
+				},
+				{
+					"label": "Какао",
+					"price": 680
+				},
+				{
+					"label": "Коричневий",
+					"price": 810
+				},
+				{
+					"label": "Льон",
+					"price": 680
+				},
+				{
+					"label": "Макові зерна",
+					"price": 680
+				},
+				{
+					"label": "Мімоза",
+					"price": 680
+				},
+				{
+					"label": "Мигдаль",
+					"price": 680
+				},
+				{
+					"label": "Папороть",
+					"price": 680
+				},
+				{
+					"label": "Пшениця",
+					"price": 680
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-bilyavikonna-15sm-fasiding-3-05m",
+		"name": "Планка білявіконна 15см FaSiding 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Арахіс",
+					"price": 850
+				},
+				{
+					"label": "Бавовна",
+					"price": 850
+				},
+				{
+					"label": "Грецький горіх",
+					"price": 850
+				},
+				{
+					"label": "Какао",
+					"price": 850
+				},
+				{
+					"label": "Коричневий",
+					"price": 1070
+				},
+				{
+					"label": "Льон",
+					"price": 850
+				},
+				{
+					"label": "Макові зерна",
+					"price": 850
+				},
+				{
+					"label": "Мімоза",
+					"price": 850
+				},
+				{
+					"label": "Мигдаль",
+					"price": 850
+				},
+				{
+					"label": "Папороть",
+					"price": 850
+				},
+				{
+					"label": "Пшениця",
+					"price": 850
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-faska-fasiding-3-05m",
+		"name": "Планка фаска FaSiding 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Бавовна",
+					"price": 850
+				},
+				{
+					"label": "Коричневий",
+					"price": 900
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-lyshtva-fasiding-3-66m",
+		"name": "Планка лиштва FaSiding 3.66м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Бавовна",
+					"price": 850
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-okantovochna-fasiding-3-66m",
+		"name": "Планка окантовочна FaSiding 3.66м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Бавовна",
+					"price": 850
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-navisna-fasiding-3-66m",
+		"name": "Планка навісна FaSiding 3.66м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Бавовна",
+					"price": 550
+				}
+			]
+		}
+	},
+	{
+		"id": "panel-vinilova-fasiding-woodhouse-3-00m",
+		"name": "Панель вінілова FaSiding Woodhouse 3.00м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Дуб золотий",
+					"price": 550
+				},
+				{
+					"label": "Дуб морений",
+					"price": 500
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-startova-fasiding-woodhouse-3-05m",
+		"name": "Планка стартова FaSiding Woodhouse 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Білий",
+					"price": 280
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-finashna-fasiding-woodhouse-3-05m",
+		"name": "Планка фінашна FaSiding Woodhouse 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Дуб золотий",
+					"price": 410
+				},
+				{
+					"label": "Дуб морений",
+					"price": 410
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-j-trim-fasiding-woodhouse-3-05m",
+		"name": "Планка J-trim FaSiding Woodhouse 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Дуб золотий",
+					"price": 470
+				},
+				{
+					"label": "Дуб морений",
+					"price": 470
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-ziednuvalna-fasiding-woodhouse-3-05m",
+		"name": "Планка з'єднувальна FaSiding Woodhouse 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Дуб золотий",
+					"price": 920
+				},
+				{
+					"label": "Дуб морений",
+					"price": 920
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-zovnishnii-kut-fasiding-woodhouse-3-05m",
+		"name": "Планка зовнішній кут FaSiding Woodhouse 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Дуб золотий",
+					"price": 980
+				},
+				{
+					"label": "Дуб морений",
+					"price": 980
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-vnutrishnii-kut-fasiding-woodhouse-3-05m",
+		"name": "Планка внутрішній кут FaSiding Woodhouse 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Дуб золотий",
+					"price": 980
+				},
+				{
+					"label": "Дуб морений",
+					"price": 980
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-biliavikonna-11-5sm-fasiding-woodhouse-3-05m",
+		"name": "Планка білявіконна 11.5см FaSiding Woodhouse 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Білий",
+					"price": 950
+				}
+			]
+		}
+	},
+	{
+		"id": "planka-faska-fasiding-woodhouse-3-05m",
+		"name": "Планка фаска FaSiding Woodhouse 3.05м",
+		"type": "option",
+		"unitId": "piece",
+		"quantityStep": 1,
+		"categoryId": "saydyng",
+		"optionGroup": {
+			"label": "колір",
+			"options": [
+				{
+					"label": "Білий",
+					"price": 980
+				}
+			]
+		}
+	}
+]
