@@ -16,8 +16,8 @@ export default function Ivoice({ title, order }) {
 		orderFinalTotal
 	} = createInvoiceData(order);
 	return (
-		<div className='flex flex-col px-10 pt-12 pb-10 text-[10px]'>
-			<h1 className='flex text-base/1 text-right font-bold border-b-2 border-zinc-800 pb-3 mb-3'>{title} від {date}</h1>
+		<div className='flex flex-col pl-15 pr-10 pt-15 pb-10 text-[10px] font-[Arial]'>
+			<h1 className='flex text-base/1 text-right font-bold border-b-2 border-zinc-800 pb-3 mb-5'>{title} від {date}</h1>
 			<CustomerSection name={customerName} phone={customerPhone} email={customerEmail} />
 			<ProductTable items={items} />
 			<div className='flex flex-col items-end text-right text-sm font-bold mt-5 mr-1'>

@@ -418,7 +418,7 @@
 	},
 	{
 		"id": "d5f8d0a1-1d7b-4b8b-92d9-cf32b81b3b62",
-		"name": "Коліно верхнє d100",
+		"name": "Коліно верхнє Ø100",
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
@@ -447,7 +447,7 @@
 	},
 	{
 		"id": "bc85c5d7-f8e6-4d53-a1a4-f8d16c4b2f9b",
-		"name": "Коліно нижнє d100",
+		"name": "Коліно нижнє Ø100",
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
@@ -476,7 +476,7 @@
 	},
 	{
 		"id": "5a37f8c4-5d18-42f2-b27d-5b0b3b8d8df8",
-		"name": "Кут ринви універсальний d125",
+		"name": "Кут ринви універсальний Ø125",
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
@@ -563,7 +563,7 @@
 	},
 	{
 		"id": "23b8b0de-0b9c-4ef8-96ec-c82d8e67b0b6",
-		"name": "Ринва d125 1250мм",
+		"name": "Ринва Ø125 1250мм",
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
@@ -650,7 +650,7 @@
 	},
 	{
 		"id": "abeb54d8-1ca8-48d0-9d3f-3b6320a8b6b4",
-		"name": "Тримач труби d100",
+		"name": "Тримач труби Ø100",
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
@@ -679,7 +679,7 @@
 	},
 	{
 		"id": "59fbb98e-8d67-42de-8db7-2bdbb2d3b54a",
-		"name": "Трійник d100",
+		"name": "Трійник Ø100",
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
@@ -696,7 +696,7 @@
 	},
 	{
 		"id": "f724aaef-3a68-45f0-8c18-cf95c9310a17",
-		"name": "Труба водостічна d100 1250мм",
+		"name": "Труба водостічна Ø100 1250мм",
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
@@ -725,7 +725,7 @@
 	},
 	{
 		"id": "8a72a5a8-7fd8-4c84-8cb3-d2d4b64af03f",
-		"name": "Труба водостічна d100 625мм",
+		"name": "Труба водостічна Ø100 625мм",
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
@@ -758,7 +758,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -787,7 +787,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -816,7 +816,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -845,7 +845,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -874,7 +874,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -903,7 +903,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -932,7 +932,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -961,7 +961,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -990,7 +990,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1019,7 +1019,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1048,7 +1048,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1077,7 +1077,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1106,7 +1106,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1135,7 +1135,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1164,7 +1164,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1193,7 +1193,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1222,7 +1222,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-130",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1251,7 +1251,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1280,7 +1280,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1309,7 +1309,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1338,7 +1338,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1367,7 +1367,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1396,7 +1396,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1425,7 +1425,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1454,7 +1454,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1483,7 +1483,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1512,7 +1512,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1541,7 +1541,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1570,7 +1570,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1599,7 +1599,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1628,7 +1628,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1657,7 +1657,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1686,7 +1686,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [
@@ -1715,7 +1715,7 @@
 		"type": "option",
 		"unitId": "piece",
 		"quantityStep": 1,
-		"categoryId": "vodostichni-systemy",
+		"categoryId": "profil-90",
 		"optionGroup": {
 			"label": "колір",
 			"options": [

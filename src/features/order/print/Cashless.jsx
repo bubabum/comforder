@@ -17,7 +17,7 @@ export default function Cashless({ title, order }) {
 	} = createCashlessData(order);
 
 	return (
-		<div className='flex flex-col pl-15 pr-10 pt-12 pb-10 text-[10px]'>
+		<div className='flex flex-col pl-15 pr-10 pt-12 pb-10 text-[10px] font-[Arial]'>
 			<h1 className='flex text-base/1 text-right font-bold border-b-2 border-zinc-800 pb-3 mb-3'>{title} від {date} №</h1>
 			<CustomerSection name={customerName} phone={customerPhone} email={customerEmail} />
 			<div className='mb-5'></div>
