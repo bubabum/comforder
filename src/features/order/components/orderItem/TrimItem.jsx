@@ -54,7 +54,7 @@ export default function TrimItem({ item }) {
 		if (!newWidth && item.priceType === 'fixed') {
 			return item.prices?.[priceType] ?? 0;
 		}
-		const targetWidth = newWidth || Math.ceil(width / 10) * 10;
+		const targetWidth = Math.ceil((newWidth || width) / 10) * 10;
 		return trimPrices[targetWidth]?.[priceType] ?? 0;
 	};
 

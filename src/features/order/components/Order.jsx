@@ -79,7 +79,7 @@ export default function Order() {
 						</div>
 					</div>
 					{items.map(item => (
-						<div key={item.id} className='bg-white py-5'>
+						<div key={item.id} className='bg-white py-3'>
 							<OrderItem item={item} />
 						</div>
 					))}
