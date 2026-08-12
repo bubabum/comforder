@@ -43,19 +43,19 @@ export default function TrimItem({ item }) {
 				color: material.color,
 				coating: material.coating,
 				thickness: material.thickness,
+				width: item?.width || width,
 			}));
 		}
 	});
 
-	const getDefaultItemPrice = (mat, newWidth = width) => {
-		if (!mat) return 0;
-		if (item.priceType === 'fixed') {
-			return item.prices?.[mat.trimPriceType] ?? 0;
+	const getDefaultItemPrice = (newMaterial, newWidth) => {
+		if (!newMaterial) return 0;
+		const priceType = newMaterial.trimPriceType;
+		if (!newWidth && item.priceType === 'fixed') {
+			return item.prices?.[priceType] ?? 0;
 		}
-		if (trimPrices[newWidth]) {
-			return trimPrices[newWidth][mat.trimPriceType] ?? 0;
-		}
-		return 0;
+		const targetWidth = newWidth || Math.ceil(width / 10) * 10;
+		return trimPrices[targetWidth]?.[priceType] ?? 0;
 	};
 
 	const handleWidthChange = newWidth => {

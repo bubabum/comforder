@@ -6,7 +6,7 @@ export default function ProductTable({ items }) {
 					<td className='w-6  border border-zinc-800'>№</td>
 					<td className='border border-zinc-800'>Товари</td>
 					<td className='w-15 border border-zinc-800'>Кіл-сть</td>
-					<td className='w-12 border border-zinc-800'>Од.</td>
+					<td className='w-10 border border-zinc-800'>Од.</td>
 					<td className='w-20 border border-zinc-800'>Ціна без<br />ПДВ</td>
 					<td className='w-20 border border-zinc-800'>Сума без<br />ПДВ</td>
 				</tr>
