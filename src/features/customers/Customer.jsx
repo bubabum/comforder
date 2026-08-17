@@ -39,20 +39,20 @@ export default function Customer() {
 	}
 
 	return (
-		<div className="w-full flex flex-col gap-2 p-5">
+		<div className="w-full flex flex-col gap-5 p-5">
 			<div className="flex align-bottom gap-5">
 				<Button variant="secondary" icon='arrowLeft' onClick={() => navigate(-1)}></Button>
 				<h2 className="mb-4 text-sm font-medium text-text-primary">
 					Основна інформація
 				</h2>
 			</div>
-			<div className="flex flex-col gap-3">
-				<div>Ім'я</div>
-				<Input className="h-10" value={form.name || ""} onChange={e => setForm(prev => ({ ...prev, name: e.target.value }))} />
-				<div>Телефон</div>
-				<Input className="h-10" value={form.phone || ""} onChange={e => setForm(prev => ({ ...prev, phone: e.target.value }))} />
-				<div>Email</div>
-				<Input className="h-10" value={form.email || ""} onChange={e => setForm(prev => ({ ...prev, email: e.target.value }))} />
+			<div className="flex flex-col gap-2">
+				<div className="text-text-secondary">Ім'я:</div>
+				<Input className="h-10 w-100" value={form.name || ""} onChange={e => setForm(prev => ({ ...prev, name: e.target.value }))} />
+				<div className="text-text-secondary">Телефон:</div>
+				<Input className="h-10 w-100" value={form.phone || ""} onChange={e => setForm(prev => ({ ...prev, phone: e.target.value }))} />
+				<div className="text-text-secondary">Email:</div>
+				<Input className="h-10 w-100" value={form.email || ""} onChange={e => setForm(prev => ({ ...prev, email: e.target.value }))} />
 			</div>
 			<div className="flex gap-2">
 				<Button className="h-10" variant="secondary" onClick={() => setForm(customer)}>Скасувати</Button>

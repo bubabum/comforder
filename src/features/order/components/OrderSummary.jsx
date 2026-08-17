@@ -9,7 +9,8 @@ import Button from '../../../shared/UI/Button';
 import Input from '../../../shared/UI/Input';
 import NumberInput from '../../../shared/UI/NumberInput';
 import ToogleCheckbox from '../../../shared/UI/ToogleCheckbox';
-import { PRINT_TEMPLATE_TYPES } from '../../../shared/constants/printTemplateTypes';
+import Select from '../../../shared/UI/Select';
+import { PRINT_TEMPLATE_TYPES, PRINT_TEMPLATE_OPTIONS } from '../../../shared/constants/printTemplateTypes';
 
 export default function OrderSummary() {
 	const dispatch = useDispatch();
@@ -19,12 +20,6 @@ export default function OrderSummary() {
 	const { orderTotal, hasDiscount, finalDiscount, orderFinalTotal } = selectOrderSummary(order);
 	const disabledUi = printTemplate === PRINT_TEMPLATE_TYPES.CASHLESS;
 	const fileInputRef = useRef(null);
-
-	useEffect(() => {
-		if (printTemplate === PRINT_TEMPLATE_TYPES.CASHLESS) {
-			setDiscountModalOpened(false);
-		}
-	}, [printTemplate]);
 
 	const clampPartialPayment = (value) => {
 		return Number(value) > orderFinalTotal ? orderFinalTotal : Number(value)
@@ -79,7 +74,7 @@ export default function OrderSummary() {
 						<div>Знижка:</div>
 						{hasDiscount
 							? <Button variant="discounted" onClick={() => setDiscountModalOpened(!discountModalOpened)}>₴ {finalDiscount.toFixed(2)}</Button>
-							: <Button variant="discount" icon='percent' disabled={disabledUi} onClick={() => setDiscountModalOpened(!discountModalOpened)}>Додати</Button>}
+							: <Button variant="discount" icon='percent' onClick={() => setDiscountModalOpened(!discountModalOpened)}>Додати</Button>}
 					</div>
 				</div>
 				<div className='flex justify-between items-center py-5 border-t border-border-light text-text-primary'>
@@ -110,8 +105,8 @@ export default function OrderSummary() {
 			</div>
 			<div className='flex flex-col gap-2'>
 				<div className='flex gap-2'>
-					<Button className="h-10" variant="secondary" icon="download" onClick={exportOrder}>Експорт</Button>
-					<Button className="h-10" variant="secondary" icon="upload" onClick={importOrder}>Імпорт</Button>
+					<Button className="h-10 w-full" variant="secondary" icon="download" onClick={exportOrder}>Експорт</Button>
+					<Button className="h-10 w-full" variant="secondary" icon="upload" onClick={importOrder}>Імпорт</Button>
 				</div>
 				<Input className="h-10 w-full" ref={fileInputRef} type="file"></Input>
 			</div>

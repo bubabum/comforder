@@ -10,7 +10,7 @@ export default function Input({
 
 	const types = {
 		number: 'w-20',
-		file: 'p-0 file:bg-zinc-100 file:h-full file:p-3 file:mr-3 hover:file:bg-zinc-200 file:transition-all',
+		file: 'p-0  file:h-full file:p-3 file:mr-3 text-text-secondary file:border-r file:border-border-light file:bg-card-hover hover:file:bg-primary-light file:transition-all',
 		// secondary: 'bg-gray-200 hover:bg-gray-300',
 		// add: 'text-white bg-teal-600 hover:bg-teal-500',
 		// delete: 'bg-zinc-100 text-zinc-600 border-1 border-zinc-200 hover:bg-zinc-200'

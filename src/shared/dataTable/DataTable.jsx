@@ -6,9 +6,9 @@ export default function DataTable({ data, columns }) {
 		<div className="overflow-hidden rounded-md border border-border-light overflow-y-auto">
 			<table className="w-full table-fixed">
 				<thead>
-					<tr className="bg-background">
+					<tr className="bg-card-hover">
 						{columns.map(c => (
-							<th key={c.title} className="px-5 py-3 text-left text-xs font-medium tracking-wide text-slate-500" >{c.title}</th>
+							<th key={c.title} className="px-5 py-3 text-left text-xs font-medium tracking-wide text-text-secondary" >{c.title}</th>
 						))}
 					</tr>
 				</thead>

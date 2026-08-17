@@ -4,8 +4,9 @@ import { UNIT_OPTIONS } from "../../../shared/constants/units";
 import { DISCOUNT_TYPES } from "../../../shared/constants/discountTypes";
 
 export const round = (value, decimals = 2) => {
-	const factor = 10 ** decimals;
-	return Math.round(value * factor) / factor;
+	const cleaned = Number(value.toPrecision(12));
+	const factor = Math.pow(10, decimals);
+	return Math.round(cleaned * factor) / factor;
 };
 
 export const getUnits = item => {
@@ -13,7 +14,7 @@ export const getUnits = item => {
 }
 
 export const getArea = item => {
-	return round(item.data.sheets.reduce((acc, cur) => acc + cur.length * cur.quantity * item.width, 0), 3)
+	return round(item.data.sheets.reduce((acc, cur) => acc + round(cur.length * cur.quantity * item.width, 3), 0), 3)
 }
 
 export const getTotalLength = item => {

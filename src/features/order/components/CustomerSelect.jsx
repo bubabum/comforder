@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { selectCustomers } from '../../../store/referenceData/referenceDataSelectors';
+import { selectCustomersSortedByName } from '../../../store/referenceData/referenceDataSelectors';
 import { setCustomer } from '../orderSlice';
 import { selectCustomerCredentials } from '../../../shared/selectors/selectCustomerCredentials';
 import Select from 'react-select'
@@ -9,7 +9,7 @@ import Select from 'react-select'
 export default function CustomerSelect() {
 	const dispatch = useDispatch();
 	const order = useSelector(state => state.order);
-	const customers = useSelector(selectCustomers)
+	const customers = useSelector(selectCustomersSortedByName)
 	const { customerId } = order;
 
 	const options = customers.map(c => {
@@ -67,7 +67,7 @@ export default function CustomerSelect() {
 			 `,
 			}}
 			options={options}
-			value={options.find(o => o.value === customerId)}
+			value={options.find(o => o.value === customerId) || ""}
 			onChange={(option) => handleChangeCustomer(option?.value)}
 		/>
 	)

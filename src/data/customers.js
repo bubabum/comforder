@@ -2,8 +2,8 @@ export const customers = [
 	{
 		"id": "1-dprz-hu-dsns-ukrayiny",
 		"name": "1 ДПРЗ ГУ ДСНС України",
-		"phone": "11111",
-		"email": "test@mail.com"
+		"phone": "",
+		"email": ""
 	},
 	{
 		"id": "abbalov",

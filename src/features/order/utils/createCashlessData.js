@@ -42,16 +42,13 @@ export const createCashlessData = order => {
 	const {
 		isPartiallyPaid,
 		partialPayment,
-		hasDiscount,
 		customerName,
 		customerPhone,
 		customerEmail,
 	} = order;
-
 	return {
 		isPartiallyPaid,
 		partialPayment,
-		hasDiscount,
 		customerName,
 		customerPhone,
 		customerEmail,

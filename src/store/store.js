@@ -11,25 +11,32 @@ export const store = configureStore({
 });
 
 let previousReferenceData = store.getState().referenceData;
+let previousOrder = store.getState().order;
 
 store.subscribe(() => {
-	const currentReferenceData = store.getState().referenceData;
-	const {
-		status,
-		error,
-		...referenceData
-	} = currentReferenceData;
+	const state = store.getState();
+	if (state.referenceData !== previousReferenceData) {
+		const {
+			status,
+			error,
+			...referenceData
+		} = state.referenceData;
 
-	if (status !== "succeeded") {
-		return;
+		if (status === "succeeded") {
+			localStorage.setItem(
+				LOCAL_STORAGE_KEYS.REFERENCE_DATA,
+				JSON.stringify(referenceData)
+			);
+		}
+
+		previousReferenceData = state.referenceData;
 	}
-
-	if (currentReferenceData !== previousReferenceData) {
+	if (state.order !== previousOrder) {
 		localStorage.setItem(
-			LOCAL_STORAGE_KEYS.REFERENCE_DATA,
-			JSON.stringify(referenceData)
+			LOCAL_STORAGE_KEYS.ORDER,
+			JSON.stringify(state.order)
 		);
 
-		previousReferenceData = currentReferenceData;
+		previousOrder = state.order;
 	}
 });

@@ -10,7 +10,6 @@ export const createInitialOrder = () => ({
 	date: new Date().toISOString(),
 	isPartiallyPaid: false,
 	partialPayment: 0,
-	hasDiscount: false,
 	discount: {
 		type: DISCOUNT_TYPES.FIXED,
 		amount: 0,

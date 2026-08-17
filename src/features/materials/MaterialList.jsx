@@ -71,6 +71,7 @@ export default function MaterialList() {
 				<NavLink to={`/materials/new`}>
 					<Button
 						className="h-10"
+						variant="success"
 						icon="plus"
 					>Додати</Button>
 				</NavLink>

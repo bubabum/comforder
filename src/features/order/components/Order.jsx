@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { selectCategories } from '../../../store/referenceData/referenceDataSelectors';
 import {
-	resetSummary,
+	reset,
+	resetPartialPayment,
 	setDate,
 	setCustomerPhone,
 	setCustomerEmail,
@@ -33,11 +34,11 @@ export default function Order() {
 
 	const handleChangePrintTemplate = printTemplate => {
 		dispatch(setPrintTemplate(printTemplate))
-		if (printTemplate === PRINT_TEMPLATE_TYPES.CASHLESS) return dispatch(resetSummary())
+		if (printTemplate === PRINT_TEMPLATE_TYPES.CASHLESS) return dispatch(resetPartialPayment())
 	}
 
 	return (
-		<div className='h-full flex flex-col grow bg-background p-5'>
+		<div className='h-full flex flex-col grow bg-background p-2'>
 			<div className='flex justify-between gap-2 py-2'>
 				<div className='flex gap-2'>
 					<h2 className='font-medium'>Замовлення</h2 >
@@ -47,13 +48,16 @@ export default function Order() {
 					<Select value={printTemplate} onChange={e => handleChangePrintTemplate(e.target.value)}>
 						{PRINT_TEMPLATE_OPTIONS.map(p => (<option key={p.id} value={p.id}>{p.title}</option>))}
 					</Select>
-					<Button variant="primary" onClick={reactToPrintFn}>Print</Button>
+					<Button variant="primary" onClick={reactToPrintFn}>Друк</Button>
 					<div className='hidden print:block' ref={contentRef}>
 						{<TemplateComponent title={title} order={order} />}
 					</div>
+					<Button variant='success' icon="plus" onClick={() =>
+						dispatch(reset())
+					}>Створити</Button>
 				</div>
 			</div>
-			<div className='grow bg-surface border border-border-light rounded-lg p-5 overflow-y-auto scrollbar-gutter-stable'>
+			<div className='grow bg-surface border border-border-light rounded-lg p-3 overflow-y-auto scrollbar-gutter-stable'>
 				<div className='flex justify-between'>
 					<div className='flex items-center gap-2 pb-5 '>
 						<CustomerSelect />
@@ -63,7 +67,7 @@ export default function Order() {
 						<Input variant='email' value={customerEmail} onChange={e => dispatch(setCustomerEmail(e.target.value))}></Input>
 					</div >
 					<div>
-						<Button onClick={() => dispatch(setItems(sortByCategory(items, categories)))
+						<Button variant="secondary" icon="arrowDownWideNarrow" onClick={() => dispatch(setItems(sortByCategory(items, categories)))
 						}>За категорією</Button>
 					</div>
 				</div>

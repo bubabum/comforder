@@ -3,11 +3,17 @@ import { createInitialOrder } from "./utils/createInitialOrder";
 import { getTotalLength } from "./utils/orderCalculations";
 import { PRODUCT_TYPES } from "../../shared/constants/productTypes";
 import { DISCOUNT_TYPES } from "../../shared/constants/discountTypes";
+import { LOCAL_STORAGE_KEYS } from "../../shared/constants/localStorageKeys";
 
-const initialState = createInitialOrder();
+const createOrder = () => {
+	const savedOrder = localStorage.getItem(LOCAL_STORAGE_KEYS.ORDER);
+	if (savedOrder) return JSON.parse(savedOrder)
+	return createInitialOrder();
+}
+
 export const orderSlice = createSlice({
 	name: "order",
-	initialState,
+	initialState: createOrder(),
 	reducers: {
 		setOrder(state, action) {
 			return action.payload;
@@ -18,11 +24,7 @@ export const orderSlice = createSlice({
 		resetSummary: (state) => {
 			state.isPartiallyPaid = false;
 			state.partialPayment = 0;
-			state.hasDiscount = false;
-			state.discount = {
-				type: DISCOUNT_TYPES.FIXED,
-				amount: 0,
-			};
+			state.discount = createInitialOrder().discount;
 		},
 
 		setDate(state, action) {
@@ -56,6 +58,11 @@ export const orderSlice = createSlice({
 
 		setPartialPayment(state, action) {
 			state.partialPayment = action.payload;
+		},
+
+		resetPartialPayment(state) {
+			state.isPartiallyPaid = false;
+			state.partialPayment = 0;
 		},
 
 		setDiscountType(state, action) {
@@ -154,6 +161,7 @@ export const {
 	setPrintTemplate,
 	togglePartialPayment,
 	setPartialPayment,
+	resetPartialPayment,
 	setDiscountType,
 	setDiscountAmount,
 	setDiscountToSheetItems,

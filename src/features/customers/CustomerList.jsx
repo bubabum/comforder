@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { removeCustomer } from "../../store/referenceData/referenceDataSlice"
-import { selectCustomers } from "../../store/referenceData/referenceDataSelectors";
+import { selectCustomersSortedByName } from "../../store/referenceData/referenceDataSelectors";
 import { usePagination } from "../../shared/hooks/usePagination";
 import { NavLink } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
@@ -13,12 +13,10 @@ import Pagination from "../../shared/UI/Pagination";
 
 export default function CustomerList() {
 	const dispatch = useDispatch();
-	const customers = useSelector(selectCustomers)
+	const customers = useSelector(selectCustomersSortedByName)
 	const [search, setSearch] = useState('');
 
-	const filteredCustomers = customers
-		.filter(c => c.name.toLowerCase().includes(search.toLowerCase()))
-		.sort((a, b) => a.name.localeCompare(b.name, 'uk'));
+	const filteredCustomers = customers.filter(c => c.name.toLowerCase().includes(search.toLowerCase()));
 
 	const {
 		page,
@@ -59,6 +57,7 @@ export default function CustomerList() {
 				<NavLink to={`/customers/new`}>
 					<Button
 						className="h-10"
+						variant="success"
 						icon="plus"
 					>Додати</Button>
 				</NavLink>

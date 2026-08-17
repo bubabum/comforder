@@ -6,7 +6,6 @@ export const createInvoiceData = order => {
 	const {
 		isPartiallyPaid,
 		partialPayment,
-		hasDiscount,
 		customerName,
 		customerPhone,
 		customerEmail,
@@ -15,7 +14,6 @@ export const createInvoiceData = order => {
 	return {
 		isPartiallyPaid,
 		partialPayment,
-		hasDiscount,
 		customerName,
 		customerPhone,
 		customerEmail,

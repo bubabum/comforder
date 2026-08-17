@@ -66,6 +66,7 @@ export default function Material() {
 				<div>Колір</div>
 				<Select
 					type={'color'}
+					className="h-10"
 					value={form.colorId || ''}
 					onChange={e => setForm(prev => ({ ...prev, colorId: e.target.value }))}
 				>
@@ -74,6 +75,7 @@ export default function Material() {
 				<div>Покриття</div>
 				<Select
 					type={'coating'}
+					className="h-10"
 					value={form.coatingId || ''}
 					onChange={e => setForm(prev => ({ ...prev, coatingId: e.target.value }))}
 				>
@@ -87,7 +89,7 @@ export default function Material() {
 				<NumberInput className="h-10" value={form.extraPrice || ""} onChange={extraPrice => setForm(prev => ({ ...prev, extraPrice }))} />
 				<div>Тип ціни планок</div>
 				<Select
-					className="w-40"
+					className="w-40 h-10"
 					value={form.trimPriceType || ''}
 					onChange={e => setForm(prev => ({ ...prev, trimPriceType: e.target.value }))}
 				>
