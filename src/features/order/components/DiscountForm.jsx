@@ -11,7 +11,7 @@ import { DISCOUNT_TYPES } from '../../../shared/constants/discountTypes';
 import { DISCOUNT_OPTIONS } from '../../../shared/constants/discountTypes';
 
 
-export default function Discount({ discountModalOpened, setDiscountModalOpened }) {
+export default function DiscountForm({ discountModalOpened, setDiscountModalOpened }) {
 	const dispatch = useDispatch();
 	const order = useSelector(state => state.order);
 	const { items, partialPayment, discount } = order;

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { selectCategories } from '../../../store/referenceData/referenceDataSelectors';
@@ -11,31 +11,19 @@ import {
 	setPrintTemplate,
 	setItems,
 } from '../orderSlice';
-import { useReactToPrint } from "react-to-print";
 import { sortByCategory } from '../utils/sortByCategory';
-import { PRINT_TEMPLATE_TYPES, PRINT_TEMPLATE_OPTIONS } from '../../../shared/constants/printTemplateTypes';
 import { selectOrderSummary } from '../selectors/selectOrderSummary';
 import OrderItem from './orderItem/OrderItem';
 import CustomerSelect from './CustomerSelect';
 import Button from '../../../shared/UI/Button';
 import Input from '../../../shared/UI/Input';
 import Select from '../../../shared/UI/Select';
-import ToogleCheckbox from '../../../shared/UI/ToogleCheckbox';
 
 export default function Order() {
 	const dispatch = useDispatch();
 	const order = useSelector(state => state.order);
-	const { items, date, customerPhone, customerEmail, printTemplate } = order;
+	const { items, date, customerPhone, customerEmail } = order;
 	const categories = useSelector(selectCategories);
-	const contentRef = useRef(null);
-	const reactToPrintFn = useReactToPrint({ contentRef });
-	const TemplateComponent = PRINT_TEMPLATE_OPTIONS.find(p => p.id === printTemplate).template;
-	const title = PRINT_TEMPLATE_OPTIONS.find(p => p.id === printTemplate).title;
-
-	const handleChangePrintTemplate = printTemplate => {
-		dispatch(setPrintTemplate(printTemplate))
-		if (printTemplate === PRINT_TEMPLATE_TYPES.CASHLESS) return dispatch(resetPartialPayment())
-	}
 
 	return (
 		<div className='h-full flex flex-col grow bg-background p-2'>
@@ -45,13 +33,6 @@ export default function Order() {
 					<Input type="date" value={date.split("T")[0]} onChange={e => dispatch(setDate(new Date(e.target.value).toISOString()))} />
 				</div>
 				<div className='flex gap-2'>
-					<Select value={printTemplate} onChange={e => handleChangePrintTemplate(e.target.value)}>
-						{PRINT_TEMPLATE_OPTIONS.map(p => (<option key={p.id} value={p.id}>{p.title}</option>))}
-					</Select>
-					<Button variant="primary" onClick={reactToPrintFn}>Друк</Button>
-					<div className='hidden print:block' ref={contentRef}>
-						{<TemplateComponent title={title} order={order} />}
-					</div>
 					<Button variant='success' icon="plus" onClick={() =>
 						dispatch(reset())
 					}>Створити</Button>

@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { togglePartialPayment, setPartialPayment, setOrder } from '../orderSlice';
 import { selectOrderSummary } from '../selectors/selectOrderSummary';
-import Discount from './Discount';
+import PrintForm from './PrintForm';
+import DiscountForm from './DiscountForm';
 import Button from '../../../shared/UI/Button';
 import Input from '../../../shared/UI/Input';
 import NumberInput from '../../../shared/UI/NumberInput';
@@ -101,9 +102,10 @@ export default function OrderSummary() {
 							<div className='text-xl font-medium'>₴ {(orderFinalTotal - partialPayment).toFixed(2)}</div>
 						</div>
 					</div>}
-				{discountModalOpened && <Discount discountModalOpened={discountModalOpened} setDiscountModalOpened={setDiscountModalOpened} />}
+				{discountModalOpened && <DiscountForm discountModalOpened={discountModalOpened} setDiscountModalOpened={setDiscountModalOpened} />}
 			</div>
 			<div className='flex flex-col gap-2'>
+				<PrintForm />
 				<div className='flex gap-2'>
 					<Button className="h-10 w-full" variant="secondary" icon="download" onClick={exportOrder}>Експорт</Button>
 					<Button className="h-10 w-full" variant="secondary" icon="upload" onClick={importOrder}>Імпорт</Button>
