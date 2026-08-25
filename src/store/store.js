@@ -32,7 +32,7 @@ store.subscribe(() => {
 		previousReferenceData = state.referenceData;
 	}
 	if (state.order !== previousOrder) {
-		localStorage.setItem(
+		sessionStorage.setItem(
 			LOCAL_STORAGE_KEYS.ORDER,
 			JSON.stringify(state.order)
 		);

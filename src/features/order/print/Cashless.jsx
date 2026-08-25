@@ -63,13 +63,13 @@ export default function Cashless({ title, order }) {
 				</table>
 			</div>
 			{groupedItems.trimItems &&
-				<div className='w-auto'>
+				<div className='w-full'>
 					<div className='text-sm font-bold'>Малюнки планок:</div>
-					<div className='grid grid-flow-row grid-cols-8 gap-2'>
+					<div className='pt-2 grid grid-flow-row grid-cols-6 gap-2'>
 						{groupedItems.trimItems.items.map((item, index) => {
 							return (
 								<div key={index} className='flex'>
-									<div className='size-20 px-1 border border-zinc-800 whitespace-pre-line'>{index + 1}</div>
+									<div className='w-full aspect-square px-1 border border-zinc-800 whitespace-pre-line'>{index + 1}</div>
 								</div>
 							)
 						})}

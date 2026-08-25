@@ -6,7 +6,7 @@ import { DISCOUNT_TYPES } from "../../shared/constants/discountTypes";
 import { LOCAL_STORAGE_KEYS } from "../../shared/constants/localStorageKeys";
 
 const createOrder = () => {
-	const savedOrder = localStorage.getItem(LOCAL_STORAGE_KEYS.ORDER);
+	const savedOrder = sessionStorage.getItem(LOCAL_STORAGE_KEYS.ORDER);
 	if (savedOrder) return JSON.parse(savedOrder)
 	return createInitialOrder();
 }
