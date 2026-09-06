@@ -266,9 +266,9 @@
 		"priceType": "fixed",
 		"width": 250,
 		"prices": {
-			"gloss": 84,
-			"mat": 101,
-			"mat05": 120
+			"gloss": 97,
+			"mat": 117,
+			"mat05": 140
 		}
 	},
 	{
@@ -280,9 +280,9 @@
 		"priceType": "fixed",
 		"width": 312,
 		"prices": {
-			"gloss": 106,
-			"mat": 128,
-			"mat05": 153
+			"gloss": 122,
+			"mat": 147,
+			"mat05": 176
 		}
 	},
 	{
@@ -294,9 +294,9 @@
 		"priceType": "fixed",
 		"width": 156,
 		"prices": {
-			"gloss": 58,
-			"mat": 70,
-			"mat05": 84
+			"gloss": 67,
+			"mat": 81,
+			"mat05": 97
 		}
 	},
 	{
@@ -308,9 +308,9 @@
 		"priceType": "fixed",
 		"width": 250,
 		"prices": {
-			"gloss": 84,
-			"mat": 101,
-			"mat05": 120
+			"gloss": 97,
+			"mat": 117,
+			"mat05": 140
 		}
 	},
 	{
@@ -322,9 +322,9 @@
 		"priceType": "fixed",
 		"width": 250,
 		"prices": {
-			"gloss": 106,
-			"mat": 128,
-			"mat05": 153
+			"gloss": 122,
+			"mat": 147,
+			"mat05": 176
 		}
 	},
 	{
@@ -336,9 +336,9 @@
 		"priceType": "fixed",
 		"width": 312,
 		"prices": {
-			"gloss": 106,
-			"mat": 128,
-			"mat05": 153
+			"gloss": 122,
+			"mat": 147,
+			"mat05": 176
 		}
 	},
 	{
@@ -350,9 +350,9 @@
 		"priceType": "fixed",
 		"width": 75,
 		"prices": {
-			"gloss": 28,
-			"mat": 34,
-			"mat05": 41
+			"gloss": 32,
+			"mat": 39,
+			"mat05": 47
 		}
 	},
 	{

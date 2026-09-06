@@ -1,65 +1,28 @@
-import { useState, useEffect } from 'react'
-import { useRef } from 'react';
+import { useState } from 'react'
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { togglePartialPayment, setPartialPayment, setOrder } from '../orderSlice';
+import { togglePartialPayment, setPartialPayment } from '../orderSlice';
 import { selectOrderSummary } from '../selectors/selectOrderSummary';
-import PrintForm from './PrintForm';
 import DiscountForm from './DiscountForm';
 import Button from '../../../shared/UI/Button';
-import Input from '../../../shared/UI/Input';
 import NumberInput from '../../../shared/UI/NumberInput';
 import ToogleCheckbox from '../../../shared/UI/ToogleCheckbox';
-import Select from '../../../shared/UI/Select';
-import { PRINT_TEMPLATE_TYPES, PRINT_TEMPLATE_OPTIONS } from '../../../shared/constants/printTemplateTypes';
+import { PRINT_TEMPLATE_TYPES } from '../../../shared/constants/printTemplateTypes';
 
 export default function OrderSummary() {
 	const dispatch = useDispatch();
 	const order = useSelector(state => state.order);
-	const { items, discount, partialPayment, isPartiallyPaid, printTemplate } = order;
+	const { partialPayment, isPartiallyPaid, printTemplate } = order;
 	const [discountModalOpened, setDiscountModalOpened] = useState(false);
 	const { orderTotal, hasDiscount, finalDiscount, orderFinalTotal } = selectOrderSummary(order);
 	const disabledUi = printTemplate === PRINT_TEMPLATE_TYPES.CASHLESS;
-	const fileInputRef = useRef(null);
 
 	const clampPartialPayment = (value) => {
 		return Number(value) > orderFinalTotal ? orderFinalTotal : Number(value)
 	}
 
-	const exportOrder = async () => {
-		const handle = await window.showSaveFilePicker({
-			suggestedName: "order.json",
-			types: [{
-				description: 'JSON file',
-				accept: { 'application/json': ['.json'] }
-			}]
-		});
-		const writable = await handle.createWritable();
-		await writable.write(JSON.stringify(order, null, 2));
-		await writable.close();
-	}
-
-	const importOrder = async () => {
-		const file = fileInputRef.current.files[0];
-		if (!file) return;
-
-		const reader = new FileReader();
-
-		reader.onload = (e) => {
-			try {
-				const json = JSON.parse(e.target.result);
-				dispatch(setOrder(json));
-				fileInputRef.current.value = '';
-			} catch (err) {
-				console.error('Invalid JSON file', err);
-			}
-		};
-
-		reader.readAsText(file);
-	}
-
 	return (
-		<div className='w-80 p-5 flex flex-col justify-between bg-surface border-l border-border-light'>
+		<div className='self-start w-80 p-5 flex flex-col justify-between bg-surface border border-border-light rounded-lg'>
 			<div className='flex flex-col'>
 				<div className='pb-2 text-m text-text-primary border-b border-border-light font-medium'>Підсумок</div>
 				<div className='flex gap-5 py-5'>
@@ -103,14 +66,6 @@ export default function OrderSummary() {
 						</div>
 					</div>}
 				{discountModalOpened && <DiscountForm discountModalOpened={discountModalOpened} setDiscountModalOpened={setDiscountModalOpened} />}
-			</div>
-			<div className='flex flex-col gap-2'>
-				<PrintForm />
-				<div className='flex gap-2'>
-					<Button className="h-10 w-full" variant="secondary" icon="download" onClick={exportOrder}>Експорт</Button>
-					<Button className="h-10 w-full" variant="secondary" icon="upload" onClick={importOrder}>Імпорт</Button>
-				</div>
-				<Input className="h-10 w-full" ref={fileInputRef} type="file"></Input>
 			</div>
 		</div>
 	);

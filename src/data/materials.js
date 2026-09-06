@@ -45,4 +45,5 @@ export const materials = [
 
 	{ id: "4b7a1c2d-4f66-4e11-9c33-2f7d5e1a9b88", colorId: "31d7b44d-f1f7-4264-b9cc-b6fb97eb5dc7", coatingId: "5b66fd22-f08c-4bd0-9c11-bc90fd44f917", thickness: 0.45, price: 315, extraPrice: 7, trimPriceType: "mat" },
 	{ id: "9f1a2c7d-4b55-4e11-9c33-1e7b2d5a9f10", colorId: "8e76e3b9-5238-45df-9a50-7fcd2f5a7c71", coatingId: "5b66fd22-f08c-4bd0-9c11-bc90fd44f917", thickness: 0.45, price: 315, extraPrice: 7, trimPriceType: "mat" },
+	{ id: "c1b79dc1-1abe-44cf-b877-78b8412d1007", colorId: "f7729d62-f7c6-41ba-83f2-d1f921906cb8", coatingId: "cc1cb505-7959-4167-bbb1-bd5cf598492f", thickness: 0.50, price: 298, extraPrice: 7, trimPriceType: "gloss" },
 ];

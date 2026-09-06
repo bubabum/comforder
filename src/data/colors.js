@@ -14,4 +14,5 @@ export const colors = [
 	{ id: "8b5fded0-f5d3-434b-b3e8-30b7dc80c6ff", name: "9006" },
 	{ id: "31d7b44d-f1f7-4264-b9cc-b6fb97eb5dc7", name: "Золотий дуб" },
 	{ id: "8e76e3b9-5238-45df-9a50-7fcd2f5a7c71", name: "Темний дуб" },
+	{ id: "f7729d62-f7c6-41ba-83f2-d1f921906cb8", name: "Цинк" },
 ];

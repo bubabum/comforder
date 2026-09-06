@@ -26,10 +26,10 @@ export default function PrintForm() {
 
 	return (
 		<div className='flex gap-2'>
-			<Select className='h-10 w-full' value={printTemplate} onChange={e => handleChangePrintTemplate(e.target.value)}>
+			<Select className='w-40' value={printTemplate} onChange={e => handleChangePrintTemplate(e.target.value)}>
 				{PRINT_TEMPLATE_OPTIONS.map(p => (<option key={p.id} value={p.id}>{p.title}</option>))}
 			</Select>
-			<Button className='h-10' variant="primary" icon="printer" onClick={reactToPrintFn}>Друк</Button>
+			<Button variant="primary" icon="printer" onClick={reactToPrintFn}>Друк</Button>
 			<div className='hidden print:block' ref={contentRef}>
 				{<TemplateComponent title={title} order={order} />}
 			</div>

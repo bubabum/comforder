@@ -9,7 +9,7 @@ export default function Button({
 	...props
 }) {
 	const baseStyles =
-		'h-6 px-2 flex items-center justify-center rounded-md text-xs/1 font-normal active:scale-95 cursor-pointer transition-all disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100'
+		'h-6 px-2 flex items-center justify-center rounded-md text-xs/1 font-normal active:scale-95 cursor-pointer transition-all disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100 focus:border-primary/60 focus:ring-2 focus:ring-primary/5 focus:outline-none'
 
 	const variants = {
 		primary: 'text-zinc-100 bg-primary border border-transparent hover:bg-primary-hover',
