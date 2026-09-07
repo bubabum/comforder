@@ -55,7 +55,7 @@ export default function Order() {
 						<div className="w-10">Од.</div>
 						<div className="w-20">Ціна</div>
 						<div className="w-20 text-center">Сума</div>
-						<div className="w-7"></div>
+						<div className="w-7 mr-4">Дії</div>
 					</div>
 				</div>
 				<div className="flex-1 min-h-0 divide-y divide-border-light overflow-y-auto scrollbar-gutter-stable">

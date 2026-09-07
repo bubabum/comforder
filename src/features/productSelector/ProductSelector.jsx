@@ -44,9 +44,9 @@ export default function ProductSelector() {
 				Експорт
 			</button> */}
 			<div className='flex flex-wrap gap-1 my-2'>
-				<Button variant={!category ? "primary" : "secondary"} onClick={() => setCategory(null)}>Всі</Button>
+				<Button variant={!category ? "primary" : "secondary"} className='text-[11px]' onClick={() => setCategory(null)}>Всі</Button>
 				{categories.map(c => {
-					return <Button key={c.id} variant={category === c.id ? "primary" : "secondary"} onClick={() => setCategory(c.id)}>{c.name}</Button>
+					return <Button key={c.id} variant={category === c.id ? "primary" : "secondary"} className='text-[11px]' onClick={() => setCategory(c.id)}>{c.name}</Button>
 				})}
 			</div>
 			<ul className='divide-y divide-zinc-100 pr-2 overflow-y-auto scrollbar-gutter-stable'>

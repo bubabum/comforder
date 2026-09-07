@@ -17,14 +17,16 @@ export default function Button({
 		add: 'text-primary hover:bg-primary-light w-[28px]',
 		edit: 'text-text-muted hover:bg-amber-50 hover:text-warning active:bg-amber-100 transition-all',
 		delete: 'text-text-muted hover:bg-red-50 hover:text-error active:bg-red-100 transition-all',
-		discount: 'text-primary hover:bg-primary-light',
-		discounted: 'px-0 text-base text-primary hover:text-primary-hover',
+		discount: 'text-primary hover:bg-primary-light focus:ring-0',
+		discounted: 'px-0 text-base text-primary hover:text-primary-hover focus:ring-0',
 		success: 'bg-success text-white hover:brightness-95 active:brightness-90 transition-all',
 		warning: 'bg-warning text-white hover:brightness-95 active:brightness-90 transition-all',
 		error: 'bg-error text-white hover:brightness-95 active:brightness-90 transition-all',
-		successGhost: 'bg-green-50 text-success border border-green-200 hover:bg-green-100 transition-all',
-		warningGhost: 'bg-amber-50 text-warning border border-amber-200 hover:bg-amber-100 transition-all',
-		errorGhost: 'bg-red-50 text-error border border-red-200 hover:bg-red-100 transition-all',
+		successGhost: 'bg-green-50 text-success border border-green-200 hover:bg-green-100 transition-all focus:border-success/60',
+		warningGhost: 'bg-amber-50 text-warning border border-amber-200 hover:bg-amber-100 transition-all focus:border-warning/60',
+		errorGhost: 'bg-red-50 text-error border border-red-200 hover:bg-red-100 transition-all focus:border-error/60',
+		infoGhost: 'bg-blue-50 text-info border border-blue-200 hover:bg-blue-100 transition-all focus:border-info/60',
+		ghost: 'bg-surface text-text-secondary border border-gray-300 hover:bg-gray-100 transition-all focus:border-gray-300/60 focus:ring-0'
 	}
 	const icons = {
 		plus: Plus,

@@ -1817,7 +1817,7 @@
 		"unitId": "linear-meter",
 		"categoryId": "germetyzatsiya-pokrivli",
 		"quantityStep": 1,
-		"price": 70
+		"price": 90
 	},
 	{
 		"id": "strichka-lt-m-200mm",
@@ -1826,16 +1826,16 @@
 		"unitId": "linear-meter",
 		"categoryId": "germetyzatsiya-pokrivli",
 		"quantityStep": 1,
-		"price": 70
+		"price": 90
 	},
 	{
 		"id": "strichka-lt-oa-200mm",
-		"name": "Стрічка ЛТ-ОА 200мм",
+		"name": "Стрічка ЛТ-ФА 200мм",
 		"type": "quantity",
 		"unitId": "linear-meter",
 		"categoryId": "germetyzatsiya-pokrivli",
 		"quantityStep": 1,
-		"price": 80
+		"price": 100
 	},
 	{
 		"id": "germetyzuyucha-strichka-150mm",
