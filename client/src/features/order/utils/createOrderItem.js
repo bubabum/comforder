@@ -60,14 +60,15 @@ function createTrimItem(product, { materials, colors, coatings, trimPrices }) {
 	}
 }
 
-function createOptionItem(product, { products }) {
+function createOptionItem(product) {
 	return {
 		...product,
 		id: crypto.randomUUID(),
 		productId: product.id,
 		data: {
-			price: products.find(p => p.id === product.id).optionGroup.options[0].price,
-			option: products.find(p => p.id === product.id).optionGroup.options[0].label,
+			optionId: null,
+			optionName: "",
+			price: 0,
 			quantity: 1,
 		}
 	}

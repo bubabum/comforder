@@ -1,32 +1,28 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { selectMaterials, selectColors, selectCoatings } from "../../store/referenceData/referenceDataSelectors";
-import { updateMaterialsPrice } from "../../store/referenceData/referenceDataSlice";
+import { useGetMaterialsQuery } from "../../store/api/materialsApi";
 import { usePagination } from "../../shared/hooks/usePagination";
 import { NavLink } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
-import { TRIM_PRICE_TYPES, TRIM_PRICE_OPTIONS } from "../../shared/constants/trimPriceTypes";
+import Loader from "../../shared/UI/Loader";
 import Button from "../../shared/UI/Button";
 import DataTable from "../../shared/dataTable/DataTable";
-import NumberInput from "../../shared/UI/NumberInput";
 import Pagination from "../../shared/UI/Pagination";
 
 export default function MaterialList() {
-	const dispatch = useDispatch();
-	const materials = useSelector(selectMaterials);
-	const colors = useSelector(selectColors);
-	const coatings = useSelector(selectCoatings);
+	const {
+		data: materials = [],
+		isLoading,
+		error
+	} = useGetMaterialsQuery();
+
 	const table = materials
 		.map(m => ({
 			...m,
-			color: colors.find(c => c.id === m.colorId).name,
-			coating: coatings.find(c => c.id === m.coatingId).name,
-			trimPriceType: TRIM_PRICE_OPTIONS.find(o => o.id === m.trimPriceType).name,
+			color: m.colorName,
+			coating: m.coatingName,
+			thickness: m.thickness,
+			price: m.price,
+			extraPrice: m.extraPrice,
+			trimPriceType: m.trimPriceTypeName,
 		}))
-		.sort((a, b) => a.color.localeCompare(b.color, 'uk'));
-
-	const [addend, setAddend] = useState(0);
 
 	const {
 		page,
@@ -39,18 +35,8 @@ export default function MaterialList() {
 		syncWithUrl: true,
 	});
 
-	// const handleSearch = e => {
-	// 	setSearch(e.target.value);
-	// 	setPage(1);
-	// };
-
-	// const handleDelete = (id) => {
-	// 	if (!confirm("Дійсно видалити клієнта?")) return
-	// 	dispatch({
-	// 		type: 'DELETE_CUSTOMER',
-	// 		payload: { id },
-	// 	})
-	// }
+	if (isLoading) return <Loader />;
+	if (error) return <div>Не вдалося завантажити матеріали. Спробуйте оновити сторінку.</div>;
 
 	return (
 		<div className="w-full flex flex-col gap-2 p-5">
@@ -59,15 +45,7 @@ export default function MaterialList() {
 					Матеріали
 				</h1>
 			</div>
-			<div className="flex gap-2">
-				<NumberInput className="h-10" value={addend || ""} min={-50} max={50} step={1} onChange={addend => setAddend(addend)} />
-				<Button className="h-10" variant="primary" onClick={() => dispatch(updateMaterialsPrice({ addend }))}>Змінити ціну</Button>
-				{/* <Input
-					value={search}
-					onChange={e => handleSearch(e)}
-					placeholder="Пошук клієнта..."
-					className="h-10 w-100"
-				/> */}
+			<div className="flex justify-end gap-2">
 				<NavLink to={`/materials/new`}>
 					<Button
 						className="h-10"
@@ -89,9 +67,9 @@ export default function MaterialList() {
 						{
 							key: 'actions',
 							title: 'Дії',
-							render: customer => (
+							render: material => (
 								<div className="flex gap-2">
-									<NavLink to={`/materials/${customer.id}`}>
+									<NavLink to={`/materials/${material.id}`}>
 										<Button
 											variant="edit"
 											icon="pen"

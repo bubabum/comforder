@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useMaterialSelectionUI } from '../../hooks/useMaterialSelectionUI';
 
 // import { selectMaterials, selectColors, selectCoatings } from '../../../../store/referenceData/referenceDataSelectors';
 import { updateItem, removeItem, addSheet, sortSheets } from '../../orderSlice';
 
 import Sheet from './Sheet';
-import { getArea, getSheetItemTotal, getUnits, getDefaultSheetItemPrice } from '../../utils/orderCalculations';
+import { getArea, getSheetItemTotal, getDefaultSheetItemPrice } from '../../utils/orderCalculations';
 import { resolveMaterial } from '../../utils/resolveMaterial';
 
 import Button from '../../../../shared/UI/Button';
@@ -71,7 +71,7 @@ export default function SheetItem({ item }) {
 						{thicknessOptions.map(thickness => <option key={thickness} value={thickness}>{thickness}</option>)}
 					</Select>
 					<div className='font-medium w-20 text-center'>{getArea(item).toFixed(3)}</div>
-					<OrderItemUnits>{getUnits(item)}</OrderItemUnits>
+					<OrderItemUnits>{item.unitName}</OrderItemUnits>
 					<NumberInput
 						min={0}
 						step={1}

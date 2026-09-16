@@ -1,15 +1,18 @@
-import { useEffect } from 'react'
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { selectCustomersSortedByName } from '../../../store/referenceData/referenceDataSelectors';
 import { setCustomer } from '../orderSlice';
 import { selectCustomerCredentials } from '../../../shared/selectors/selectCustomerCredentials';
 import Select from 'react-select'
+import { useGetCustomersQuery } from '../../../store/api/customersApi';
 
 export default function CustomerSelect() {
+	const {
+		data: customers = [],
+		isLoading,
+		error,
+	} = useGetCustomersQuery()
 	const dispatch = useDispatch();
 	const order = useSelector(state => state.order);
-	const customers = useSelector(selectCustomersSortedByName)
 	const { customerId } = order;
 
 	const options = customers.map(c => {
@@ -32,7 +35,13 @@ export default function CustomerSelect() {
 					minHeight: 24,
 				})
 			}}
-			placeholder={"Вибір контрагента"}
+			placeholder={
+				error
+					? 'Помилка завантаження'
+					: isLoading
+						? 'Завантаження...'
+						: 'Вибір контрагента'
+			}
 			noOptionsMessage={() => "Збігів не знайдено"}
 			classNames={{
 				control: ({ isFocused, isDisabled }) =>
@@ -67,8 +76,8 @@ export default function CustomerSelect() {
 			 `,
 			}}
 			options={options}
-			value={options.find(o => o.value === customerId) || ""}
-			onChange={(option) => handleChangeCustomer(option?.value)}
+			value={options.find(o => o.value === customerId) || null}
+			onChange={option => handleChangeCustomer(option?.value ?? null)}
 		/>
 	)
 }

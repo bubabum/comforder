@@ -1,5 +1,5 @@
 import { PRODUCT_TYPES } from "../../../shared/constants/productTypes"
-import { getUnits, getArea, getItemTotal } from "./orderCalculations"
+import { getArea, getItemTotal } from "./orderCalculations"
 
 const getPrintName = item => {
 	switch (item.type) {
@@ -10,7 +10,7 @@ const getPrintName = item => {
 			const trims = item.data.trims.map(trim => `${trim.length}м-${trim.quantity}шт`).join(", ")
 			return `${item.name} ${item.data.color} ${item.data.coating} ${item.data.thickness > 0.45 ? item.data.thickness.toFixed(2) + "мм" : ""} заг. ${item.data.width}мм ${trims}`
 		case PRODUCT_TYPES.OPTION:
-			return `${item.name} ${item.data.option}`
+			return `${item.name} ${item.data.optionName}`
 		case PRODUCT_TYPES.QUANTITY:
 			return item.name
 		default:
@@ -36,8 +36,8 @@ export const createPrintOrderItem = item => {
 		id: item.id,
 		name: getPrintName(item),
 		quantity: getPrintQuantity(item).toFixed(3),
-		units: getUnits(item),
-		price: item.data.price.toFixed(2),
+		units: item.unitName,
+		price: Number(item.data.price).toFixed(2),
 		total: getItemTotal(item).toFixed(2)
 	}
 }

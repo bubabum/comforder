@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { updateItem, removeItem } from '../../orderSlice';
-import { getItemTotal, getUnits } from '../../utils/orderCalculations';
+import { getItemTotal } from '../../utils/orderCalculations';
 import Button from '../../../../shared/UI/Button';
 import NumberInput from '../../../../shared/UI/NumberInput';
 import OrderItemName from './OrderItemName';
@@ -21,7 +21,7 @@ export default function QuantityItem({ item }) {
 					value={quantity}
 					onChange={quantity => dispatch(updateItem({ id: item.id, quantity }))}
 				/>
-				<OrderItemUnits>{getUnits(item)}</OrderItemUnits>
+				<OrderItemUnits>{item.unitName}</OrderItemUnits>
 				<NumberInput
 					min={0}
 					step={1}

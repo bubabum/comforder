@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
 				element: <CustomerPage />,
 			},
 			{
-				path: '/customers/new',
+				path: '/customers/:new',
 				element: <CustomerPage />,
 			},
 			{
@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
 				element: <MaterialPage />,
 			},
 			{
-				path: '/materials/new',
+				path: '/materials/:new',
 				element: <MaterialPage />,
 			},
 		],

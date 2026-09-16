@@ -1,19 +1,23 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { removeCustomer } from "../../store/referenceData/referenceDataSlice"
-import { selectCustomersSortedByName } from "../../store/referenceData/referenceDataSelectors";
+import { useState } from "react";
+import {
+	useGetCustomersQuery,
+	useDeleteCustomerMutation
+} from "../../store/api/customersApi";
 import { usePagination } from "../../shared/hooks/usePagination";
 import { NavLink } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
+import Loader from "../../shared/UI/Loader";
 import Button from "../../shared/UI/Button";
 import DataTable from "../../shared/dataTable/DataTable";
 import Input from "../../shared/UI/Input";
 import Pagination from "../../shared/UI/Pagination";
 
 export default function CustomerList() {
-	const dispatch = useDispatch();
-	const customers = useSelector(selectCustomersSortedByName)
+	const {
+		data: customers = [],
+		isLoading,
+		error,
+	} = useGetCustomersQuery();
+	const [deleteCustomer] = useDeleteCustomerMutation();
 	const [search, setSearch] = useState('');
 
 	const filteredCustomers = customers.filter(c => c.name.toLowerCase().includes(search.toLowerCase()));
@@ -29,14 +33,21 @@ export default function CustomerList() {
 		syncWithUrl: true,
 	});
 
+	if (isLoading) return <Loader />;
+	if (error) return <div>Не вдалося завантажити клієнтів. Спробуйте оновити сторінку.</div>;
+
 	const handleSearch = value => {
 		setSearch(value);
 		setPage(1);
 	};
 
-	const handleDelete = (id) => {
+	const handleDelete = async (id) => {
 		if (!confirm("Дійсно видалити клієнта?")) return
-		dispatch(removeCustomer(id))
+		try {
+			await deleteCustomer(id).unwrap();
+		} catch (err) {
+			console.error('Не вдалось оновити клієнта', err);
+		}
 	}
 
 	return (
@@ -47,7 +58,7 @@ export default function CustomerList() {
 				</h1>
 			</div>
 
-			<div className="flex gap-2">
+			<div className="flex justify-between gap-2">
 				<Input
 					value={search}
 					onChange={e => handleSearch(e.target.value)}

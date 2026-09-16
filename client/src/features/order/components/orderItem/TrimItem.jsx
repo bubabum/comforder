@@ -5,7 +5,7 @@ import { selectTrimPrices } from '../../../../store/referenceData/referenceDataS
 import { updateItem, removeItem, addTrim, sortTrims } from '../../orderSlice';
 
 import Trim from './Trim';
-import { getItemTotal, getUnits } from '../../utils/orderCalculations';
+import { getItemTotal } from '../../utils/orderCalculations';
 import { resolveMaterial } from '../../utils/resolveMaterial';
 
 import Button from '../../../../shared/UI/Button';
@@ -108,7 +108,7 @@ export default function TrimItem({ item }) {
 						value={quantity}
 						onChange={(quantity) => dispatch(updateItem({ id: item.id, quantity }))}
 					/>
-					<OrderItemUnits>{getUnits(item)}</OrderItemUnits>
+					<OrderItemUnits>{item.unitName}</OrderItemUnits>
 					<NumberInput
 						type="number"
 						min={0}

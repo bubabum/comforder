@@ -9,9 +9,9 @@ export const round = (value, decimals = 2) => {
 	return Math.round(cleaned * factor) / factor;
 };
 
-export const getUnits = item => {
-	return UNIT_OPTIONS.find(u => u.id === item.unitId).name
-}
+// export const getUnits = item => {
+// 	return UNIT_OPTIONS.find(u => u.id === item.unitId)?.name
+// }
 
 export const getArea = item => {
 	return round(item.data.sheets.reduce((acc, cur) => acc + round(cur.length * cur.quantity * item.width, 3), 0), 3)
