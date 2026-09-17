@@ -21,7 +21,7 @@ export default function MaterialList() {
 			thickness: m.thickness,
 			price: m.price,
 			extraPrice: m.extraPrice,
-			trimPriceType: m.trimPriceTypeName,
+			trimPriceCategory: m.trimPriceCategoryName,
 		}))
 
 	const {
@@ -63,7 +63,7 @@ export default function MaterialList() {
 						{ key: 'thickness', title: 'Товщина' },
 						{ key: 'price', title: 'Ціна' },
 						{ key: 'extraPrice', title: 'Додаткова націнка' },
-						{ key: 'trimPriceType', title: 'Тип ціни планок ' },
+						{ key: 'trimPriceCategory', title: 'Тип ціни планок ' },
 						{
 							key: 'actions',
 							title: 'Дії',

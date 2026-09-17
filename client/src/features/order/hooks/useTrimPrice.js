@@ -19,13 +19,13 @@ export function useTrimPrice({ item, trimPriceType }) {
 	const isLoading = isLoadingWidthPrices || isLoadingFixedPrices;
 	const error = errorWidthPrices || errorFixedPrices;
 
-	const getPrice = (width, material) => {
+	const getPrice = (width, trimPriceCategoryId) => {
 		const roundedWidth = Math.ceil(width / 10) * 10;
 		if (trimPriceType === 'widthBased' || productWidth != null && productWidth != width) {
-			return getWidthPrice(roundedWidth, material?.trimPriceTypeId);
+			return getWidthPrice(roundedWidth, trimPriceCategoryId);
 		}
 		if (item.trimPriceType === 'fixed') {
-			return getFixedPrice(productId, material?.trimPriceTypeId);
+			return getFixedPrice(productId, trimPriceCategoryId);
 		}
 		return null
 	}

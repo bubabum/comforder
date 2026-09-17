@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS colors (
     name VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS trim_price_types (
+CREATE TABLE IF NOT EXISTS trim_price_categories (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL
 );
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS materials (
     thickness DECIMAL(3,2) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
     extra_price DECIMAL(10,2) NOT NULL,
-    trim_price_type_id INT UNSIGNED NOT NULL,
+    trim_price_category_id INT UNSIGNED NOT NULL,
 
     PRIMARY KEY (id),
 
@@ -36,9 +36,9 @@ CREATE TABLE IF NOT EXISTS materials (
         ON UPDATE CASCADE
         ON DELETE RESTRICT,
 
-	 CONSTRAINT fk_materials_trim_price_type
-        FOREIGN KEY (trim_price_type_id)
-        REFERENCES trim_price_types (id)
+	 CONSTRAINT fk_materials_trim_price_category
+        FOREIGN KEY (trim_price_category_id)
+        REFERENCES trim_price_categories (id)
         ON UPDATE CASCADE
         ON DELETE RESTRICT
 );
@@ -81,20 +81,20 @@ CREATE TABLE IF NOT EXISTS product_options (
 CREATE TABLE IF NOT EXISTS trim_fixed_prices (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   product_id INT UNSIGNED NOT NULL,   -- було VARCHAR(64)
-  trim_price_type_id INT UNSIGNED NOT NULL,
+  trim_price_category_id INT UNSIGNED NOT NULL,
   price DECIMAL(10,2) NOT NULL,
-  UNIQUE KEY (product_id, trim_price_type_id),
+  UNIQUE KEY (product_id, trim_price_category_id),
   FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
-  FOREIGN KEY (trim_price_type_id) REFERENCES trim_price_types(id)
+  FOREIGN KEY (trim_price_category_id) REFERENCES trim_price_categories(id)
 );
 
 CREATE TABLE IF NOT EXISTS trim_width_prices (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     width SMALLINT UNSIGNED NOT NULL,
-    trim_price_type_id INT UNSIGNED NOT NULL,
+    trim_price_category_id INT UNSIGNED NOT NULL,
     price DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (trim_price_type_id) REFERENCES trim_price_types(id) ON DELETE RESTRICT,
-    UNIQUE KEY uq_width_type (width, trim_price_type_id)
+    FOREIGN KEY (trim_price_category_id) REFERENCES trim_price_categories(id) ON DELETE RESTRICT,
+    UNIQUE KEY uq_width_type (width, trim_price_category_id)
 );
 
 CREATE TABLE customers (

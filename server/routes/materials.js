@@ -12,12 +12,12 @@ const SELECT_WITH_JOINS = `
         m.thickness,
         m.price,
         m.extra_price,
-        m.trim_price_type_id,
-        tpt.name AS trim_price_type_name
+        m.trim_price_category_id,
+        tpt.name AS trim_price_category_name
     FROM materials m
     JOIN colors c ON c.id = m.color_id
     JOIN coatings co ON co.id = m.coating_id
-    JOIN trim_price_types tpt ON tpt.id = m.trim_price_type_id
+    JOIN trim_price_categories tpt ON tpt.id = m.trim_price_category_id
 `;
 
 // GET всі матеріали (з підтягнутими назвами)
@@ -52,17 +52,17 @@ router.get('/:id', async (req, res) => {
 
 // POST новий матеріал
 router.post('/', async (req, res) => {
-	const { color_id, coating_id, thickness, price, extra_price, trim_price_type_id } = req.body;
+	const { color_id, coating_id, thickness, price, extra_price, trim_price_category_id } = req.body;
 
-	if (!color_id || !coating_id || thickness == null || price == null || extra_price == null || !trim_price_type_id) {
+	if (!color_id || !coating_id || thickness == null || price == null || extra_price == null || !trim_price_category_id) {
 		return res.status(400).json({ error: 'All fields are required', body: req.body });
 	}
 
 	try {
 		const [result] = await pool.execute(
-			`INSERT INTO materials (color_id, coating_id, thickness, price, extra_price, trim_price_type_id)
+			`INSERT INTO materials (color_id, coating_id, thickness, price, extra_price, trim_price_category_id)
              VALUES (?, ?, ?, ?, ?, ?)`,
-			[color_id, coating_id, thickness, price, extra_price, trim_price_type_id]
+			[color_id, coating_id, thickness, price, extra_price, trim_price_category_id]
 		);
 
 		const [rows] = await pool.execute(
@@ -74,7 +74,7 @@ router.post('/', async (req, res) => {
 	} catch (err) {
 		console.error(err);
 		if (err.code === 'ER_NO_REFERENCED_ROW_2') {
-			return res.status(400).json({ error: 'Invalid color_id, coating_id or trim_price_type_id' });
+			return res.status(400).json({ error: 'Invalid color_id, coating_id or trim_price_category_id' });
 		}
 		res.status(500).json({ error: 'Server error' });
 	}
@@ -82,18 +82,18 @@ router.post('/', async (req, res) => {
 
 // PUT оновлення матеріалу
 router.put('/:id', async (req, res) => {
-	const { color_id, coating_id, thickness, price, extra_price, trim_price_type_id } = req.body;
+	const { color_id, coating_id, thickness, price, extra_price, trim_price_category_id } = req.body;
 
-	if (!color_id || !coating_id || thickness == null || price == null || extra_price == null || !trim_price_type_id) {
+	if (!color_id || !coating_id || thickness == null || price == null || extra_price == null || !trim_price_category_id) {
 		return res.status(400).json({ error: 'All fields are required', body: req.body });
 	}
 
 	try {
 		const [result] = await pool.execute(
 			`UPDATE materials
-             SET color_id = ?, coating_id = ?, thickness = ?, price = ?, extra_price = ?, trim_price_type_id = ?
+             SET color_id = ?, coating_id = ?, thickness = ?, price = ?, extra_price = ?, trim_price_category_id = ?
              WHERE id = ?`,
-			[color_id, coating_id, thickness, price, extra_price, trim_price_type_id, req.params.id]
+			[color_id, coating_id, thickness, price, extra_price, trim_price_category_id, req.params.id]
 		);
 
 		if (result.affectedRows === 0) {
@@ -109,7 +109,7 @@ router.put('/:id', async (req, res) => {
 	} catch (err) {
 		console.error(err);
 		if (err.code === 'ER_NO_REFERENCED_ROW_2') {
-			return res.status(400).json({ error: 'Invalid color_id, coating_id or trim_price_type_id' });
+			return res.status(400).json({ error: 'Invalid color_id, coating_id or trim_price_category_id' });
 		}
 		res.status(500).json({ error: 'Server error' });
 	}

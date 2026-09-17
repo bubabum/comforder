@@ -3,7 +3,7 @@ import { customersApi } from './api/customersApi';
 import { materialsApi } from "./api/materialsApi";
 import { coatingsApi } from "./api/coatingsApi";
 import { colorsApi } from "./api/colorsApi";
-import { trimPriceTypesApi } from "./api/trimPriceTypesApi";
+import { trimPriceCategoriesApi } from "./api/trimPriceCategoriesApi";
 import { productsApi } from "./api/productsApi";
 import { categoriesApi } from "./api/categoriesApi";
 import { productOptionsApi } from "./api/productOptionsApi";
@@ -20,7 +20,7 @@ export const store = configureStore({
 		[materialsApi.reducerPath]: materialsApi.reducer,
 		[coatingsApi.reducerPath]: coatingsApi.reducer,
 		[colorsApi.reducerPath]: colorsApi.reducer,
-		[trimPriceTypesApi.reducerPath]: trimPriceTypesApi.reducer,
+		[trimPriceCategoriesApi.reducerPath]: trimPriceCategoriesApi.reducer,
 		[productsApi.reducerPath]: productsApi.reducer,
 		[categoriesApi.reducerPath]: categoriesApi.reducer,
 		[productOptionsApi.reducerPath]: productOptionsApi.reducer,
@@ -35,7 +35,7 @@ export const store = configureStore({
 			.concat(materialsApi.middleware)
 			.concat(coatingsApi.middleware)
 			.concat(colorsApi.middleware)
-			.concat(trimPriceTypesApi.middleware)
+			.concat(trimPriceCategoriesApi.middleware)
 			.concat(productsApi.middleware)
 			.concat(categoriesApi.middleware)
 			.concat(productOptionsApi.middleware)

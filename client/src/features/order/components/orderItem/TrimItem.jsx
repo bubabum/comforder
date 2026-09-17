@@ -37,7 +37,7 @@ export default function TrimItem({ item }) {
 			dispatch(updateItem({
 				id: item.id,
 				materialId: material.id,
-				price: getPrice(width, material),
+				price: getPrice(width, material.trimPriceCategoryId),
 				color: material.color,
 				coating: material.coating,
 				thickness: material.thickness,
@@ -62,7 +62,7 @@ export default function TrimItem({ item }) {
 		dispatch(updateItem({
 			id: item.id,
 			width,
-			price: getPrice(width, material),
+			price: getPrice(width, material.trimPriceCategoryId),
 		}));
 	};
 
@@ -71,12 +71,12 @@ export default function TrimItem({ item }) {
 		dispatch(updateItem({
 			id: item.id,
 			materialId: material.id,
-			price: getPrice(width, material),
+			price: getPrice(width, material.trimPriceCategoryId),
 			colorName: material.colorName,
 			coatingName: material.coatingName,
 			thickness: material.thickness,
 		}));
-	}, [material, item, dispatch])
+	}, [material, item.data.materialId, item.id, width, dispatch])
 
 	return (
 		<div className='flex flex-col gap-2 w-full text-sm'>

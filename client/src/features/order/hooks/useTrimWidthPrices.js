@@ -10,13 +10,12 @@ export function useTrimWidthPrices() {
 
 	const priceMap = useMemo(() => {
 		const map = new Map();
-		widthPrices.forEach(p => map.set(`${p.width}:${p.trimPriceTypeId}`, p.price));
+		widthPrices.forEach(p => map.set(`${p.width}:${p.trimPriceCategoryId}`, p.price));
 		return map;
 	}, [widthPrices]);
 
-
-	const getWidthPrice = (width, trimPriceTypeId) =>
-		priceMap.get(`${width}:${trimPriceTypeId}`) ?? null;
+	const getWidthPrice = (width, trimPriceCategoryId) =>
+		priceMap.get(`${width}:${trimPriceCategoryId}`) ?? null;
 
 	return { isLoading, error, widthPrices, getWidthPrice };
 }

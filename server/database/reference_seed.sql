@@ -23,7 +23,7 @@ INSERT IGNORE INTO coatings (name) VALUES
 	('decoprint'),
 	('Zn');
 
-INSERT IGNORE INTO trim_price_types (name) VALUES
+INSERT IGNORE INTO trim_price_categories (name) VALUES
 	('глянцевий'),
 	('матовий'),
 	('матовий 0.50мм');
@@ -34,7 +34,7 @@ INSERT IGNORE INTO materials (
     thickness,
     price,
     extra_price,
-    trim_price_type_id
+    trim_price_category_id
 ) VALUES
     (1, 1, 0.40, 258, 7, 1),
     (1, 1, 0.45, 287, 7, 1),
@@ -88,7 +88,7 @@ INSERT IGNORE INTO categories (name) VALUES
 	('Сайдинг'),
 	('Ручний інстурмент');
 
-INSERT INTO trim_width_prices (width, trim_price_type_id, price) VALUES
+INSERT INTO trim_width_prices (width, trim_price_category_id, price) VALUES
 (50, 1, 24.0), (50, 2, 29.0), (50, 3, 35.0),
 (60, 1, 28.0), (60, 2, 34.0), (60, 3, 41.0),
 (70, 1, 32.0), (70, 2, 39.0), (70, 3, 47.0),

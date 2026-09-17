@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useGetColorsQuery } from "../../store/api/colorsApi";
 import { useGetCoatingsQuery } from "../../store/api/coatingsApi";
-import { useGetTrimPriceTypesQuery } from "../../store/api/trimPriceTypesApi";
+import { useGetTrimPriceCategoriesQuery } from "../../store/api/trimPriceCategoriesApi";
 import {
 	useGetMaterialByIdQuery,
 	useCreateMaterialMutation,
@@ -34,10 +34,10 @@ export default function Material() {
 		error: errorCoatings
 	} = useGetCoatingsQuery();
 	const {
-		data: trimPriceTypes = [],
-		isLoading: isLoadingTrimPriceTypes,
-		error: errorTrimPriceTypes
-	} = useGetTrimPriceTypesQuery();
+		data: trimPriceCategories = [],
+		isLoading: isLoadingTrimPriceCategories,
+		error: errorTrimPriceCategories
+	} = useGetTrimPriceCategoriesQuery();
 	const {
 		data: material,
 		isLoading: isLoadingMaterial,
@@ -50,7 +50,7 @@ export default function Material() {
 		extraPrice: 0,
 		thickness: 0,
 		price: 0,
-		trimPriceTypeId: null,
+		trimPriceCategoryId: null,
 	}
 
 	const [form, setForm] = useState(defaultForm);
@@ -61,9 +61,9 @@ export default function Material() {
 			...prev,
 			colorId: colors[0]?.id ?? null,
 			coatingId: coatings[0]?.id ?? null,
-			trimPriceTypeId: trimPriceTypes[0]?.id ?? null,
+			trimPriceCategoryId: trimPriceCategories[0]?.id ?? null,
 		}))
-	}, [colors, coatings, trimPriceTypes])
+	}, [colors, coatings, trimPriceCategories])
 
 	useEffect(() => {
 		if (!isNew && material) {
@@ -74,13 +74,13 @@ export default function Material() {
 				extraPrice: Number(material.extraPrice),
 				thickness: Number(material.thickness),
 				price: Number(material.price),
-				trimPriceTypeId: material.trimPriceTypeId,
+				trimPriceCategoryId: material.trimPriceCategoryId,
 			});
 		}
 	}, [material, isNew]);
 
-	const isLoading = isLoadingColors || isLoadingCoatings || isLoadingTrimPriceTypes || isLoadingMaterial;
-	const error = errorColors || errorCoatings || errorTrimPriceTypes || errorMaterial;
+	const isLoading = isLoadingColors || isLoadingCoatings || isLoadingTrimPriceCategories || isLoadingMaterial;
+	const error = errorColors || errorCoatings || errorTrimPriceCategories || errorMaterial;
 
 	if (!isNew && isLoading) {
 		return <Loader />;
@@ -152,10 +152,10 @@ export default function Material() {
 						<div className="text-sm text-text-secondary">Тип ціни планок</div>
 						<Select
 							className="h-10 w-50"
-							value={form.trimPriceTypeId || ''}
-							onChange={e => setForm(prev => ({ ...prev, trimPriceTypeId: e.target.value }))}
+							value={form.trimPriceCategoryId || ''}
+							onChange={e => setForm(prev => ({ ...prev, trimPriceCategoryId: e.target.value }))}
 						>
-							{trimPriceTypes.map(option => <option key={option.id} value={option.id}>{option.name}</option>)}
+							{trimPriceCategories.map(option => <option key={option.id} value={option.id}>{option.name}</option>)}
 						</Select>
 					</div>
 					<div className="flex flex-col gap-2">

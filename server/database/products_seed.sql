@@ -478,7 +478,7 @@ INSERT INTO product_options (id, product_id, name, price) VALUES
 (343, 125, 'Білий', 950),
 (344, 126, 'Білий', 980);
 
-INSERT INTO trim_fixed_prices (id, product_id, trim_price_type_id, price) VALUES
+INSERT INTO trim_fixed_prices (id, product_id, trim_price_category_id, price) VALUES
 (1, 15, 1, 97),
 (2, 15, 2, 117),
 (3, 15, 3, 140),

@@ -92,11 +92,7 @@ export default function ProductList() {
 					data={pageData}
 					columns={[
 						{ key: 'name', title: 'Назва' },
-						// { key: 'coating', title: 'Покриття' },
-						// { key: 'thickness', title: 'Товщина' },
 						{ key: 'price', title: 'Ціна' },
-						// { key: 'extraPrice', title: 'Додаткова націнка' },
-						// { key: 'trimPriceType', title: 'Тип ціни планок ' },
 						{
 							key: 'actions',
 							title: 'Дії',
