@@ -1,17 +1,39 @@
 import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
-import {
-	selectColors,
-	selectCoatings
-} from '../../../store/referenceData/referenceDataSelectors';
-
+import { useGetColorsQuery } from '../../../store/api/colorsApi';
+import { useGetCoatingsQuery } from '../../../store/api/coatingsApi';
 import { useMaterial } from './useMaterial';
+import { resolveMaterial } from '../utils/resolveMaterial';
 
-export function useMaterialSelectionUI({ materialId, resolveMaterial, applyMaterialChange }) {
-	const { materials, material, getMaterial } = useMaterial(materialId);
+export function useMaterialSelectionUI({ materialId, applyMaterialChange }) {
+	const {
+		isLoadingMaterials,
+		errorMaterials,
+		materials,
+		material,
+		getMaterial
+	} = useMaterial(materialId);
 
-	const colors = useSelector(selectColors);
-	const coatings = useSelector(selectCoatings);
+	const {
+		data: colors = [],
+		isLoading: isLoadingColors,
+		error: errorColors
+	} = useGetColorsQuery();
+
+	const {
+		data: coatings = [],
+		isLoading: isLoadingCoatings,
+		error: errorCoatings
+	} = useGetCoatingsQuery();
+
+	const isLoading =
+		isLoadingMaterials ||
+		isLoadingColors ||
+		isLoadingCoatings;
+
+	const error =
+		errorMaterials ||
+		errorColors ||
+		errorCoatings;
 
 	const colorId = material?.colorId;
 	const coatingId = material?.coatingId;
@@ -39,32 +61,24 @@ export function useMaterialSelectionUI({ materialId, resolveMaterial, applyMater
 		[materials, colorId, coatingId]
 	);
 
-	const enrichMaterial = material => {
-		return {
-			...material,
-			color: colors.find(c => c.id === material.colorId).name,
-			coating: coatings.find(c => c.id === material.coatingId).name,
-		}
-	}
-
 	const handleColorChange = newColorId => {
 		const newMaterial = resolveMaterial(materials, {
-			colorId: newColorId,
+			colorId: Number(newColorId),
 			coatingId,
 			thickness,
 		})
 		if (!newMaterial) return
-		applyMaterialChange(enrichMaterial(newMaterial));
+		applyMaterialChange(newMaterial);
 	};
 
 	const handleCoatingChange = newCoatingId => {
 		const newMaterial = resolveMaterial(materials, {
 			colorId,
-			coatingId: newCoatingId,
+			coatingId: Number(newCoatingId),
 			thickness,
 		});
 		if (!newMaterial) return
-		applyMaterialChange(enrichMaterial(newMaterial));
+		applyMaterialChange(newMaterial);
 	};
 
 	const handleThicknessChange = newThickness => {
@@ -74,10 +88,17 @@ export function useMaterialSelectionUI({ materialId, resolveMaterial, applyMater
 			thickness: Number(newThickness),
 		});
 		if (!newMaterial) return
-		applyMaterialChange(enrichMaterial(newMaterial));
+		applyMaterialChange(newMaterial);
+	};
+
+	const handleChange = (patch) => {
+		const next = resolveMaterial(materials, { colorId, coatingId, thickness, ...patch });
+		if (next) applyMaterialChange(next);
 	};
 
 	return {
+		isLoading,
+		error,
 		material,
 
 		colorId,
@@ -93,5 +114,6 @@ export function useMaterialSelectionUI({ materialId, resolveMaterial, applyMater
 		handleColorChange,
 		handleCoatingChange,
 		handleThicknessChange,
+		handleChange,
 	};
 }

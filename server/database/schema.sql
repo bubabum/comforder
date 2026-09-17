@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS trim_fixed_prices (
   FOREIGN KEY (trim_price_type_id) REFERENCES trim_price_types(id)
 );
 
-CREATE TABLE trim_width_prices (
+CREATE TABLE IF NOT EXISTS trim_width_prices (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     width SMALLINT UNSIGNED NOT NULL,
     trim_price_type_id INT UNSIGNED NOT NULL,

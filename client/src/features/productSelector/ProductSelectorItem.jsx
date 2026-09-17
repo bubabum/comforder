@@ -3,8 +3,6 @@ import { useSelector } from "react-redux";
 import { addItem } from '../order/orderSlice';
 import { createOrderItem } from '../order/utils/createOrderItem';
 import Button from '../../shared/UI/Button';
-import Loader from "../../shared/UI/Loader";
-// import { useLazyGetProductOptionsByProductIdQuery } from "../../store/api/productOptionsApi";
 
 export default function ProductSelectorItem({ product, index }) {
 	const referenceData = useSelector(state => state.referenceData);

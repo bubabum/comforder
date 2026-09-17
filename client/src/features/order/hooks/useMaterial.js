@@ -1,13 +1,18 @@
 import { useMemo } from 'react';
-import { useSelector } from 'react-redux';
-import { selectMaterials } from '../../../store/referenceData/referenceDataSelectors';
+import { useGetMaterialsQuery } from '../../../store/api/materialsApi';
 
 export function useMaterial(materialId) {
-	const materials = useSelector(selectMaterials);
+	const {
+		data: materials = [],
+		isLoading: isLoadingMaterials,
+		error: errorMaterials,
+	} = useGetMaterialsQuery();
+
+	const resolvedMaterialId = materialId ?? materials[0]?.id ?? null;
 
 	const material = useMemo(
-		() => materials.find(m => m.id === materialId),
-		[materials, materialId]
+		() => materials.find(m => m.id === resolvedMaterialId),
+		[materials, resolvedMaterialId]
 	);
 
 	const getMaterial = (colorId, coatingId, thickness) =>
@@ -18,6 +23,8 @@ export function useMaterial(materialId) {
 		);
 
 	return {
+		isLoadingMaterials,
+		errorMaterials,
 		materials,
 		material,
 		getMaterial,

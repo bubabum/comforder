@@ -20,17 +20,17 @@ export function createOrderItem(product, referenceData) {
 	}
 }
 
-function createSheetItem(product, { materials, colors, coatings }) {
+function createSheetItem(product) {
 	return {
 		...product,
 		id: crypto.randomUUID(),
 		productId: product.id,
 		data: {
-			price: getDefaultSheetItemPrice(materials[0], product),
-			materialId: materials[0].id,
-			color: colors.find(c => c.id === materials[0].colorId).name,
-			coating: coatings.find(c => c.id === materials[0].coatingId).name,
-			thickness: materials[0].thickness,
+			price: 0,
+			materialId: null,
+			colorName: null,
+			coatingName: null,
+			thickness: null,
 			sheets: [
 				{
 					id: crypto.randomUUID(),
@@ -42,7 +42,7 @@ function createSheetItem(product, { materials, colors, coatings }) {
 	}
 }
 
-function createTrimItem(product, { materials, colors, coatings, trimPrices }) {
+function createTrimItem(product) {
 	return {
 		...product,
 		id: crypto.randomUUID(),
@@ -50,11 +50,11 @@ function createTrimItem(product, { materials, colors, coatings, trimPrices }) {
 		data: {
 			quantity: 0,
 			width: product?.width || 0,
-			price: product.priceType === "fixed" ? product.prices[materials[0].trimPriceType] : 0,
-			materialId: materials[0].id,
-			color: colors.find(c => c.id === materials[0].colorId).name,
-			coating: coatings.find(c => c.id === materials[0].coatingId).name,
-			thickness: materials[0].thickness,
+			price: 0,
+			materialId: null,
+			colorName: null,
+			coatingName: null,
+			thickness: null,
 			trims: []
 		}
 	}
@@ -67,7 +67,7 @@ function createOptionItem(product) {
 		productId: product.id,
 		data: {
 			optionId: null,
-			optionName: "",
+			optionName: null,
 			price: 0,
 			quantity: 1,
 		}

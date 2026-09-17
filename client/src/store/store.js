@@ -7,6 +7,8 @@ import { trimPriceTypesApi } from "./api/trimPriceTypesApi";
 import { productsApi } from "./api/productsApi";
 import { categoriesApi } from "./api/categoriesApi";
 import { productOptionsApi } from "./api/productOptionsApi";
+import { trimWidthPricesApi } from "./api/trimWidthPricesApi";
+import { trimFixedPricesApi } from "./api/trimFixedPricesApi";
 import orderReducer from "../features/order/orderSlice";
 import referenceDataReducer from "../store/referenceData/referenceDataSlice";
 import { LOCAL_STORAGE_KEYS } from "../shared/constants/localStorageKeys";
@@ -22,6 +24,8 @@ export const store = configureStore({
 		[productsApi.reducerPath]: productsApi.reducer,
 		[categoriesApi.reducerPath]: categoriesApi.reducer,
 		[productOptionsApi.reducerPath]: productOptionsApi.reducer,
+		[trimWidthPricesApi.reducerPath]: trimWidthPricesApi.reducer,
+		[trimFixedPricesApi.reducerPath]: trimFixedPricesApi.reducer,
 		order: orderReducer,
 		referenceData: referenceDataReducer,
 	},
@@ -35,6 +39,8 @@ export const store = configureStore({
 			.concat(productsApi.middleware)
 			.concat(categoriesApi.middleware)
 			.concat(productOptionsApi.middleware)
+			.concat(trimWidthPricesApi.middleware)
+			.concat(trimFixedPricesApi.middleware)
 });
 
 let previousReferenceData = store.getState().referenceData;

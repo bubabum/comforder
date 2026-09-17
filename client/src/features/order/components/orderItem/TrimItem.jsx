@@ -1,13 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useMaterialSelectionUI } from '../../hooks/useMaterialSelectionUI';
+import { useTrimPrice } from '../../hooks/useTrimPrice';
 
-import { selectTrimPrices } from '../../../../store/referenceData/referenceDataSelectors';
 import { updateItem, removeItem, addTrim, sortTrims } from '../../orderSlice';
 
 import Trim from './Trim';
 import { getItemTotal } from '../../utils/orderCalculations';
-import { resolveMaterial } from '../../utils/resolveMaterial';
-
+import { AlertCircle } from 'lucide-react';
+import Loader from '../../../../shared/UI/Loader';
 import Button from '../../../../shared/UI/Button';
 import NumberInput from '../../../../shared/UI/NumberInput';
 import Select from '../../../../shared/UI/Select';
@@ -17,11 +18,11 @@ import OrderItemTotal from './OrderItemTotal';
 
 export default function TrimItem({ item }) {
 	const dispatch = useDispatch();
-	const trimPrices = useSelector(selectTrimPrices);
-
-	const { width, price, quantity } = item.data;
+	const { width, quantity } = item.data;
 
 	const {
+		isLoading: isLoadingMaterials,
+		error: errorMaterials,
 		material,
 		colorId,
 		coatingId,
@@ -29,17 +30,14 @@ export default function TrimItem({ item }) {
 		colorOptions,
 		coatingOptions,
 		thicknessOptions,
-		handleColorChange,
-		handleCoatingChange,
-		handleThicknessChange,
+		handleChange,
 	} = useMaterialSelectionUI({
 		materialId: item.data.materialId,
-		resolveMaterial,
 		applyMaterialChange: (material) => {
 			dispatch(updateItem({
 				id: item.id,
 				materialId: material.id,
-				price: getDefaultItemPrice(material),
+				price: getPrice(width, material),
 				color: material.color,
 				coating: material.coating,
 				thickness: material.thickness,
@@ -48,52 +46,81 @@ export default function TrimItem({ item }) {
 		}
 	});
 
-	const getDefaultItemPrice = (newMaterial, newWidth) => {
-		if (!newMaterial) return 0;
-		const priceType = newMaterial.trimPriceType;
-		if (!newWidth && item.priceType === 'fixed') {
-			return item.prices?.[priceType] ?? 0;
-		}
-		const targetWidth = Math.ceil((newWidth || width) / 10) * 10;
-		return trimPrices[targetWidth]?.[priceType] ?? 0;
-	};
+	const {
+		getPrice,
+		isLoading: isLoadingPrice,
+		error: errorPrice
+	} = useTrimPrice({
+		item,
+		trimPriceType: item.trimPriceType, // 'fixed' | 'widthBased' з самого товару
+	});
 
-	const handleWidthChange = newWidth => {
+	const isLoading = isLoadingMaterials || isLoadingPrice;
+	const error = errorMaterials || errorPrice;
+
+	const handleWidthChange = width => {
 		dispatch(updateItem({
 			id: item.id,
-			width: Number(newWidth),
-			price: getDefaultItemPrice(material, newWidth),
+			width,
+			price: getPrice(width, material),
 		}));
 	};
+
+	useEffect(() => {
+		if (!material || item.data.materialId != null) return
+		dispatch(updateItem({
+			id: item.id,
+			materialId: material.id,
+			price: getPrice(width, material),
+			colorName: material.colorName,
+			coatingName: material.coatingName,
+			thickness: material.thickness,
+		}));
+	}, [material, item, dispatch])
 
 	return (
 		<div className='flex flex-col gap-2 w-full text-sm'>
 			<div className='flex justify-between items-end gap-2'>
 				<OrderItemName>{item.name}</OrderItemName>
 				<div className='flex items-center gap-1'>
-					<Select
-						type={'color'}
-						value={colorId || ''}
-						onChange={e => handleColorChange(e.target.value)}
-					>
-						{colorOptions.map(color => <option key={color.id} value={color.id}>{color.name}</option>)}
-					</Select>
-					<Select
-						type={'coating'}
-						value={coatingId || ''}
-						onChange={e => handleCoatingChange(e.target.value)}
-					>
-						{coatingOptions.map(coating => <option key={coating.id} value={coating.id}>{coating.name}</option>)}
-					</Select>
-					<Select
-						type={'thickness'}
-						value={thickness || ''}
-						onChange={e => handleThicknessChange(e.target.value)}
-					>
-						{thicknessOptions.map(thickness => <option key={thickness} value={thickness}>{thickness}</option>)}
-					</Select>
+					{isLoading ? (
+						<div className='w-70'>
+							<Loader className='size-4' />
+						</div>
+					) : error ? (
+						<div
+							className="w-70 flex items-center justify-center text-red-500"
+							title="Не вдалося завантажити матеріали"
+						>
+							<AlertCircle size={20} />
+						</div>
+					) : (
+						<div className='flex items-center gap-1'>
+							<Select
+								type={'color'}
+								value={colorId || ''}
+								onChange={e => handleChange({ colorId: Number(e.target.value) })}
+							>
+								{colorOptions.map(color => <option key={color.id} value={color.id}>{color.name}</option>)}
+							</Select>
+							<Select
+								type={'coating'}
+								value={coatingId || ''}
+								onChange={e => handleChange({ coatingId: Number(e.target.value) })}
+							>
+								{coatingOptions.map(coating => <option key={coating.id} value={coating.id}>{coating.name}</option>)}
+							</Select>
+							<Select
+								type={'thickness'}
+								value={thickness || ''}
+								onChange={e => handleChange({ thickness: Number(e.target.value) })}
+							>
+								{thicknessOptions.map(thickness => <option key={thickness} value={thickness}>{thickness}</option>)}
+							</Select>
+						</div>
+					)}
 					<NumberInput
-						type="number"
+						disabled={isLoading || !!error}
 						min={0}
 						step={10}
 						value={width}
@@ -101,8 +128,7 @@ export default function TrimItem({ item }) {
 					/>
 					<div className='text-xs'>мм</div>
 					<NumberInput
-						type="number"
-						disabled={item.data.trims.length > 0 ? true : false}
+						disabled={isLoading || !!error || item.data.trims.length > 0}
 						min={0}
 						step={item.quantityStep}
 						value={quantity}
@@ -110,10 +136,10 @@ export default function TrimItem({ item }) {
 					/>
 					<OrderItemUnits>{item.unitName}</OrderItemUnits>
 					<NumberInput
-						type="number"
+						disabled={isLoading || !!error}
 						min={0}
 						step={1}
-						value={price}
+						value={item.data.price}
 						onChange={price => dispatch(updateItem({ id: item.id, price }))}
 					/>
 					<OrderItemTotal>{getItemTotal(item).toFixed(2)}</OrderItemTotal>
@@ -133,12 +159,6 @@ export default function TrimItem({ item }) {
 					<Button variant='secondary' icon='arrowDownWideNarrow' onClick={() =>
 						dispatch(sortTrims({ id: item.id }))
 					}></Button>
-					{/* <Button icon='arrowDownWideNarrow' onClick={() =>
-						dispatch({
-							type: 'SORT_SHEETS',
-							payload: { id: item.id },
-						})
-					}></Button> */}
 				</div>
 			</div>
 		</div>
