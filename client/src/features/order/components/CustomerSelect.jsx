@@ -57,7 +57,7 @@ export default function CustomerSelect() {
 				valueContainer: () => 'px-2 py-0 flex items-center',
 				input: () => 'm-0 p-0 text-text-primary font-medium',
 				singleValue: () => 'text-text-primary font-medium',
-				placeholder: () => 'text-text-muted',
+				placeholder: () => `${!!error ? 'text-error' : 'text-text-muted'}`,
 				noOptionsMessage: () => "text-xs",
 				indicatorSeparator: () => 'hidden',
 				dropdownIndicator: () => 'text-text-muted hover:text-text-primary',

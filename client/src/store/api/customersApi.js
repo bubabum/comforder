@@ -1,10 +1,6 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
-import { baseQueryWithCredentials } from './baseQuery';
+import { apiSlice } from './apiSlice';
 
-export const customersApi = createApi({
-	reducerPath: 'customersApi',
-	baseQuery: baseQueryWithCredentials,
-	tagTypes: ['Customer'],
+export const customersApi = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 
 		getCustomers: builder.query({

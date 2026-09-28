@@ -1,9 +1,6 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
-import { baseQueryWithCredentials } from './baseQuery';
+import { apiSlice } from './apiSlice';
 
-export const trimPriceCategoriesApi = createApi({
-	reducerPath: 'trimPriceCategoriesApi',
-	baseQuery: baseQueryWithCredentials,
+export const trimPriceCategoriesApi = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getTrimPriceCategories: builder.query({
 			query: () => '/trim-price-categories',
@@ -11,4 +8,6 @@ export const trimPriceCategoriesApi = createApi({
 	}),
 });
 
-export const { useGetTrimPriceCategoriesQuery } = trimPriceCategoriesApi;
+export const {
+	useGetTrimPriceCategoriesQuery,
+} = trimPriceCategoriesApi;

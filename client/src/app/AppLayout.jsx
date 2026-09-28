@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
+import ToastContainer from '../shared/UI/ToastContainer';
 
 export default function AppLayout() {
 	return (
@@ -8,6 +9,7 @@ export default function AppLayout() {
 			<main className="w-full h-dvh  flex overflow-hidden ">
 				<Outlet />
 			</main>
+			<ToastContainer />
 		</div>
 	);
 }

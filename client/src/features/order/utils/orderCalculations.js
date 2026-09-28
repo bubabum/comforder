@@ -1,6 +1,4 @@
 import { PRODUCT_TYPES } from "../../../shared/constants/productTypes";
-import { UNIT_TYPES } from "../../../shared/constants/units";
-import { UNIT_OPTIONS } from "../../../shared/constants/units";
 import { DISCOUNT_TYPES } from "../../../shared/constants/discountTypes";
 
 export const round = (value, decimals = 2) => {
@@ -8,10 +6,6 @@ export const round = (value, decimals = 2) => {
 	const factor = Math.pow(10, decimals);
 	return Math.round(cleaned * factor) / factor;
 };
-
-// export const getUnits = item => {
-// 	return UNIT_OPTIONS.find(u => u.id === item.unitId)?.name
-// }
 
 export const getArea = item => {
 	return round(item.data.sheets.reduce((acc, cur) => acc + round(cur.length * cur.quantity * item.width, 3), 0), 3)

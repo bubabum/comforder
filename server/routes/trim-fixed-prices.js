@@ -12,4 +12,17 @@ router.get('/', async (req, res) => {
 	}
 });
 
+router.get('/:id', async (req, res) => {
+	try {
+		const [rows] = await pool.execute(
+			'SELECT * FROM trim_fixed_prices WHERE product_id = ?',
+			[req.params.id]
+		);
+		res.json(rows);
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({ error: 'Server error' });
+	}
+});
+
 module.exports = router;

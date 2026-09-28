@@ -1,9 +1,6 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
-import { baseQueryWithCredentials } from './baseQuery';
+import { apiSlice } from './apiSlice';
 
-export const coatingsApi = createApi({
-	reducerPath: 'coatingsApi',
-	baseQuery: baseQueryWithCredentials,
+export const coatingsApi = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getCoatings: builder.query({
 			query: () => '/coatings',
@@ -11,4 +8,6 @@ export const coatingsApi = createApi({
 	}),
 });
 
-export const { useGetCoatingsQuery } = coatingsApi;
+export const {
+	useGetCoatingsQuery,
+} = coatingsApi;

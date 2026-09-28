@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS product_options (
 
 CREATE TABLE IF NOT EXISTS trim_fixed_prices (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  product_id INT UNSIGNED NOT NULL,   -- було VARCHAR(64)
+  product_id INT UNSIGNED NOT NULL,
   trim_price_category_id INT UNSIGNED NOT NULL,
   price DECIMAL(10,2) NOT NULL,
   UNIQUE KEY (product_id, trim_price_category_id),

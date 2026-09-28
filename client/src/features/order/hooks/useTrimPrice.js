@@ -1,5 +1,6 @@
 import { useTrimWidthPrices } from "./useTrimWidthPrices";
 import { useTrimFixedPrices } from "./useTrimFixedPrices";
+import { TRIM_PRICE_TYPES } from "../../../shared/constants/trimPriceTypes";
 
 export function useTrimPrice({ item, trimPriceType }) {
 
@@ -21,10 +22,10 @@ export function useTrimPrice({ item, trimPriceType }) {
 
 	const getPrice = (width, trimPriceCategoryId) => {
 		const roundedWidth = Math.ceil(width / 10) * 10;
-		if (trimPriceType === 'widthBased' || productWidth != null && productWidth != width) {
+		if (trimPriceType === TRIM_PRICE_TYPES.WIDTH_BASED || productWidth != null && productWidth != width) {
 			return getWidthPrice(roundedWidth, trimPriceCategoryId);
 		}
-		if (item.trimPriceType === 'fixed') {
+		if (trimPriceType === TRIM_PRICE_TYPES.FIXED) {
 			return getFixedPrice(productId, trimPriceCategoryId);
 		}
 		return null

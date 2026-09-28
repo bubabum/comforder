@@ -6,6 +6,7 @@ import {
 import { usePagination } from "../../shared/hooks/usePagination";
 import { NavLink } from "react-router-dom";
 import Loader from "../../shared/UI/Loader";
+import MessageError from "../../shared/UI/MessageError";
 import Button from "../../shared/UI/Button";
 import DataTable from "../../shared/dataTable/DataTable";
 import Input from "../../shared/UI/Input";
@@ -34,7 +35,7 @@ export default function CustomerList() {
 	});
 
 	if (isLoading) return <Loader />;
-	if (error) return <div>Не вдалося завантажити клієнтів. Спробуйте оновити сторінку.</div>;
+	if (error) return <MessageError message="Не вдалося завантажити список клієнтів." />;
 
 	const handleSearch = value => {
 		setSearch(value);

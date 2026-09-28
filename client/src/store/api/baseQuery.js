@@ -9,6 +9,7 @@ const rawBaseQuery = fetchBaseQuery({
 
 export const baseQueryWithCredentials = async (args, api, extraOptions) => {
 	// Конвертуємо тіло запиту camelCase → snake_case перед відправкою на бекенд
+
 	if (typeof args === 'object' && args.body) {
 		args = {
 			...args,

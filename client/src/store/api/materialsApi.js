@@ -1,10 +1,6 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
-import { baseQueryWithCredentials } from './baseQuery';
+import { apiSlice } from './apiSlice';
 
-export const materialsApi = createApi({
-	reducerPath: 'materialsApi',
-	baseQuery: baseQueryWithCredentials,
-	tagTypes: ['Material'],
+export const materialsApi = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 
 		getMaterials: builder.query({

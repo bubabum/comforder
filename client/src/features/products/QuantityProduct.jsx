@@ -1,47 +1,135 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { updateProduct } from "../../store/referenceData/referenceDataSlice"
+import { useUpdateProductMutation, useCreateProductMutation } from "../../store/api/productsApi";
+import { useDispatch } from "react-redux";
+import { addToast } from "../../store/toastSlice";
+import ProductBaseFields from "./ProductBaseFields";
+import Loader from "../../shared/UI/Loader";
+import MessageError from "../../shared/UI/MessageError";
+import FormField from "../../shared/UI/FormField";
 import NumberInput from "../../shared/UI/NumberInput"
-import Input from "../../shared/UI/Input";
 import Button from "../../shared/UI/Button";
+import { useGetCategoriesQuery } from "../../store/api/categoriesApi";
+import { useGetUnitsQuery } from "../../store/api/unitsApi";
+import { PRODUCT_TYPES } from "../../shared/constants/productTypes";
+import { Package } from "lucide-react";
 
 export default function QuantityProduct({ product }) {
-	const id = product.id;
-	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const [form, setForm] = useState({ ...product });
+	const id = product?.id ?? "new";
+	const isNew = id === "new";
 
-	useEffect(() => {
-		setForm({ ...product });
-	}, [product]);
+	const {
+		data: categories = [],
+		isLoading: isLoadingCategories,
+		error: errorCategories,
+	} = useGetCategoriesQuery();
 
-	const handleUpdate = () => {
-		dispatch(updateProduct({ ...form }))
-		navigate(-1);
+	const {
+		data: units = [],
+		isLoading: isLoadingUnits,
+		error: errorUnits,
+	} = useGetUnitsQuery();
+
+	const isLoading = isLoadingCategories || isLoadingUnits;
+	const error = errorCategories || errorUnits;
+
+	const [createProduct] = useCreateProductMutation();
+	const [updateProduct] = useUpdateProductMutation();
+
+	const navigate = useNavigate();
+
+	const defaultForm = {
+		categoryId: null,
+		name: "",
+		price: 0,
+		quantityStep: 1,
+		type: PRODUCT_TYPES.QUANTITY,
+		unitId: null,
 	}
 
-	const handleCreateProduct = () => {
-		navigate(-1);
+	const [form, setForm] = useState(defaultForm);
+
+	useEffect(() => {
+		if (!isNew) return
+		setForm(prev => ({
+			...prev,
+			categoryId: categories[0]?.id ?? null,
+			unitId: units[0]?.id ?? null,
+		}))
+	}, [categories, units])
+
+	useEffect(() => {
+		if (!isNew && product) {
+			setForm({ ...product });
+		}
+
+	}, [product]);
+
+	if (!isNew && isLoading) return <Loader />;
+	if (!isNew && error) return <MessageError message="Не вдалося завантажити товар." />;
+
+	const handleUpdateProduct = async () => {
+		try {
+			await updateProduct({ id, ...form }).unwrap();
+			dispatch(addToast({ message: "Збережено", type: 'success' }));
+			navigate(-1);
+		} catch (err) {
+			// console.error('Не вдалось оновити товар', err);
+			dispatch(addToast({ message: "Не вдалось оновити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
+		}
+	};
+
+	const handleCreateProduct = async () => {
+		try {
+			await createProduct(form).unwrap();
+			dispatch(addToast({ message: "Збережено", type: 'success' }));
+			navigate(-1);
+		} catch (err) {
+			dispatch(addToast({ message: "Не вдалось створити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
+			// console.error('Не вдалось створити товар', err);
+		}
+	}
+
+	const getDefaultForm = () => ({
+		...defaultForm,
+		categoryId: categories[0]?.id ?? null,
+		unitId: units[0]?.id ?? null,
+	})
+
+	const cancelForm = () => {
+		if (isNew) {
+			setForm(getDefaultForm());
+		} else {
+			setForm({ ...product });
+		}
 	}
 
 	return (
-		<div className="w-full flex flex-col gap-2 p-5">
-			<div className="flex align-bottom gap-5">
-				<Button variant="secondary" icon='arrowLeft' onClick={() => navigate(-1)}></Button>
-				<h2 className="mb-4 text-sm font-medium text-text-primary">
-					Основна інформація
-				</h2>
+		<div className="w-full flex flex-col p-5 bg-background">
+			<div className="flex align-bottom gap-5 mb-5">
+				<Button className="size-10" variant="secondary" icon='arrowLeft' onClick={() => navigate(-1)}></Button>
+				<div>
+					<h2 className="text-md font-medium text-text-primary">Основна інформація</h2>
+					<div className="text-xs text-text-secondary">{isNew ? "Створення товару" : "Параметри товару"}</div>
+				</div>
 			</div>
-			<div className="flex flex-col gap-3">
-				<div>Назва</div>
-				<Input className="h-10" value={form.name || ""} onChange={e => setForm(prev => ({ ...prev, name: e.target.value }))} />
-				<div>Ціна</div>
-				<NumberInput className="h-10" value={form.price || ""} onChange={price => setForm(prev => ({ ...prev, price }))} />
-			</div>
-			<div className="flex gap-2">
-				<Button className="h-10" variant="secondary" onClick={() => setForm(product)}>Скасувати</Button>
-				<Button className="h-10" variant="primary" onClick={handleUpdate}>Зберегти</Button>
+			<div className="flex flex-col p-5 gap-5 bg-surface border border-border-light rounded-lg w-fit">
+				<div className="flex items-center gap-1 font-medium text-text-primary"><Package className="size-5" />Товар</div>
+				<ProductBaseFields form={form} setForm={setForm} categories={categories} units={units} />
+				<FormField label="Ціна" htmlFor="price">
+					<NumberInput
+						id="price"
+						variant="formField"
+						className="w-50"
+						value={form.price ?? ""}
+						onChange={price => setForm(prev => ({ ...prev, price }))}
+					/>
+				</FormField>
+				<div className="flex gap-5 mt-5 justify-end">
+					<Button className="h-10 w-30" variant="secondary" onClick={cancelForm}>Скасувати</Button>
+					<Button className="h-10 w-30" variant="primary" onClick={isNew ? handleCreateProduct : handleUpdateProduct}>Зберегти</Button>
+				</div>
 			</div>
 		</div>
 	)

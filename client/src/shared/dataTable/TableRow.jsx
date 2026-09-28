@@ -1,6 +1,3 @@
-import Button from "../UI/Button"
-import { NavLink } from 'react-router-dom';
-
 export default function TableRow({ item, columns }) {
 	return (
 		<tr className="border-t border-border-light transition-colors hover:bg-card-hover">

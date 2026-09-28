@@ -1,12 +1,8 @@
-import { useSelector } from "react-redux";
-import { selectCategories } from '../../../store/referenceData/referenceDataSelectors';
-import { getOrderTotal } from '../utils/orderCalculations';
 import { createCashlessData } from '../utils/createCashlessData';
 import ProductTable from './ProductTable';
 import CustomerSection from './CustomerSection';
 
 export default function Cashless({ title, order }) {
-	const categories = useSelector(selectCategories)
 	const {
 		date,
 		customerName,

@@ -7,9 +7,10 @@ export default function DataTable({ data, columns }) {
 			<table className="w-full table-fixed">
 				<thead>
 					<tr className="bg-card-hover">
-						{columns.map(c => (
-							<th key={c.title} className="px-5 py-3 text-left text-xs font-medium tracking-wide text-text-secondary" >{c.title}</th>
-						))}
+						{columns.map(c => {
+							if (c.key === "name") return <th key={c.title} className="w-1/3 px-5 py-3 text-left text-xs font-medium tracking-wide text-text-secondary" >{c.title}</th>
+							return <th key={c.title} className="px-5 py-3 text-left text-xs font-medium tracking-wide text-text-secondary" >{c.title}</th>
+						})}
 					</tr>
 				</thead>
 				<tbody>

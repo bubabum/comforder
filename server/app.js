@@ -12,6 +12,7 @@ const productsRouter = require('./routes/products');
 const productOptionsRouter = require('./routes/product-options');
 const trimWidthPricesRouter = require('./routes/trim-width-prices');
 const trimFixedPricesRouter = require('./routes/trim-fixed-prices');
+const unitsRouter = require('./routes/units');
 
 const app = express();
 
@@ -19,7 +20,8 @@ app.use(express.json());
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 app.use(async (req, res, next) => {
-	// await delay(2000);
+	// await delay(500);
+	// throw new Error
 	next();
 });
 
@@ -34,7 +36,7 @@ app.use('/api/products', productsRouter);
 app.use('/api/product-options', productOptionsRouter);
 app.use('/api/trim-width-prices', trimWidthPricesRouter);
 app.use('/api/trim-fixed-prices', trimFixedPricesRouter);
-// далі додаватимеш: app.use('/api/products', productsRouter); і т.д.
+app.use('/api/units', unitsRouter);
 
 // Статика фронту
 app.use(express.static(path.join(__dirname, 'public')));

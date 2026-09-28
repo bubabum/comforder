@@ -1,4 +1,5 @@
 import { twMerge } from "tailwind-merge";
+
 const Loader = ({ variant = "medium", className = '' }) => {
 	const baseStyles = "size-10 animate-spin rounded-full border-2 border-gray-300 border-t-primary";
 	const variants = {

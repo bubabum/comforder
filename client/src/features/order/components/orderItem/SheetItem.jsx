@@ -75,21 +75,21 @@ export default function SheetItem({ item }) {
 					) : (
 						<div className='flex items-center gap-1'>
 							<Select
-								type={'color'}
+								variant='color'
 								value={colorId || ''}
 								onChange={e => handleChange({ colorId: Number(e.target.value) })}
 							>
 								{colorOptions.map(color => <option key={color.id} value={color.id}>{color.name}</option>)}
 							</Select>
 							<Select
-								type={'coating'}
+								variant='coating'
 								value={coatingId || ''}
 								onChange={e => handleChange({ coatingId: Number(e.target.value) })}
 							>
 								{coatingOptions.map(coating => <option key={coating.id} value={coating.id}>{coating.name}</option>)}
 							</Select>
 							<Select
-								type={'thickness'}
+								variant='thickness'
 								value={thickness || ''}
 								onChange={e => handleChange({ thickness: Number(e.target.value) })}
 							>

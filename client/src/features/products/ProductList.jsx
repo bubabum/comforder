@@ -1,18 +1,27 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useGetProductsQuery } from '../../store/api/productsApi';
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { selectProducts } from "../../store/referenceData/referenceDataSelectors";
 import { setProducts } from "../../store/referenceData/referenceDataSlice";
 import { usePagination } from "../../shared/hooks/usePagination";
 import { NavLink } from "react-router-dom";
+import Loader from "../../shared/UI/Loader";
+import MessageError from "../../shared/UI/MessageError";
 import Pagination from "../../shared/UI/Pagination";
 import Button from "../../shared/UI/Button";
 import DataTable from "../../shared/dataTable/DataTable";
 import Input from "../../shared/UI/Input";
+import { DropdownMenu } from "../../shared/UI/Dropdown";
 
 export default function ProductList() {
 	const dispatch = useDispatch();
-	const products = useSelector(selectProducts);
+	const navigate = useNavigate();
+	const {
+		data: products = [],
+		isLoading,
+		error,
+	} = useGetProductsQuery();
+
 	const fileInputRef = useRef(null);
 	const [search, setSearch] = useState('');
 
@@ -67,6 +76,9 @@ export default function ProductList() {
 		reader.readAsText(file);
 	}
 
+	if (isLoading) return <Loader />;
+	if (error) return <MessageError message="Не вдалося завантажити список товарів." />;
+
 	return (
 		<div className="w-full flex flex-col gap-2 p-5">
 			<div className="flex items-center justify-between">
@@ -86,19 +98,31 @@ export default function ProductList() {
 				<Button className="h-10" variant="secondary" icon="download" onClick={exportProducts}>Експорт</Button>
 				<Button className="h-10" variant="secondary" icon="upload" onClick={importProducts}>Імпорт</Button>
 				<Input className="h-10 w-80" ref={fileInputRef} type="file"></Input>
+				<DropdownMenu
+					triggerClassName="h-10"
+					trigger={<span>Створити</span>}
+					items={[
+						{ label: "Звичайни товар", onClick: () => navigate('/products/new?type=quantity') },
+						{ label: "Товар з опціями", onClick: () => navigate('/products/new?type=option') },
+						{ label: "Листовий товар", onClick: () => navigate('/products/new?type=sheet') },
+						{ label: "Планка", onClick: () => navigate('/products/new?type=trim') },
+					]}
+				/>
 			</div>
 			<div className="min-h-100 grow flex flex-col justify-between">
 				<DataTable
 					data={pageData}
 					columns={[
 						{ key: 'name', title: 'Назва' },
+						{ key: 'categoryName', title: 'Категорія' },
+						{ key: 'unitName', title: 'Одиниці вимірювання' },
 						{ key: 'price', title: 'Ціна' },
 						{
 							key: 'actions',
 							title: 'Дії',
-							render: customer => (
+							render: product => (
 								<div className="flex gap-2">
-									<NavLink to={`/products/${customer.id}`}>
+									<NavLink to={`/products/${product.id}`}>
 										<Button
 											variant="edit"
 											icon="pen"

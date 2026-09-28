@@ -1,9 +1,6 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
-import { baseQueryWithCredentials } from './baseQuery';
+import { apiSlice } from './apiSlice';
 
-export const colorsApi = createApi({
-	reducerPath: 'colorsApi',
-	baseQuery: baseQueryWithCredentials,
+export const colorsApi = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getColors: builder.query({
 			query: () => '/colors',

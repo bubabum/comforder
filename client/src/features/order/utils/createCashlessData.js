@@ -1,7 +1,6 @@
 import { formatDateToPrint } from "./formatDateToPrint";
 import { selectOrderSummary } from "../selectors/selectOrderSummary";
 import { createPrintOrderItem } from "./createPrintOrderItem";
-import { sortByCategory } from "./sortByCategory";
 import { getOrderTotal } from "./orderCalculations";
 
 const createGroupedItems = items => {

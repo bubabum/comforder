@@ -2,6 +2,7 @@ import { useGetMaterialsQuery } from "../../store/api/materialsApi";
 import { usePagination } from "../../shared/hooks/usePagination";
 import { NavLink } from "react-router-dom";
 import Loader from "../../shared/UI/Loader";
+import MessageError from "../../shared/UI/MessageError";
 import Button from "../../shared/UI/Button";
 import DataTable from "../../shared/dataTable/DataTable";
 import Pagination from "../../shared/UI/Pagination";
@@ -36,7 +37,7 @@ export default function MaterialList() {
 	});
 
 	if (isLoading) return <Loader />;
-	if (error) return <div>Не вдалося завантажити матеріали. Спробуйте оновити сторінку.</div>;
+	if (error) return <MessageError message="Не вдалося завантажити список матеріалів." />;
 
 	return (
 		<div className="w-full flex flex-col gap-2 p-5">

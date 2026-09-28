@@ -28,6 +28,14 @@
 	--color-error: #EF4444;
 	--color-info: #3B82F6;
 
+	/* toast */
+	--color-success-toast: #EFFBF7;
+	--color-error-toast: #FEF3F5;
+
+	/* toast-border */
+	--color-success-border: #BFE9DD;
+	--color-error-border: #FECACA;
+
 	/* Hover */
 	--color-hover: #F1F5F9;
 	--color-card-hover: #FAFAFA;

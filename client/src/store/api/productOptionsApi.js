@@ -1,14 +1,14 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
-import { baseQueryWithCredentials } from './baseQuery';
+import { apiSlice } from './apiSlice';
 
-export const productOptionsApi = createApi({
-	reducerPath: 'productOptionsApi',
-	baseQuery: baseQueryWithCredentials,
+export const productOptionsApi = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getProductOptionsByProductId: builder.query({
-			query: (id) => `/product-options/${id}`,
+			query: (productId) => `/product-options/${productId}`,
+			providesTags: (result, error, productId) => [{ type: 'ProductOption', productId }],
 		}),
 	}),
 });
 
-export const { useGetProductOptionsByProductIdQuery, useLazyGetProductOptionsByProductIdQuery } = productOptionsApi;
+export const {
+	useGetProductOptionsByProductIdQuery,
+} = productOptionsApi;

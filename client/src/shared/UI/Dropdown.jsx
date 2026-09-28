@@ -67,7 +67,7 @@ function useMenuPosition(containerRef, menuRef, isOpen, preferredAlign = "left")
 
 // Базові стилі кнопки-тригера "за замовчуванням"
 const DEFAULT_TRIGGER_CLASSES =
-	"cursor-pointer flex items-center gap-1 rounded-md border border-border bg-white px-3 py-2 text-xs/1 text-text-secondary hover:bg-gray-50 focus:border-primary/60 focus:ring-2 focus:ring-primary/5 focus:outline-none";
+	"cursor-pointer flex items-center gap-1 rounded-md border border-border bg-white px-3 py-2 text-xs/1 text-text-secondary font-medium hover:bg-gray-50 focus:border-primary/60 focus:ring-2 focus:ring-primary/5 focus:outline-none";
 
 function cx(...classes) {
 	return classes.filter(Boolean).join(" ");

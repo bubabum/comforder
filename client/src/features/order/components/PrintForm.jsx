@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useReactToPrint } from "react-to-print";

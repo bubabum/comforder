@@ -2,9 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useMaterialSelectionUI } from '../../hooks/useMaterialSelectionUI';
 import { useTrimPrice } from '../../hooks/useTrimPrice';
-
 import { updateItem, removeItem, addTrim, sortTrims } from '../../orderSlice';
-
 import Trim from './Trim';
 import { getItemTotal } from '../../utils/orderCalculations';
 import { AlertCircle } from 'lucide-react';
@@ -38,8 +36,8 @@ export default function TrimItem({ item }) {
 				id: item.id,
 				materialId: material.id,
 				price: getPrice(width, material?.trimPriceCategoryId),
-				color: material.color,
-				coating: material.coating,
+				colorName: material.colorName,
+				coatingName: material.coatingName,
 				thickness: material.thickness,
 				width: item?.width || width,
 			}));
@@ -52,7 +50,7 @@ export default function TrimItem({ item }) {
 		error: errorPrice
 	} = useTrimPrice({
 		item,
-		trimPriceType: item.trimPriceType, // 'fixed' | 'widthBased' з самого товару
+		trimPriceType: item.trimPriceType,
 	});
 
 	const isLoading = isLoadingMaterials || isLoadingPrice;
@@ -97,21 +95,21 @@ export default function TrimItem({ item }) {
 					) : (
 						<div className='flex items-center gap-1'>
 							<Select
-								type={'color'}
+								variant='color'
 								value={colorId || ''}
 								onChange={e => handleChange({ colorId: Number(e.target.value) })}
 							>
 								{colorOptions.map(color => <option key={color.id} value={color.id}>{color.name}</option>)}
 							</Select>
 							<Select
-								type={'coating'}
+								variant='coating'
 								value={coatingId || ''}
 								onChange={e => handleChange({ coatingId: Number(e.target.value) })}
 							>
 								{coatingOptions.map(coating => <option key={coating.id} value={coating.id}>{coating.name}</option>)}
 							</Select>
 							<Select
-								type={'thickness'}
+								variant='thickness'
 								value={thickness || ''}
 								onChange={e => handleChange({ thickness: Number(e.target.value) })}
 							>
@@ -121,6 +119,7 @@ export default function TrimItem({ item }) {
 					)}
 					<NumberInput
 						disabled={isLoading || !!error}
+						// className='w-15'
 						min={0}
 						step={10}
 						value={width}

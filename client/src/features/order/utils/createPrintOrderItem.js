@@ -8,7 +8,7 @@ const getPrintName = item => {
 			return `${item.name} ${item.data.colorName} ${item.data.coatingName} ${item.data.thickness?.toFixed(2)}мм ${sheets}` //(${item.width}м)
 		case PRODUCT_TYPES.TRIM: //чи відображати товщину?
 			const trims = item.data.trims.map(trim => `${trim.length}м-${trim.quantity}шт`).join(", ")
-			return `${item.name} ${item.data.color} ${item.data.coating} ${item.data.thickness > 0.45 ? item.data.thickness.toFixed(2) + "мм" : ""} заг. ${item.data.width}мм ${trims}`
+			return `${item.name} ${item.data.colorName} ${item.data.coatingName} ${item.data.thickness > 0.45 ? item.data.thickness.toFixed(2) + "мм" : ""} заг. ${item.data.width}мм ${trims}`
 		case PRODUCT_TYPES.OPTION:
 			return `${item.name} ${item.data.optionName}`
 		case PRODUCT_TYPES.QUANTITY:

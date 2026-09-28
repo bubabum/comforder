@@ -1,9 +1,6 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
-import { baseQueryWithCredentials } from './baseQuery';
+import { apiSlice } from './apiSlice';
 
-export const categoriesApi = createApi({
-	reducerPath: 'categoriesApi',
-	baseQuery: baseQueryWithCredentials,
+export const categoriesApi = apiSlice.injectEndpoints({
 	endpoints: (builder) => ({
 		getCategories: builder.query({
 			query: () => '/categories',
@@ -11,4 +8,6 @@ export const categoriesApi = createApi({
 	}),
 });
 
-export const { useGetCategoriesQuery } = categoriesApi;
+export const {
+	useGetCategoriesQuery,
+} = categoriesApi;

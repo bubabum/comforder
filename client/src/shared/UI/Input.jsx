@@ -18,6 +18,7 @@ export default function Input({
 
 	const variants = {
 		default: 'text-xs',
+		formField: 'h-10 text-sm',
 		partialPayment: 'text-base h-11 w-full pr-10',
 		discountAmount: 'text-lg',
 		phone: 'w-30 text-xs',

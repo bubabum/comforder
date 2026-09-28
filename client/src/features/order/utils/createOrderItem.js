@@ -1,5 +1,4 @@
 import { PRODUCT_TYPES } from "../../../shared/constants/productTypes";
-import { getDefaultSheetItemPrice } from "./orderCalculations";
 
 export function createOrderItem(product, referenceData) {
 	switch (product.type) {
