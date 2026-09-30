@@ -19,11 +19,11 @@ const app = express();
 app.use(express.json());
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-app.use(async (req, res, next) => {
-	// await delay(500);
-	// throw new Error
-	next();
-});
+// app.use(async (req, res, next) => {
+// 	await delay(500);
+// 	throw new Error
+// 	next();
+// });
 
 // API-роути
 app.use('/api/categories', categoriesRouter);
