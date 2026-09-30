@@ -7,6 +7,8 @@ import {
 import { skipToken } from "@reduxjs/toolkit/query";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToast } from "../../store/toastSlice";
 import Loader from "../../shared/UI/Loader";
 import MessageError from "../../shared/UI/MessageError";
 import FormField from "../../shared/UI/FormField";
@@ -16,6 +18,7 @@ import { User } from "lucide-react";
 
 
 export default function Customer() {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [createCustomer] = useCreateCustomerMutation();
 	const [updateCustomer] = useUpdateCustomerMutation();
@@ -43,29 +46,26 @@ export default function Customer() {
 		}
 	}, [customer, isNew]);
 
-	if (!isNew && isLoading) {
-		return <Loader />;
-	}
-
-	if (!isNew && error) {
-		return <MessageError message="Не вдалося завантажити дані клієнта." />;
-	}
+	if (!isNew && isLoading) return <Loader />
+	if (!isNew && error) return <MessageError message={`Не вдалося завантажити дані клієнта. ${error.data?.error}`} />
 
 	const handleUpdateCustomer = async () => {
 		try {
 			await updateCustomer({ id, ...form }).unwrap();
+			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
-			console.error('Не вдалось оновити клієнта', err);
+			dispatch(addToast({ message: "Не вдалось оновити клієнта. " + err.data?.error || 'Сталася помилка', type: 'error' }));
 		}
 	};
 
 	const handleCreateCustomer = async () => {
 		try {
 			await createCustomer(form).unwrap();
+			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
-			console.error('Не вдалось створити клієнта', err);
+			dispatch(addToast({ message: "Не вдалось створити клієнта. " + err.data?.error || 'Сталася помилка', type: 'error' }));
 		}
 	};
 

@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useGetProductsQuery } from '../../store/api/productsApi';
 import { useGetCategoriesQuery } from '../../store/api/categoriesApi';
+import { useDispatch } from "react-redux";
+import { addToast } from "../../store/toastSlice";
 import ProductSelectorItem from './ProductSelectorItem';
 import Loader from '../../shared/UI/Loader';
 import Button from '../../shared/UI/Button';
 import Input from '../../shared/UI/Input';
+import { CircleAlert } from 'lucide-react';
 
 
 export default function ProductSelector() {
+	const dispatch = useDispatch();
 	const {
 		data: products = [],
 		isLoading: isLoadingProducts,
@@ -27,6 +31,32 @@ export default function ProductSelector() {
 		return matchesSearch && matchesCategory;
 	});
 
+	useEffect(() => {
+		if (errorProducts) {
+			dispatch(
+				addToast({
+					message:
+						"Не вдалось завантажити список товарів. " +
+						(errorProducts.data?.error || "Сталася помилка"),
+					type: "error",
+				})
+			);
+		}
+	}, [errorProducts, dispatch]);
+
+	useEffect(() => {
+		if (errorCategories) {
+			dispatch(
+				addToast({
+					message:
+						"Не вдалось завантажити категорії товарів. " +
+						(errorCategories.data?.error || "Сталася помилка"),
+					type: "error",
+				})
+			);
+		}
+	}, [errorCategories, dispatch]);
+
 	return (
 		<div className='h-full w-100 p-2 flex flex-col bg-surface border-r border-border-light'>
 			<div>
@@ -44,12 +74,11 @@ export default function ProductSelector() {
 					return <Button key={c.id} variant={category === c.id ? "primary" : "secondary"} className='text-[11px]' onClick={() => setCategory(c.id)}>{c.name}</Button>
 				})}
 			</div>
-			{errorCategories && <div className='text-[11px] text-error mb-2'>Не вдалось завантажити категорії</div>}
-
+			{errorCategories && <div className='text-[11px] text-error mb-2'><CircleAlert className='size-5 inline mr-1' />Не вдалось завантажити категорії товарів.</div>}
 			{isLoadingProducts ? (
 				<Loader />
 			) : errorProducts ? (
-				<div className='text-[11px] text-error'>Не вдалось завантажити товари</div>
+				<div className='text-[11px] text-error'><CircleAlert className='size-5 inline mr-1' />Не вдалось завантажити список товарів.</div>
 			) : (
 				<ul className='divide-y divide-zinc-100 pr-2 overflow-y-auto scrollbar-gutter-stable'>
 					{filteredProducts.map((product, index) => {

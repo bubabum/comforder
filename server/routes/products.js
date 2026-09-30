@@ -1,6 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
+const {
+	SERVER_ERROR,
+	NOT_FOUND,
+	NAME_REQUIRED,
+	INVALID_PRODUCT_TYPE,
+	PRODUCT_CATEGORY_UNIT_REQUIRED,
+	PRODUCT_INVALID_REFERENCES,
+	PRODUCT_OPTIONS_REQUIRED,
+	PRODUCT_OPTION_FIELDS_REQUIRED,
+	INVALID_TRIM_PRICE_TYPE,
+	TRIM_FIXED_PRICES_REQUIRED,
+	TRIM_FIXED_PRICE_FIELDS_REQUIRED,
+	PRODUCT_IN_USE,
+} = require('../utils/errorMessages');
 
 const SELECT_LIST = `
     SELECT
@@ -27,7 +41,7 @@ router.get('/', async (req, res) => {
 		res.json(rows);
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 
@@ -36,13 +50,13 @@ router.get('/:id', async (req, res) => {
 		const [rows] = await pool.execute(`${SELECT_LIST} WHERE p.id = ?`, [req.params.id]);
 
 		if (rows.length === 0) {
-			return res.status(404).json({ error: 'Not found' });
+			return res.status(404).json({ error: NOT_FOUND });
 		}
 
 		res.json(rows[0]);
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 
@@ -62,35 +76,35 @@ router.put('/:id', async (req, res) => {
 	} = req.body;
 
 	if (!name || !name.trim()) {
-		return res.status(400).json({ error: 'Не заповнене поле "Назва"' });
+		return res.status(400).json({ error: NAME_REQUIRED });
 	}
 	if (!type || !['sheet', 'option', 'quantity', 'trim'].includes(type)) {
-		return res.status(400).json({ error: 'Valid type is required' });
+		return res.status(400).json({ error: INVALID_PRODUCT_TYPE });
 	}
 	if (!category_id || !unit_id) {
-		return res.status(400).json({ error: 'category_id and unit_id are required' });
+		return res.status(400).json({ error: PRODUCT_CATEGORY_UNIT_REQUIRED });
 	}
 	if (type === 'option') {
 		if (!Array.isArray(options) || options.length === 0) {
-			return res.status(400).json({ error: 'Товар повинен мати мінімум одну опцію' });
+			return res.status(400).json({ error: PRODUCT_OPTIONS_REQUIRED });
 		}
 		for (const option of options) {
 			if (!option.name || !option.name.trim() || option.price == null) {
-				return res.status(400).json({ error: 'Each option requires a name and a price' });
+				return res.status(400).json({ error: PRODUCT_OPTION_FIELDS_REQUIRED });
 			}
 		}
 	}
 	if (type === 'trim') {
 		if (!trim_price_type || !['fixed', 'widthBased'].includes(trim_price_type)) {
-			return res.status(400).json({ error: 'Valid trim_price_type is required for trim products' });
+			return res.status(400).json({ error: INVALID_TRIM_PRICE_TYPE });
 		}
 		if (trim_price_type === 'fixed') {
 			if (!Array.isArray(fixed_prices) || fixed_prices.length === 0) {
-				return res.status(400).json({ error: 'At least one fixed price is required for fixed trim products' });
+				return res.status(400).json({ error: TRIM_FIXED_PRICES_REQUIRED });
 			}
 			for (const fp of fixed_prices) {
 				if (!fp.trim_price_category_id || fp.price == null) {
-					return res.status(400).json({ error: 'Each fixed price requires trim_price_category_id and price' });
+					return res.status(400).json({ error: TRIM_FIXED_PRICE_FIELDS_REQUIRED });
 				}
 			}
 		}
@@ -122,7 +136,7 @@ router.put('/:id', async (req, res) => {
 
 		if (result.affectedRows === 0) {
 			await connection.rollback();
-			return res.status(404).json({ error: 'Not found' });
+			return res.status(404).json({ error: NOT_FOUND });
 		}
 
 		if (type === 'option') {
@@ -172,9 +186,9 @@ router.put('/:id', async (req, res) => {
 		await connection.rollback();
 		console.error(err);
 		if (err.code === 'ER_NO_REFERENCED_ROW_2') {
-			return res.status(400).json({ error: 'Invalid category_id, unit_id or trim_price_category_id' });
+			return res.status(400).json({ error: PRODUCT_INVALID_REFERENCES });
 		}
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	} finally {
 		connection.release();
 	}
@@ -196,35 +210,35 @@ router.post('/', async (req, res) => {
 	} = req.body;
 
 	if (!name || !name.trim()) {
-		return res.status(400).json({ error: 'Name is required' });
+		return res.status(400).json({ error: NAME_REQUIRED });
 	}
 	if (!type || !['sheet', 'option', 'quantity', 'trim'].includes(type)) {
-		return res.status(400).json({ error: 'Valid type is required' });
+		return res.status(400).json({ error: INVALID_PRODUCT_TYPE });
 	}
 	if (!category_id || !unit_id) {
-		return res.status(400).json({ error: 'category_id and unit_id are required' });
+		return res.status(400).json({ error: PRODUCT_CATEGORY_UNIT_REQUIRED });
 	}
 	if (type === 'option') {
 		if (!Array.isArray(options) || options.length === 0) {
-			return res.status(400).json({ error: 'At least one option is required for option products' });
+			return res.status(400).json({ error: PRODUCT_OPTIONS_REQUIRED });
 		}
 		for (const option of options) {
 			if (!option.name || !option.name.trim() || option.price == null) {
-				return res.status(400).json({ error: 'Each option requires a name and a price' });
+				return res.status(400).json({ error: PRODUCT_OPTION_FIELDS_REQUIRED });
 			}
 		}
 	}
 	if (type === 'trim') {
 		if (!trim_price_type || !['fixed', 'widthBased'].includes(trim_price_type)) {
-			return res.status(400).json({ error: 'Valid trim_price_type is required for trim products' });
+			return res.status(400).json({ error: INVALID_TRIM_PRICE_TYPE });
 		}
 		if (trim_price_type === 'fixed') {
 			if (!Array.isArray(fixed_prices) || fixed_prices.length === 0) {
-				return res.status(400).json({ error: 'At least one fixed price is required for fixed trim products' });
+				return res.status(400).json({ error: TRIM_FIXED_PRICES_REQUIRED });
 			}
 			for (const fp of fixed_prices) {
 				if (!fp.trim_price_category_id || fp.price == null) {
-					return res.status(400).json({ error: 'Each fixed price requires trim_price_category_id and price' });
+					return res.status(400).json({ error: TRIM_FIXED_PRICE_FIELDS_REQUIRED });
 				}
 			}
 		}
@@ -297,9 +311,9 @@ router.post('/', async (req, res) => {
 		await connection.rollback();
 		console.error(err);
 		if (err.code === 'ER_NO_REFERENCED_ROW_2') {
-			return res.status(400).json({ error: 'Invalid category_id, unit_id or trim_price_category_id' });
+			return res.status(400).json({ error: PRODUCT_INVALID_REFERENCES });
 		}
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	} finally {
 		connection.release();
 	}
@@ -313,13 +327,13 @@ router.delete('/:id', async (req, res) => {
 		);
 
 		if (result.affectedRows === 0) {
-			return res.status(404).json({ error: 'Not found' });
+			return res.status(404).json({ error: NOT_FOUND });
 		}
 
 		res.status(204).send();
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 
@@ -331,16 +345,16 @@ router.delete('/:id/hard', async (req, res) => {
 		);
 
 		if (result.affectedRows === 0) {
-			return res.status(404).json({ error: 'Not found' });
+			return res.status(404).json({ error: NOT_FOUND });
 		}
 
 		res.status(204).send();
 	} catch (err) {
 		console.error(err);
 		if (err.code === 'ER_ROW_IS_REFERENCED_2') {
-			return res.status(409).json({ error: 'Product is in use in orders and cannot be deleted' });
+			return res.status(409).json({ error: PRODUCT_IN_USE });
 		}
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 

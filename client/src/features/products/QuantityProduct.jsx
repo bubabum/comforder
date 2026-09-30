@@ -67,7 +67,7 @@ export default function QuantityProduct({ product }) {
 	}, [product]);
 
 	if (!isNew && isLoading) return <Loader />;
-	if (!isNew && error) return <MessageError message="Не вдалося завантажити товар." />;
+	if (!isNew && error) return <MessageError message={`Не вдалося завантажити товар. ${error.data?.error}`} />;
 
 	const handleUpdateProduct = async () => {
 		try {
@@ -75,7 +75,6 @@ export default function QuantityProduct({ product }) {
 			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
-			// console.error('Не вдалось оновити товар', err);
 			dispatch(addToast({ message: "Не вдалось оновити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
 		}
 	};
@@ -87,7 +86,6 @@ export default function QuantityProduct({ product }) {
 			navigate(-1);
 		} catch (err) {
 			dispatch(addToast({ message: "Не вдалось створити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
-			// console.error('Не вдалось створити товар', err);
 		}
 	}
 

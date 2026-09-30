@@ -1,15 +1,15 @@
 import { PRODUCT_TYPES } from "../../../shared/constants/productTypes";
 
-export function createOrderItem(product, referenceData) {
+export function createOrderItem(product) {
 	switch (product.type) {
 		case PRODUCT_TYPES.SHEET:
-			return createSheetItem(product, referenceData);
+			return createSheetItem(product);
 
 		case PRODUCT_TYPES.TRIM:
-			return createTrimItem(product, referenceData);
+			return createTrimItem(product);
 
 		case PRODUCT_TYPES.OPTION:
-			return createOptionItem(product, referenceData);
+			return createOptionItem(product);
 
 		case PRODUCT_TYPES.QUANTITY:
 			return createQuantityItem(product);

@@ -23,12 +23,12 @@ export default function Product() {
 	const { data: product, isLoading, error } = useGetProductByIdQuery(isNew ? skipToken : id);
 
 	if (!isNew && isLoading) return <Loader />;
-	if (!isNew && error) return <MessageError message="Не вдалося завантажити товар." />;
+	if (!isNew && error) return <MessageError message={`Не вдалося завантажити товар. ${error.data?.error}`} />;
 
 	const Component = ITEM_COMPONENTS[product?.type || searchParams.get('type')];
 
 	if (!Component) {
-		throw new Error(`Unknown product type: ${product?.type}`);
+		return <MessageError message={`Некоректний тип товару: ${product?.type || searchParams.get('type')}`} />;
 	}
 
 	return <Component product={product} />;

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { selectCategories } from '../../../store/referenceData/referenceDataSelectors';
+import { useGetCategoriesQuery } from "../../../store/api/categoriesApi";
 import {
 	setCustomerPhone,
 	setCustomerEmail,
@@ -16,7 +16,12 @@ export default function Order() {
 	const dispatch = useDispatch();
 	const order = useSelector(state => state.order);
 	const { items, customerPhone, customerEmail } = order;
-	const categories = useSelector(selectCategories);
+	const {
+		data: categories = [],
+		isLoading,
+		error,
+	} = useGetCategoriesQuery();
+
 	return (
 		<div className="h-full min-h-0 grow bg-surface border border-border-light rounded-lg p-3 flex flex-col">
 			<div className="flex justify-between shrink-0">
@@ -36,15 +41,17 @@ export default function Order() {
 					/>
 				</div>
 				<div>
-					<Button
-						variant="secondary"
-						icon="arrowDownWideNarrow"
-						onClick={() =>
-							dispatch(setItems(sortByCategory(items, categories)))
-						}
-					>
-						За категорією
-					</Button>
+					{!isLoading && !error &&
+						<Button
+							variant="secondary"
+							icon="arrowDownWideNarrow"
+							onClick={() =>
+								dispatch(setItems(sortByCategory(items, categories)))
+							}
+						>
+							За категорією
+						</Button>
+					}
 				</div>
 			</div>
 			<div className="min-h-0 flex-1 flex flex-col divide-y divide-border-light">

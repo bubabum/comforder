@@ -17,24 +17,21 @@ export const productsApi = apiSlice.injectEndpoints({
 		}),
 
 		createProduct: builder.mutation({
-			query: (newProduct) => ({
-				url: '/products',
-				method: 'POST',
-				body: newProduct,
-			}),
-			invalidatesTags: [{ type: 'Product', id: 'LIST' }],
+			query: (newProduct) => ({ url: '/products', method: 'POST', body: newProduct }),
+			invalidatesTags: [
+				{ type: 'Product', id: 'LIST' },
+				{ type: 'TrimFixedPrice', id: 'LIST' },
+				{ type: 'ProductOption', id: 'LIST' },
+			],
 		}),
 
 		updateProduct: builder.mutation({
-			query: ({ id, ...data }) => ({
-				url: `/products/${id}`,
-				method: 'PUT',
-				body: data,
-			}),
+			query: ({ id, ...data }) => ({ url: `/products/${id}`, method: 'PUT', body: data }),
 			invalidatesTags: (result, error, { id }) => [
 				{ type: 'Product', id },
 				{ type: 'Product', id: 'LIST' },
 				{ type: 'TrimFixedPrice', productId: id },
+				{ type: 'TrimFixedPrice', id: 'LIST' },
 				{ type: 'ProductOption', productId: id },
 			],
 		}),

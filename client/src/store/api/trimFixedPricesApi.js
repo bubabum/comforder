@@ -5,6 +5,13 @@ export const trimFixedPricesApi = apiSlice.injectEndpoints({
 
 		getTrimFixedPrices: builder.query({
 			query: () => '/trim-fixed-prices',
+			providesTags: (result) =>
+				result
+					? [
+						...result.map((r) => ({ type: 'TrimFixedPrice', productId: r.productId })),
+						{ type: 'TrimFixedPrice', id: 'LIST' },
+					]
+					: [{ type: 'TrimFixedPrice', id: 'LIST' }],
 		}),
 
 		getTrimFixedPricesByProductId: builder.query({

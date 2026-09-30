@@ -81,7 +81,7 @@ export default function OptionProduct({ product }) {
 	}, [isNew, fetchedOptions]);
 
 	if (!isNew && isLoading) return <Loader />;
-	if (!isNew && error) return <MessageError message="Не вдалося завантажити товар." />;
+	if (!isNew && error) return <MessageError message={`Не вдалося завантажити товар. ${error.data?.error}`} />;
 
 	const addOption = () => {
 		setOptions([...options, { id: crypto.randomUUID(), name: '', price: 0 }]);
@@ -99,10 +99,10 @@ export default function OptionProduct({ product }) {
 		const payload = { ...form, options: options.map(({ id, ...rest }) => rest) };
 		try {
 			await updateProduct({ id, ...payload }).unwrap();
+			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
 			dispatch(addToast({ message: "Не вдалось оновити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
-			console.error('Не вдалось оновити товар', err);
 		}
 	};
 
@@ -110,9 +110,11 @@ export default function OptionProduct({ product }) {
 		const payload = { ...form, options: options.map(({ id, ...rest }) => rest) };
 		try {
 			await createProduct(payload).unwrap();
+			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
-			console.error('Не вдалось створити товар', err);
+			dispatch(addToast({ message: "Не вдалось створити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
+
 		}
 	}
 

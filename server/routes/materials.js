@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
+const { SERVER_ERROR, NOT_FOUND, ALL_FIELDS_REQUIRED, MATERIAL_INVALID_REFERENCES, MATERIAL_IN_USE } = require('../utils/errorMessages');
 
 const SELECT_WITH_JOINS = `
     SELECT
@@ -27,7 +28,7 @@ router.get('/', async (req, res) => {
 		res.json(rows);
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 
@@ -40,13 +41,13 @@ router.get('/:id', async (req, res) => {
 		);
 
 		if (rows.length === 0) {
-			return res.status(404).json({ error: 'Not found' });
+			return res.status(404).json({ error: NOT_FOUND });
 		}
 
 		res.json(rows[0]);
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 
@@ -55,7 +56,7 @@ router.post('/', async (req, res) => {
 	const { color_id, coating_id, thickness, price, extra_price, trim_price_category_id } = req.body;
 
 	if (!color_id || !coating_id || thickness == null || price == null || extra_price == null || !trim_price_category_id) {
-		return res.status(400).json({ error: 'All fields are required', body: req.body });
+		return res.status(400).json({ error: ALL_FIELDS_REQUIRED, body: req.body });
 	}
 
 	try {
@@ -74,9 +75,9 @@ router.post('/', async (req, res) => {
 	} catch (err) {
 		console.error(err);
 		if (err.code === 'ER_NO_REFERENCED_ROW_2') {
-			return res.status(400).json({ error: 'Invalid color_id, coating_id or trim_price_category_id' });
+			return res.status(400).json({ error: MATERIAL_INVALID_REFERENCES });
 		}
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 
@@ -85,7 +86,7 @@ router.put('/:id', async (req, res) => {
 	const { color_id, coating_id, thickness, price, extra_price, trim_price_category_id } = req.body;
 
 	if (!color_id || !coating_id || thickness == null || price == null || extra_price == null || !trim_price_category_id) {
-		return res.status(400).json({ error: 'All fields are required', body: req.body });
+		return res.status(400).json({ error: ALL_FIELDS_REQUIRED, body: req.body });
 	}
 
 	try {
@@ -97,7 +98,7 @@ router.put('/:id', async (req, res) => {
 		);
 
 		if (result.affectedRows === 0) {
-			return res.status(404).json({ error: 'Not found' });
+			return res.status(404).json({ error: NOT_FOUND });
 		}
 
 		const [rows] = await pool.execute(
@@ -109,9 +110,9 @@ router.put('/:id', async (req, res) => {
 	} catch (err) {
 		console.error(err);
 		if (err.code === 'ER_NO_REFERENCED_ROW_2') {
-			return res.status(400).json({ error: 'Invalid color_id, coating_id or trim_price_category_id' });
+			return res.status(400).json({ error: MATERIAL_INVALID_REFERENCES });
 		}
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 
@@ -124,16 +125,16 @@ router.delete('/:id', async (req, res) => {
 		);
 
 		if (result.affectedRows === 0) {
-			return res.status(404).json({ error: 'Not found' });
+			return res.status(404).json({ error: NOT_FOUND });
 		}
 
 		res.status(204).send();
 	} catch (err) {
 		console.error(err);
 		if (err.code === 'ER_ROW_IS_REFERENCED_2') {
-			return res.status(409).json({ error: 'Material is in use' });
+			return res.status(409).json({ error: MATERIAL_IN_USE });
 		}
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 

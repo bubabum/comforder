@@ -2,7 +2,6 @@ import Input from "../../shared/UI/Input";
 import NumberInput from "../../shared/UI/NumberInput";
 import Select from "../../shared/UI/Select";
 import FormField from "../../shared/UI/FormField";
-import { Dropdown } from "../../shared/UI/Dropdown";
 
 export default function ProductBaseFields({ form, setForm, categories, units }) {
 

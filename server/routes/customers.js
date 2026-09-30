@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
+const { SERVER_ERROR, NOT_FOUND, NAME_REQUIRED } = require('../utils/errorMessages');
 
 router.get('/', async (req, res) => {
 	try {
@@ -10,7 +11,7 @@ router.get('/', async (req, res) => {
 		res.json(rows);
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 
@@ -21,12 +22,12 @@ router.get('/:id', async (req, res) => {
 			[req.params.id]
 		);
 		if (rows.length === 0) {
-			return res.status(404).json({ error: 'Not found' });
+			return res.status(404).json({ error: NOT_FOUND });
 		}
 		res.json(rows[0]);
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 
@@ -34,7 +35,7 @@ router.post('/', async (req, res) => {
 	const { name, phone, email, address, notes } = req.body;
 
 	if (!name || !name.trim()) {
-		return res.status(400).json({ error: 'Name is required' });
+		return res.status(400).json({ error: NAME_REQUIRED });
 	}
 
 	try {
@@ -54,7 +55,7 @@ router.post('/', async (req, res) => {
 		});
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 
@@ -62,7 +63,7 @@ router.put('/:id', async (req, res) => {
 	const { name, phone, email, address, notes } = req.body;
 
 	if (!name || !name.trim()) {
-		return res.status(400).json({ error: 'Name is required' });
+		return res.status(400).json({ error: NAME_REQUIRED });
 	}
 
 	try {
@@ -72,7 +73,7 @@ router.put('/:id', async (req, res) => {
 		);
 
 		if (result.affectedRows === 0) {
-			return res.status(404).json({ error: 'Not found' });
+			return res.status(404).json({ error: NOT_FOUND });
 		}
 
 		res.json({
@@ -85,7 +86,7 @@ router.put('/:id', async (req, res) => {
 		});
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 
@@ -96,12 +97,12 @@ router.delete('/:id', async (req, res) => {
 			[req.params.id]
 		);
 		if (result.affectedRows === 0) {
-			return res.status(404).json({ error: 'Not found' });
+			return res.status(404).json({ error: NOT_FOUND });
 		}
 		res.status(204).send();
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 

@@ -5,6 +5,8 @@ import {
 } from "../../store/api/customersApi";
 import { usePagination } from "../../shared/hooks/usePagination";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToast } from "../../store/toastSlice";
 import Loader from "../../shared/UI/Loader";
 import MessageError from "../../shared/UI/MessageError";
 import Button from "../../shared/UI/Button";
@@ -13,6 +15,7 @@ import Input from "../../shared/UI/Input";
 import Pagination from "../../shared/UI/Pagination";
 
 export default function CustomerList() {
+	const dispatch = useDispatch();
 	const {
 		data: customers = [],
 		isLoading,
@@ -35,7 +38,7 @@ export default function CustomerList() {
 	});
 
 	if (isLoading) return <Loader />;
-	if (error) return <MessageError message="Не вдалося завантажити список клієнтів." />;
+	if (error) return <MessageError message={`Не вдалося завантажити список клієнтів. ${error.data?.error}`} />;
 
 	const handleSearch = value => {
 		setSearch(value);
@@ -46,8 +49,9 @@ export default function CustomerList() {
 		if (!confirm("Дійсно видалити клієнта?")) return
 		try {
 			await deleteCustomer(id).unwrap();
+			dispatch(addToast({ message: "Видалено", type: 'success' }));
 		} catch (err) {
-			console.error('Не вдалось оновити клієнта', err);
+			dispatch(addToast({ message: "Не вдалось видалити клієнта. " + err.data?.error || 'Сталася помилка', type: 'error' }));
 		}
 	}
 
@@ -68,7 +72,7 @@ export default function CustomerList() {
 				/>
 				<NavLink to={`/customers/new`}>
 					<Button
-						className="h-10"
+						className="h-10 w-30"
 						variant="success"
 						icon="plus"
 					>Додати</Button>

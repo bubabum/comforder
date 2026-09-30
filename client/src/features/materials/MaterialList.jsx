@@ -37,7 +37,7 @@ export default function MaterialList() {
 	});
 
 	if (isLoading) return <Loader />;
-	if (error) return <MessageError message="Не вдалося завантажити список матеріалів." />;
+	if (error) return <MessageError message={`Не вдалося завантажити список матеріалів. ${error.data?.error}`} />;
 
 	return (
 		<div className="w-full flex flex-col gap-2 p-5">
@@ -49,7 +49,7 @@ export default function MaterialList() {
 			<div className="flex justify-end gap-2">
 				<NavLink to={`/materials/new`}>
 					<Button
-						className="h-10"
+						className="h-10 w-30"
 						variant="success"
 						icon="plus"
 					>Додати</Button>

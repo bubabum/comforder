@@ -4,12 +4,13 @@ import { useUpdateProductMutation, useCreateProductMutation } from "../../store/
 import { useGetTrimFixedPricesByProductIdQuery } from "../../store/api/trimFixedPricesApi";
 import { useGetTrimPriceCategoriesQuery } from "../../store/api/trimPriceCategoriesApi";
 import { skipToken } from "@reduxjs/toolkit/query";
+import { useDispatch } from "react-redux";
+import { addToast } from "../../store/toastSlice";
 import ProductBaseFields from "./ProductBaseFields";
 import Loader from "../../shared/UI/Loader";
 import MessageError from "../../shared/UI/MessageError";
 import Select from "../../shared/UI/Select";
 import FormField from "../../shared/UI/FormField";
-import Input from "../../shared/UI/Input";
 import NumberInput from "../../shared/UI/NumberInput"
 import Button from "../../shared/UI/Button";
 import { useGetCategoriesQuery } from "../../store/api/categoriesApi";
@@ -20,7 +21,7 @@ import { TRIM_PRICE_OPTIONS } from "../../shared/constants/trimPriceTypes";
 import { Package, SlidersHorizontal } from "lucide-react";
 
 export default function TrimProduct({ product }) {
-
+	const dispatch = useDispatch();
 	const id = product?.id ?? "new";
 	const isNew = id === "new";
 
@@ -110,7 +111,7 @@ export default function TrimProduct({ product }) {
 	}, [form.trimPriceType, isNew]);
 
 	if (!isNew && isLoading) return <Loader />;
-	if (!isNew && error) return <MessageError message="Не вдалося завантажити товар." />;
+	if (!isNew && error) return <MessageError message={`Не вдалося завантажити товар. ${error.data?.error}`} />;
 
 	const updateFixedPrice = (id, value) => {
 		setFixedPrices(fixedPrices.map(p => p.id === id ? { ...p, price: value } : p));
@@ -120,9 +121,10 @@ export default function TrimProduct({ product }) {
 		const payload = { ...form, fixedPrices: fixedPrices.map(({ id, ...rest }) => rest) };
 		try {
 			await updateProduct({ id, ...payload }).unwrap();
+			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
-			console.error('Не вдалось оновити товар', err);
+			dispatch(addToast({ message: "Не вдалось оновити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
 		}
 	};
 
@@ -130,9 +132,10 @@ export default function TrimProduct({ product }) {
 		const payload = { ...form, fixedPrices: fixedPrices.map(({ id, ...rest }) => rest) };
 		try {
 			await createProduct(payload).unwrap();
+			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
-			console.error('Не вдалось створити товар', err);
+			dispatch(addToast({ message: "Не вдалось створити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
 		}
 	}
 

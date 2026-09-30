@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUpdateProductMutation, useCreateProductMutation } from "../../store/api/productsApi";
+import { useDispatch } from "react-redux";
+import { addToast } from "../../store/toastSlice";
 import ProductBaseFields from "./ProductBaseFields";
 import Loader from "../../shared/UI/Loader";
 import MessageError from "../../shared/UI/MessageError";
@@ -13,7 +15,7 @@ import { PRODUCT_TYPES } from "../../shared/constants/productTypes";
 import { Package } from "lucide-react";
 
 export default function SheetProduct({ product }) {
-
+	const dispatch = useDispatch();
 	const id = product?.id ?? "new";
 	const isNew = id === "new";
 
@@ -66,23 +68,25 @@ export default function SheetProduct({ product }) {
 	}, [product]);
 
 	if (!isNew && isLoading) return <Loader />;
-	if (!isNew && error) return <MessageError message="Не вдалося завантажити товар." />;
+	if (!isNew && error) return <MessageError message={`Не вдалося завантажити товар. ${error.data?.error}`} />;
 
 	const handleUpdateProduct = async () => {
 		try {
 			await updateProduct({ id, ...form }).unwrap();
+			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
-			console.error('Не вдалось оновити товар', err);
+			dispatch(addToast({ message: "Не вдалось оновити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
 		}
 	};
 
 	const handleCreateProduct = async () => {
 		try {
 			await createProduct(form).unwrap();
+			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
-			console.error('Не вдалось створити товар', err);
+			dispatch(addToast({ message: "Не вдалось створити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
 		}
 	}
 

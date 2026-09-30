@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGetProductsQuery } from '../../store/api/productsApi';
 import { useDispatch } from "react-redux";
-import { setProducts } from "../../store/referenceData/referenceDataSlice";
 import { usePagination } from "../../shared/hooks/usePagination";
 import { NavLink } from "react-router-dom";
 import Loader from "../../shared/UI/Loader";
@@ -86,8 +85,6 @@ export default function ProductList() {
 					Товари
 				</h1>
 			</div>
-			<div className="flex flex-col gap-2">
-			</div>
 			<div className="flex gap-2">
 				<Input
 					value={search}
@@ -95,17 +92,24 @@ export default function ProductList() {
 					placeholder="Пошук товару..."
 					className="h-10 w-100"
 				/>
-				<Button className="h-10" variant="secondary" icon="download" onClick={exportProducts}>Експорт</Button>
+				{/* <Button className="h-10" variant="secondary" icon="download" onClick={exportProducts}>Експорт</Button>
 				<Button className="h-10" variant="secondary" icon="upload" onClick={importProducts}>Імпорт</Button>
-				<Input className="h-10 w-80" ref={fileInputRef} type="file"></Input>
+				<Input className="h-10 w-80" ref={fileInputRef} type="file"></Input> */}
 				<DropdownMenu
-					triggerClassName="h-10"
-					trigger={<span>Створити</span>}
+					triggerClassName="h-10 px-5"
+					trigger={<span>Додати товар</span>}
 					items={[
 						{ label: "Звичайни товар", onClick: () => navigate('/products/new?type=quantity') },
 						{ label: "Товар з опціями", onClick: () => navigate('/products/new?type=option') },
 						{ label: "Листовий товар", onClick: () => navigate('/products/new?type=sheet') },
 						{ label: "Планка", onClick: () => navigate('/products/new?type=trim') },
+					]}
+				/>
+				<DropdownMenu
+					triggerClassName="h-10 px-5"
+					trigger={<span>Дії</span>}
+					items={[
+						{ label: "Експорт", onClick: () => exportProducts() },
 					]}
 				/>
 			</div>

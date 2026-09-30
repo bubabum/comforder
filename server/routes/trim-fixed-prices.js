@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
+const { SERVER_ERROR } = require('../utils/errorMessages');
 
 router.get('/', async (req, res) => {
 	try {
@@ -8,7 +9,7 @@ router.get('/', async (req, res) => {
 		res.json(rows);
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 
@@ -21,7 +22,7 @@ router.get('/:id', async (req, res) => {
 		res.json(rows);
 	} catch (err) {
 		console.error(err);
-		res.status(500).json({ error: 'Server error' });
+		res.status(500).json({ error: SERVER_ERROR });
 	}
 });
 

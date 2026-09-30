@@ -66,6 +66,7 @@ export default function TrimItem({ item }) {
 
 	useEffect(() => {
 		if (!material || item.data.materialId != null) return
+		if (isLoadingPrice) return;
 		dispatch(updateItem({
 			id: item.id,
 			materialId: material.id,
@@ -74,7 +75,7 @@ export default function TrimItem({ item }) {
 			coatingName: material.coatingName,
 			thickness: material.thickness,
 		}));
-	}, [material, item.data.materialId, item.id, width, dispatch])
+	}, [material, item.data.materialId, item.id, isLoadingPrice, width, dispatch])
 
 	return (
 		<div className='flex flex-col gap-2 w-full text-sm'>
