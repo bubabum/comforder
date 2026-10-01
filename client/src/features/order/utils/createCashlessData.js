@@ -5,15 +5,15 @@ import { getOrderTotal } from "./orderCalculations";
 
 const createGroupedItems = items => {
 	const sheetItems = items.filter(
-		item => item.categoryId === "metaloproduktsiya"
+		item => item.categoryId === 1
 	);
 	const trimItems = items.filter(
-		item => item.categoryId === "dobirni-elementy"
+		item => item.categoryId === 2
 	);
 	const otherItems = items.filter(
 		item =>
-			item.categoryId !== "metaloproduktsiya" &&
-			item.categoryId !== "dobirni-elementy"
+			item.categoryId !== 1 &&
+			item.categoryId !== 2
 	);
 	const result = {};
 	if (sheetItems.length) {
