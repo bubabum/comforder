@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from '@reduxjs/toolkit/query';
 import { apiSlice } from './api/apiSlice';
 import orderReducer from "../features/order/orderSlice";
 import toastReducer from './toastSlice';
@@ -13,6 +14,8 @@ export const store = configureStore({
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware().concat(apiSlice.middleware),
 });
+
+setupListeners(store.dispatch);
 
 let previousOrder = store.getState().order;
 

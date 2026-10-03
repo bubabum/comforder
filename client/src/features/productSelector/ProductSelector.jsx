@@ -6,7 +6,7 @@ import { addToast } from "../../store/toastSlice";
 import ProductSelectorItem from './ProductSelectorItem';
 import Loader from '../../shared/UI/Loader';
 import Button from '../../shared/UI/Button';
-import Input from '../../shared/UI/Input';
+import SearchInput from '../../shared/UI/SearchInput';
 import { CircleAlert } from 'lucide-react';
 
 
@@ -60,12 +60,12 @@ export default function ProductSelector() {
 	return (
 		<div className='h-full w-100 p-2 flex flex-col bg-surface border-r border-border-light'>
 			<div>
-				<Input
-					type="text"
-					placeholder="Пошук товару..."
+				<SearchInput
 					value={search}
+					setValue={setSearch}
 					onChange={(e) => setSearch(e.target.value)}
-					className='w-full h-10 grow rounded-md'
+					placeholder="Пошук товару..."
+					className="w-full h-10 grow rounded-md"
 				/>
 			</div>
 			<div className='flex flex-wrap items-center gap-1 my-2'>

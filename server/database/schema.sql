@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS categories (
 
 CREATE TABLE IF NOT EXISTS products (
 	id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	name VARCHAR(150) NOT NULL,
+	name VARCHAR(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
 	type ENUM('sheet','option','quantity','trim') NOT NULL,
 	category_id INT UNSIGNED NOT NULL,
 	unit_id INT UNSIGNED NOT NULL,
@@ -98,9 +98,9 @@ CREATE TABLE IF NOT EXISTS trim_width_prices (
     UNIQUE KEY uq_width_type (width, trim_price_category_id)
 );
 
-CREATE TABLE customers (
+CREATE TABLE IF NOT EXISTS customers (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(150) NOT NULL,
+    name VARCHAR(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     phone VARCHAR(30),
     email VARCHAR(150),
     address VARCHAR(255),

@@ -37,7 +37,7 @@ const SELECT_LIST = `
 
 router.get('/', async (req, res) => {
 	try {
-		const [rows] = await pool.execute(`${SELECT_LIST} WHERE p.is_active = 1 ORDER BY p.id`);
+		const [rows] = await pool.execute(`${SELECT_LIST} WHERE p.is_active = 1 ORDER BY p.name`);
 		res.json(rows);
 	} catch (err) {
 		console.error(err);

@@ -11,7 +11,7 @@ import Loader from "../../shared/UI/Loader";
 import MessageError from "../../shared/UI/MessageError";
 import Button from "../../shared/UI/Button";
 import DataTable from "../../shared/dataTable/DataTable";
-import Input from "../../shared/UI/Input";
+import SearchInput from "../../shared/UI/SearchInput";
 import Pagination from "../../shared/UI/Pagination";
 
 export default function CustomerList() {
@@ -64,8 +64,9 @@ export default function CustomerList() {
 			</div>
 
 			<div className="flex justify-between gap-2">
-				<Input
+				<SearchInput
 					value={search}
+					setValue={setSearch}
 					onChange={e => handleSearch(e.target.value)}
 					placeholder="Пошук клієнта..."
 					className="h-10 w-100"
