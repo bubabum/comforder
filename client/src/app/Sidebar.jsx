@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useLogoutMutation } from '../store/api/authApi';
 import { useLocalStorage } from '../shared/hooks/useLocalStorage';
+import Button from '../shared/UI/Button';
 import { LOCAL_STORAGE_KEYS } from '../shared/constants/localStorageKeys';
 import {
 	Menu,
@@ -11,6 +12,7 @@ import {
 	Layers,
 	BarChart3,
 	Settings,
+	LogOut,
 } from 'lucide-react';
 
 const menuItems = [
@@ -56,6 +58,13 @@ export default function Sidebar() {
 		LOCAL_STORAGE_KEYS.SIDEBAR_COLLAPSED,
 		false
 	);
+	const [logout] = useLogoutMutation();
+	const navigate = useNavigate();
+
+	const handleLogout = async () => {
+		await logout().unwrap();
+		navigate('/login');
+	};
 
 	return (
 		<aside
@@ -121,27 +130,17 @@ export default function Sidebar() {
 
 			{/* Footer */}
 			<div className="border-t border-border p-3">
-				<div
-					className={`
-						flex items-center gap-3
-						${collapsed ? 'justify-center' : ''}
-					`}
+				<Button
+					className='w-full flex h-11 justify-start items-center gap-3 rounded-xl px-3 bg-transparent text-text-secondary hover:bg-zinc-100 transition-colors'
+					onClick={handleLogout}
 				>
-					<div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-white">
-						M
-					</div>
-
+					<LogOut className='size-5' />
 					{!collapsed && (
-						<div>
-							<div className="text-sm font-medium">
-								Mykola
-							</div>
-							<div className="text-xs text-text-secondary">
-								Admin
-							</div>
+						<div className="text-text-secondary text-sm font-medium">
+							Вийти
 						</div>
 					)}
-				</div>
+				</Button>
 			</div>
 		</aside>
 	);

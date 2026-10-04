@@ -19,6 +19,9 @@ export const baseQueryWithCredentials = async (args, api, extraOptions) => {
 
 	const result = await rawBaseQuery(args, api, extraOptions);
 
+	if (result.error?.status === 401 && window.location.pathname !== '/login') {
+		window.location.href = '/login';
+	}
 	// Конвертуємо відповідь snake_case → camelCase перед тим, як віддати у фронтенд-код
 	if (result.data) {
 		result.data = camelcaseKeys(result.data, { deep: true });
