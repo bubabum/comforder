@@ -20,10 +20,20 @@ export default function Product() {
 	const { id } = useParams();
 	const [searchParams] = useSearchParams();
 	const isNew = id === "new";
-	const { data: product, isLoading, error } = useGetProductByIdQuery(isNew ? skipToken : id);
+	const duplicatedId = searchParams.get('duplicatedId');
+	const isDuplicate = duplicatedId !== null;
+	const idToFetch = isDuplicate ? duplicatedId : id;
 
-	if (!isNew && isLoading) return <Loader />;
-	if (!isNew && error) return <MessageError message={`Не вдалося завантажити товар. ${error.data?.error}`} />;
+	const { data: fetchedProduct, isLoading, error } = useGetProductByIdQuery(isNew && !duplicatedId ? skipToken : idToFetch);
+
+	const product = isDuplicate && fetchedProduct
+		? { ...fetchedProduct, id: undefined, name: `${fetchedProduct.name} (копія)` }
+		: fetchedProduct;
+
+	const needsFetch = !isNew || isDuplicate;
+
+	if (needsFetch && isLoading) return <Loader />;
+	if (needsFetch && error) return <MessageError message={`Не вдалося завантажити товар. ${error.data?.error}`} />
 
 	const Component = ITEM_COMPONENTS[product?.type || searchParams.get('type')];
 
@@ -31,5 +41,5 @@ export default function Product() {
 		return <MessageError message={`Некоректний тип товару: ${product?.type || searchParams.get('type')}`} />;
 	}
 
-	return <Component product={product} />;
+	return <Component product={product} isDuplicate={isDuplicate} sourceProductId={isDuplicate ? duplicatedId : null} />;
 }

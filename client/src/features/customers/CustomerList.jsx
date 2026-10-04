@@ -1,10 +1,7 @@
 import { useState } from "react";
-import {
-	useGetCustomersQuery,
-	useDeleteCustomerMutation
-} from "../../store/api/customersApi";
+import { useGetCustomersQuery, useDeleteCustomerMutation } from "../../store/api/customersApi";
 import { usePagination } from "../../shared/hooks/usePagination";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToast } from "../../store/toastSlice";
 import Loader from "../../shared/UI/Loader";
@@ -13,9 +10,12 @@ import Button from "../../shared/UI/Button";
 import DataTable from "../../shared/dataTable/DataTable";
 import SearchInput from "../../shared/UI/SearchInput";
 import Pagination from "../../shared/UI/Pagination";
+import { DropdownMenu } from "../../shared/UI/Dropdown";
+import { EllipsisVertical } from "lucide-react";
 
 export default function CustomerList() {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const {
 		data: customers = [],
 		isLoading,
@@ -51,7 +51,8 @@ export default function CustomerList() {
 			await deleteCustomer(id).unwrap();
 			dispatch(addToast({ message: "Видалено", type: 'success' }));
 		} catch (err) {
-			dispatch(addToast({ message: "Не вдалось видалити клієнта. " + err.data?.error || 'Сталася помилка', type: 'error' }));
+
+			dispatch(addToast({ message: `Не вдалось видалити клієнта. ${err.data?.error ?? 'Сталася помилка'}`, type: 'error' }));
 		}
 	}
 
@@ -90,17 +91,18 @@ export default function CustomerList() {
 							key: 'actions',
 							title: 'Дії',
 							render: customer => (
-								<div className="flex gap-2">
-									<NavLink to={`/customers/${customer.id}`}>
-										<Button
-											variant="edit"
-											icon="pen"
-										/>
-									</NavLink>
-									<Button
-										variant="delete"
-										icon="trash"
-										onClick={() => handleDelete(customer.id)}
+								<div className="flex">
+									<DropdownMenu
+										hideArrow
+										unstyledTrigger
+										triggerClassName="size-6 rounded-lg cursor-pointer text-text-secondary hover:bg-hover transition-all "
+										trigger={<EllipsisVertical className="" />}
+										items={[
+											{ label: "Редагувати", onClick: () => navigate(`/customers/${customer.id}`) },
+											// { label: "Копіювати", onClick: () => navigate(`/products/new?duplicatedId=${product.id}`) },
+											{ type: "divider" },
+											{ label: "Видалити", onClick: () => handleDelete(customer.id), danger: true },
+										]}
 									/>
 								</div>
 							)

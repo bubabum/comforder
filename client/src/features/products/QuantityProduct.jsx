@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useUpdateProductMutation, useCreateProductMutation } from "../../store/api/productsApi";
 import { useDispatch } from "react-redux";
 import { addToast } from "../../store/toastSlice";
@@ -14,9 +14,9 @@ import { useGetUnitsQuery } from "../../store/api/unitsApi";
 import { PRODUCT_TYPES } from "../../shared/constants/productTypes";
 import { Package } from "lucide-react";
 
-export default function QuantityProduct({ product }) {
+export default function QuantityProduct({ product, isDuplicate }) {
 	const dispatch = useDispatch();
-	const id = product?.id ?? "new";
+	const { id } = useParams();
 	const isNew = id === "new";
 
 	const {
@@ -51,19 +51,18 @@ export default function QuantityProduct({ product }) {
 	const [form, setForm] = useState(defaultForm);
 
 	useEffect(() => {
-		if (!isNew) return
+		if (!isNew || product) return
 		setForm(prev => ({
 			...prev,
 			categoryId: categories[0]?.id ?? null,
 			unitId: units[0]?.id ?? null,
 		}))
-	}, [categories, units])
+	}, [isNew, product, categories, units])
 
 	useEffect(() => {
-		if (!isNew && product) {
+		if (product) {
 			setForm({ ...product });
 		}
-
 	}, [product]);
 
 	if (!isNew && isLoading) return <Loader />;
@@ -75,7 +74,7 @@ export default function QuantityProduct({ product }) {
 			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
-			dispatch(addToast({ message: "Не вдалось оновити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
+			dispatch(addToast({ message: `Не вдалось оновити товар. ${err.data?.error ?? 'Сталася помилка'}`, type: 'error' }));
 		}
 	};
 
@@ -85,7 +84,7 @@ export default function QuantityProduct({ product }) {
 			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
-			dispatch(addToast({ message: "Не вдалось створити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
+			dispatch(addToast({ message: `Не вдалось створити товар. ${err.data?.error ?? 'Сталася помилка'}`, type: 'error' }));
 		}
 	}
 
@@ -96,7 +95,7 @@ export default function QuantityProduct({ product }) {
 	})
 
 	const cancelForm = () => {
-		if (isNew) {
+		if (isNew && !isDuplicate) {
 			setForm(getDefaultForm());
 		} else {
 			setForm({ ...product });

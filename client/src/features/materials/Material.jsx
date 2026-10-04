@@ -71,7 +71,7 @@ export default function Material() {
 			coatingId: coatings[0]?.id ?? null,
 			trimPriceCategoryId: trimPriceCategories[0]?.id ?? null,
 		}))
-	}, [colors, coatings, trimPriceCategories])
+	}, [isNew, colors, coatings, trimPriceCategories])
 
 	useEffect(() => {
 		if (!isNew && material) {
@@ -113,15 +113,20 @@ export default function Material() {
 		}
 	}
 
+	const getDefaultForm = () => ({
+		...defaultForm,
+		colorId: colors[0]?.id ?? null,
+		coatingId: coatings[0]?.id ?? null,
+		trimPriceCategoryId: trimPriceCategories[0]?.id ?? null,
+	})
+
 	const cancelForm = () => {
 		if (isNew) {
-			setForm(defaultForm);
+			setForm(getDefaultForm());
 		} else {
 			setForm(material);
 		}
 	}
-
-	const ralColor = ralColors[colors.find(c => c.id === Number(form.colorId))?.hex];
 
 	return (
 		<div className="w-full flex flex-col gap-2 p-5 bg-background">

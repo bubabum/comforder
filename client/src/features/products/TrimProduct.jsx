@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useMemo } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useUpdateProductMutation, useCreateProductMutation } from "../../store/api/productsApi";
 import { useGetTrimFixedPricesByProductIdQuery } from "../../store/api/trimFixedPricesApi";
 import { useGetTrimPriceCategoriesQuery } from "../../store/api/trimPriceCategoriesApi";
@@ -20,9 +20,9 @@ import { TRIM_PRICE_TYPES } from "../../shared/constants/trimPriceTypes";
 import { TRIM_PRICE_OPTIONS } from "../../shared/constants/trimPriceTypes";
 import { Package, SlidersHorizontal } from "lucide-react";
 
-export default function TrimProduct({ product }) {
+export default function TrimProduct({ product, isDuplicate, sourceProductId }) {
 	const dispatch = useDispatch();
-	const id = product?.id ?? "new";
+	const { id } = useParams();
 	const isNew = id === "new";
 
 	const {
@@ -41,7 +41,7 @@ export default function TrimProduct({ product }) {
 		data: fetchedFixedPrices = [],
 		isLoading: isLoadingFixedPrices,
 		error: errorFixedPrices,
-	} = useGetTrimFixedPricesByProductIdQuery(isNew ? skipToken : id);
+	} = useGetTrimFixedPricesByProductIdQuery(isNew && !isDuplicate ? skipToken : sourceProductId ?? id);
 
 	const {
 		data: trimPriceCategories = [],
@@ -69,7 +69,10 @@ export default function TrimProduct({ product }) {
 
 	const [form, setForm] = useState(defaultForm);
 
-	const newFixedPrices = trimPriceCategories.map(c => ({ id: crypto.randomUUID(), productId: id, trimPriceCategoryId: c.id, price: 0 }));
+	const newFixedPrices = useMemo(
+		() => trimPriceCategories.map(c => ({ id: crypto.randomUUID(), productId: id, trimPriceCategoryId: c.id, price: 0 })),
+		[trimPriceCategories, id]
+	);
 
 	const [fixedPrices, setFixedPrices] = useState([]);
 
@@ -80,7 +83,7 @@ export default function TrimProduct({ product }) {
 	}, [isNew, newFixedPrices]);
 
 	useEffect(() => {
-		if (!isNew) return
+		if (!isNew || product) return
 		setForm(prev => ({
 			...prev,
 			categoryId: categories[0]?.id ?? null,
@@ -89,53 +92,44 @@ export default function TrimProduct({ product }) {
 	}, [isNew, categories, units])
 
 	useEffect(() => {
-		if (!isNew && product) {
+		if (product) {
 			setForm({ ...product });
 		}
 
-	}, [isNew, product]);
+	}, [product]);
 
 	useEffect(() => {
-		if (!isNew && fetchedFixedPrices) {
+		if (fetchedFixedPrices) {
 			setFixedPrices([...fetchedFixedPrices])
 		}
-	}, [isNew, fetchedFixedPrices]);
-
-	useEffect(() => {
-		if (form.trimPriceType === TRIM_PRICE_TYPES.WIDTH_BASED) {
-			setForm(prev => ({ ...prev, width: null }))
-		}
-		if (form.trimPriceType === TRIM_PRICE_TYPES.FIXED) {
-			setForm(prev => ({ ...prev, width: isNew ? 0 : product.width }))
-		}
-	}, [form.trimPriceType, isNew]);
+	}, [fetchedFixedPrices]);
 
 	if (!isNew && isLoading) return <Loader />;
 	if (!isNew && error) return <MessageError message={`Не вдалося завантажити товар. ${error.data?.error}`} />;
 
-	const updateFixedPrice = (id, value) => {
-		setFixedPrices(fixedPrices.map(p => p.id === id ? { ...p, price: value } : p));
+	const updateFixedPrice = (fixedPricId, value) => {
+		setFixedPrices(fixedPrices.map(p => p.id === fixedPricId ? { ...p, price: value } : p));
 	};
 
 	const handleUpdateProduct = async () => {
-		const payload = { ...form, fixedPrices: fixedPrices.map(({ id, ...rest }) => rest) };
+		const payload = { ...form, fixedPrices: fixedPrices.map(({ id, productId, ...rest }) => rest) };
 		try {
 			await updateProduct({ id, ...payload }).unwrap();
 			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
-			dispatch(addToast({ message: "Не вдалось оновити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
+			dispatch(addToast({ message: `Не вдалось оновити товар. ${err.data?.error ?? 'Сталася помилка'}`, type: 'error' }));
 		}
 	};
 
 	const handleCreateProduct = async () => {
-		const payload = { ...form, fixedPrices: fixedPrices.map(({ id, ...rest }) => rest) };
+		const payload = { ...form, fixedPrices: fixedPrices.map(({ id, productId, ...rest }) => rest) };
 		try {
 			await createProduct(payload).unwrap();
 			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
-			dispatch(addToast({ message: "Не вдалось створити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
+			dispatch(addToast({ message: `Не вдалось створити товар. ${err.data?.error ?? 'Сталася помилка'}`, type: 'error' }));
 		}
 	}
 
@@ -146,7 +140,7 @@ export default function TrimProduct({ product }) {
 	})
 
 	const cancelForm = () => {
-		if (isNew) {
+		if (isNew && !isDuplicate) {
 			setForm(getDefaultForm());
 			setFixedPrices([...newFixedPrices])
 		} else {
@@ -172,11 +166,20 @@ export default function TrimProduct({ product }) {
 						<FormField label="Вид планки" htmlFor="trimPriceType">
 							<Select
 								id="trimPriceType"
-								disabled={!isNew}
+								disabled={!isNew || isDuplicate}
 								variant="formField"
 								className="h-10 w-35"
 								value={form.trimPriceType ?? ''}
-								onChange={e => setForm(prev => ({ ...prev, trimPriceType: e.target.value }))}
+								onChange={e => {
+									const trimPriceType = e.target.value;
+									setForm(prev => ({
+										...prev,
+										trimPriceType,
+										width: trimPriceType === TRIM_PRICE_TYPES.WIDTH_BASED
+											? null
+											: (isNew && !isDuplicate ? 0 : (product?.width ?? 0)),
+									}));
+								}}
 							>
 								{TRIM_PRICE_OPTIONS.map(o => <option key={o.id} value={o.id}>{o.name}</option>)}
 							</Select>
@@ -209,14 +212,13 @@ export default function TrimProduct({ product }) {
 								{fixedPrices.map(p => (
 									<div key={p.id} className="flex shrink-0 py-5">
 										<div className="flex flex-col justify-center">
-											<div className="w-35 text-sm text-text-primary">{trimPriceCategories.find(c => c.id === p.trimPriceCategoryId).name}</div>
+											<div className="w-35 text-sm text-text-primary">{trimPriceCategories.find(c => c.id === p.trimPriceCategoryId)?.name ?? "-"}</div>
 											<div className="text-xs text-text-secondary">пог.м</div>
 										</div>
 										<div className="relative flex items-center gap-2">
 											<NumberInput variant="formField" className="w-30 pr-8" value={p.price ?? ""} onChange={price => updateFixedPrice(p.id, price)} />
 											<div className="text-sm text-text-secondary absolute right-2">грн</div>
 										</div>
-
 									</div>
 								))}
 							</div>

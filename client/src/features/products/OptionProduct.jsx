@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useUpdateProductMutation, useCreateProductMutation } from "../../store/api/productsApi";
 import { useGetProductOptionsByProductIdQuery } from "../../store/api/productOptionsApi";
 import { skipToken } from "@reduxjs/toolkit/query";
@@ -16,9 +16,9 @@ import { useGetUnitsQuery } from "../../store/api/unitsApi";
 import { PRODUCT_TYPES } from "../../shared/constants/productTypes";
 import { Package, SlidersHorizontal } from "lucide-react";
 
-export default function OptionProduct({ product }) {
+export default function OptionProduct({ product, isDuplicate, sourceProductId }) {
 	const dispatch = useDispatch();
-	const id = product?.id ?? "new";
+	const { id } = useParams();
 	const isNew = id === "new";
 
 	const {
@@ -37,7 +37,7 @@ export default function OptionProduct({ product }) {
 		data: fetchedOptions,
 		isLoading: isLoadingOptions,
 		error: errorOptions,
-	} = useGetProductOptionsByProductIdQuery(isNew ? skipToken : id)
+	} = useGetProductOptionsByProductIdQuery(isNew && !isDuplicate ? skipToken : sourceProductId ?? id)
 
 	const isLoading = isLoadingCategories || isLoadingUnits || isLoadingOptions;
 	const error = errorCategories || errorUnits || errorOptions;
@@ -59,26 +59,26 @@ export default function OptionProduct({ product }) {
 	const [options, setOptions] = useState([]);
 
 	useEffect(() => {
-		if (!isNew) return
+		if (!isNew || product) return
 		setForm(prev => ({
 			...prev,
 			categoryId: categories[0]?.id ?? null,
 			unitId: units[0]?.id ?? null,
 		}))
-	}, [isNew, categories, units])
+	}, [isNew, product, categories, units])
 
 	useEffect(() => {
-		if (!isNew && product) {
+		if (product) {
 			setForm({ ...product });
 		}
 
-	}, [isNew, product]);
+	}, [product]);
 
 	useEffect(() => {
-		if (!isNew && fetchedOptions) {
+		if (fetchedOptions) {
 			setOptions([...fetchedOptions])
 		}
-	}, [isNew, fetchedOptions]);
+	}, [fetchedOptions]);
 
 	if (!isNew && isLoading) return <Loader />;
 	if (!isNew && error) return <MessageError message={`Не вдалося завантажити товар. ${error.data?.error}`} />;
@@ -87,12 +87,12 @@ export default function OptionProduct({ product }) {
 		setOptions([...options, { id: crypto.randomUUID(), name: '', price: 0 }]);
 	};
 
-	const updateOption = (id, field, value) => {
-		setOptions(options.map(o => o.id === id ? { ...o, [field]: value } : o));
+	const updateOption = (optionId, field, value) => {
+		setOptions(options.map(o => o.id === optionId ? { ...o, [field]: value } : o));
 	};
 
-	const removeOption = (id) => {
-		setOptions(options.filter(o => o.id !== id));
+	const removeOption = (optionId) => {
+		setOptions(options.filter(o => o.id !== optionId));
 	};
 
 	const handleUpdateProduct = async () => {
@@ -102,7 +102,7 @@ export default function OptionProduct({ product }) {
 			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
-			dispatch(addToast({ message: "Не вдалось оновити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
+			dispatch(addToast({ message: `Не вдалось оновити товар. ${err.data?.error ?? 'Сталася помилка'}`, type: 'error' }));
 		}
 	};
 
@@ -113,7 +113,7 @@ export default function OptionProduct({ product }) {
 			dispatch(addToast({ message: "Збережено", type: 'success' }));
 			navigate(-1);
 		} catch (err) {
-			dispatch(addToast({ message: "Не вдалось створити товар. " + err.data?.error || 'Сталася помилка', type: 'error' }));
+			dispatch(addToast({ message: `Не вдалось створити товар. ${err.data?.error ?? 'Сталася помилка'}`, type: 'error' }));
 
 		}
 	}
@@ -125,7 +125,7 @@ export default function OptionProduct({ product }) {
 	})
 
 	const cancelForm = () => {
-		if (isNew) {
+		if (isNew && !isDuplicate) {
 			setForm(getDefaultForm());
 			setOptions([]);
 		} else {
