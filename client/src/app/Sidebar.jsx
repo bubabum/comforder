@@ -71,7 +71,7 @@ export default function Sidebar() {
 			className={`
 				flex flex-col border-r border-border bg-white
 				transition-all duration-300
-				${collapsed ? 'w-[72px]' : 'w-60'}
+				${collapsed ? 'w-18' : 'w-60'}
 			`}
 		>
 			{/* Header */}
@@ -129,7 +129,18 @@ export default function Sidebar() {
 			</nav>
 
 			{/* Footer */}
-			<div className="border-t border-border p-3">
+			<div className="flex flex-col gap-1 border-t border-border p-3">
+				<Button
+					className='w-full flex h-11 justify-start items-center gap-3 rounded-xl px-3 bg-transparent text-text-secondary hover:bg-zinc-100 transition-colors'
+					onClick={() => navigate('/settings')}
+				>
+					<Settings className='size-5' />
+					{!collapsed && (
+						<div className="text-text-secondary text-sm font-medium">
+							Налаштування
+						</div>
+					)}
+				</Button>
 				<Button
 					className='w-full flex h-11 justify-start items-center gap-3 rounded-xl px-3 bg-transparent text-text-secondary hover:bg-zinc-100 transition-colors'
 					onClick={handleLogout}

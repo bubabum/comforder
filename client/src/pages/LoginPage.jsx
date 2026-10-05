@@ -14,7 +14,7 @@ export default function LoginPage() {
 		e.preventDefault();
 		try {
 			await login(password).unwrap();
-			navigate('/');
+			navigate('/', { replace: true });
 		} catch (err) {
 		}
 	};

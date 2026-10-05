@@ -1,12 +1,12 @@
 import { PRODUCT_TYPES } from "../../../shared/constants/productTypes";
 
-export function createOrderItem(product) {
+export function createOrderItem(product, lastTrimMaterialId) {
 	switch (product.type) {
 		case PRODUCT_TYPES.SHEET:
 			return createSheetItem(product);
 
 		case PRODUCT_TYPES.TRIM:
-			return createTrimItem(product);
+			return createTrimItem(product, lastTrimMaterialId);
 
 		case PRODUCT_TYPES.OPTION:
 			return createOptionItem(product);
@@ -41,7 +41,7 @@ function createSheetItem(product) {
 	}
 }
 
-function createTrimItem(product) {
+function createTrimItem(product, lastTrimMaterialId) {
 	return {
 		...product,
 		id: crypto.randomUUID(),
@@ -50,7 +50,7 @@ function createTrimItem(product) {
 			quantity: 0,
 			width: product?.width || 0,
 			price: 0,
-			materialId: null,
+			materialId: lastTrimMaterialId ?? null,
 			colorName: null,
 			coatingName: null,
 			thickness: null,

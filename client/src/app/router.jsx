@@ -9,6 +9,7 @@ import ProductListPage from '../pages/ProductListPage'
 import ProductPage from '../pages/ProductPage'
 import MaterialListPage from '../pages/MaterialListPage'
 import MaterialPage from '../pages/MaterialPage'
+import SettingsPage from '../pages/SettingsPage'
 import { authLoader } from './authLoader'
 import Loader from '../shared/UI/Loader'
 
@@ -35,19 +36,11 @@ export const router = createBrowserRouter([
 				element: <CustomerPage />,
 			},
 			{
-				path: '/customers/:new',
-				element: <CustomerPage />,
-			},
-			{
 				path: '/products',
 				element: <ProductListPage />,
 			},
 			{
 				path: '/products/:id',
-				element: <ProductPage />,
-			},
-			{
-				path: '/products/:new',
 				element: <ProductPage />,
 			},
 			{
@@ -59,8 +52,8 @@ export const router = createBrowserRouter([
 				element: <MaterialPage />,
 			},
 			{
-				path: '/materials/:new',
-				element: <MaterialPage />,
+				path: '/settings',
+				element: <SettingsPage />,
 			},
 		],
 	},

@@ -1,8 +1,12 @@
 import { createCashlessData } from '../utils/createCashlessData';
+import { useSettings } from "../../../shared/hooks/useSettings";
 import ProductTable from './ProductTable';
 import CustomerSection from './CustomerSection';
 
 export default function Cashless({ title, order }) {
+
+	const { printFormFontSize } = useSettings();
+
 	const {
 		date,
 		customerName,
@@ -24,7 +28,7 @@ export default function Cashless({ title, order }) {
 				return (
 					<div key={groupName}>
 						<div className="font-bold mb-2">Номер замовлення:</div>
-						<ProductTable items={groupItems.items} />
+						<ProductTable items={groupItems.items} printFormFontSize={printFormFontSize} />
 						<div className='flex flex-col items-end text-right text-xs font-bold mt-1 mr-1'>
 							<table>
 								<tbody>

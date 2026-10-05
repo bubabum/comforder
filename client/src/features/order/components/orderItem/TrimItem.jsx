@@ -5,7 +5,6 @@ import { useTrimPrice } from '../../hooks/useTrimPrice';
 import { updateItem, removeItem, addTrim, sortTrims } from '../../orderSlice';
 import Trim from './Trim';
 import { getItemTotal } from '../../utils/orderCalculations';
-import { AlertCircle } from 'lucide-react';
 import Loader from '../../../../shared/UI/Loader';
 import Button from '../../../../shared/UI/Button';
 import NumberInput from '../../../../shared/UI/NumberInput';
@@ -13,6 +12,8 @@ import Select from '../../../../shared/UI/Select';
 import OrderItemName from './OrderItemName';
 import OrderItemUnits from './OrderItemUnits';
 import OrderItemTotal from './OrderItemTotal';
+import { TRIM_PRICE_TYPES } from '../../../../shared/constants/trimPriceTypes';
+import { AlertCircle } from 'lucide-react';
 
 export default function TrimItem({ item }) {
 	const dispatch = useDispatch();
@@ -65,16 +66,17 @@ export default function TrimItem({ item }) {
 	};
 
 	useEffect(() => {
-		if (!material || item.data.materialId != null) return
-		if (isLoadingPrice) return;
-		dispatch(updateItem({
-			id: item.id,
-			materialId: material.id,
-			price: getPrice(width, material?.trimPriceCategoryId),
-			colorName: material.colorName,
-			coatingName: material.coatingName,
-			thickness: material.thickness,
-		}));
+		if (!material || isLoadingPrice) return;
+		if (item.data.materialId === null || item.data.price === 0 && item.trimPriceType === TRIM_PRICE_TYPES.FIXED) {
+			dispatch(updateItem({
+				id: item.id,
+				materialId: material.id,
+				price: getPrice(width, material?.trimPriceCategoryId),
+				colorName: material.colorName,
+				coatingName: material.coatingName,
+				thickness: material.thickness,
+			}));
+		}
 	}, [material, item.data.materialId, item.id, isLoadingPrice, width, dispatch])
 
 	return (
@@ -120,13 +122,12 @@ export default function TrimItem({ item }) {
 					)}
 					<NumberInput
 						disabled={isLoading || !!error}
-						// className='w-15'
+						label="мм"
 						min={0}
 						step={10}
 						value={width}
 						onChange={(width) => handleWidthChange(width)}
 					/>
-					<div className='text-xs'>мм</div>
 					<NumberInput
 						disabled={isLoading || !!error || item.data.trims.length > 0}
 						min={0}

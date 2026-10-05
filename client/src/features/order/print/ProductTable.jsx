@@ -1,4 +1,4 @@
-export default function ProductTable({ items }) {
+export default function ProductTable({ items, printFormFontSize }) {
 	return (
 		<table className='w-full border-2 border-zinc-800 border-collapse'>
 			<thead className='text-center font-bold border border-zinc-400 bg-zinc-200'>
@@ -11,7 +11,7 @@ export default function ProductTable({ items }) {
 					<td className='w-18 border border-zinc-800'>Сума без<br />ПДВ</td>
 				</tr>
 			</thead>
-			<tbody className='border border-zinc-400'>
+			<tbody style={{ fontSize: printFormFontSize }} className='border border-zinc-400'>
 				{items.map((item, index) => {
 					return (
 						<tr key={item.id}>

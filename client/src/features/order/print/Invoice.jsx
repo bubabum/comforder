@@ -1,8 +1,12 @@
 import { createInvoiceData } from "../utils/createInvoiceData";
+import { useSettings } from "../../../shared/hooks/useSettings";
 import ProductTable from "./ProductTable";
 import CustomerSection from './CustomerSection';
 
 export default function Ivoice({ title, order }) {
+
+	const { printFormFontSize } = useSettings();
+
 	const {
 		items,
 		date,
@@ -15,11 +19,12 @@ export default function Ivoice({ title, order }) {
 		finalDiscount,
 		orderFinalTotal
 	} = createInvoiceData(order);
+
 	return (
-		<div className='flex flex-col pl-15 pr-10 pt-18 pb-10 text-[12px] font-[Arial]'>
+		<div className={`flex flex-col pl-15 pr-10 pt-18 pb-10 text-[12px] font-[Arial]`} >
 			<h1 className='flex text-base/1 text-right font-bold border-b-2 border-zinc-800 pb-3 mb-5'>{title} від {date}</h1>
 			<CustomerSection name={customerName} phone={customerPhone} email={customerEmail} />
-			<ProductTable items={items} />
+			<ProductTable items={items} printFormFontSize={printFormFontSize} />
 			<div className='flex flex-col items-end text-right text-sm font-bold mt-5 mr-1'>
 				<table>
 					<tbody>
@@ -45,6 +50,6 @@ export default function Ivoice({ title, order }) {
 					</tbody>
 				</table>
 			</div>
-		</div>
+		</div >
 	)
 }

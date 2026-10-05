@@ -5,6 +5,7 @@ import { useMaterial } from './useMaterial';
 import { resolveMaterial } from '../utils/resolveMaterial';
 
 export function useMaterialSelectionUI({ materialId, applyMaterialChange }) {
+
 	const {
 		isLoadingMaterials,
 		errorMaterials,

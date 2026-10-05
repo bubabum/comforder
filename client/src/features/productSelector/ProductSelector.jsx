@@ -2,16 +2,26 @@ import { useState, useEffect } from 'react'
 import { useGetProductsQuery } from '../../store/api/productsApi';
 import { useGetCategoriesQuery } from '../../store/api/categoriesApi';
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useSettings } from '../../shared/hooks/useSettings';
+import { addItem } from '../order/orderSlice';
 import { addToast } from "../../store/toastSlice";
-import ProductSelectorItem from './ProductSelectorItem';
+import { createOrderItem } from '../order/utils/createOrderItem';
 import Loader from '../../shared/UI/Loader';
 import Button from '../../shared/UI/Button';
 import SearchInput from '../../shared/UI/SearchInput';
 import { CircleAlert } from 'lucide-react';
-
+import { PRODUCT_TYPES } from '../../shared/constants/productTypes';
 
 export default function ProductSelector() {
+	const { inheritLastTrimMaterial } = useSettings();
+
 	const dispatch = useDispatch();
+	const order = useSelector(state => state.order);
+	const lastTrimMaterialId = order.items
+		.filter(i => i.type === PRODUCT_TYPES.TRIM)
+		.at(-1)?.data.materialId;
+
 	const {
 		data: products = [],
 		isLoading: isLoadingProducts,
@@ -57,8 +67,13 @@ export default function ProductSelector() {
 		}
 	}, [errorCategories, dispatch]);
 
+	const handleAddItem = (product) => {
+		dispatch(addItem(createOrderItem(product, inheritLastTrimMaterial ? lastTrimMaterialId : null)))
+	}
+
 	return (
 		<div className='h-full w-100 p-2 flex flex-col bg-surface border-r border-border-light'>
+
 			<div>
 				<SearchInput
 					value={search}
@@ -81,9 +96,12 @@ export default function ProductSelector() {
 				<div className='text-[11px] text-error'><CircleAlert className='size-5 inline mr-1' />Не вдалось завантажити список товарів.</div>
 			) : (
 				<ul className='divide-y divide-zinc-100 pr-2 overflow-y-auto scrollbar-gutter-stable'>
-					{filteredProducts.map((product, index) => {
-						return <ProductSelectorItem key={product.id} product={product} index={index + 1} />
-					})}
+					{filteredProducts.map(product => (
+						<li key={product.id} className="flex gap-2 justify-between items-center py-1 text-sm">
+							<div className="text-xs">{product.name}</div>
+							<Button variant="add" icon='plus' onClick={() => handleAddItem(product)} ></Button>
+						</li>
+					))}
 				</ul>
 			)}
 		</div >

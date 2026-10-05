@@ -12,6 +12,7 @@ function clamp(value, min, max) {
 }
 
 export default function NumberInput({
+	label = null,
 	value,
 	onChange,
 	emptyValue = 0,
@@ -62,8 +63,25 @@ export default function NumberInput({
 		}
 	};
 
+	if (label) return (
+		<div className="relative">
+			<Input
+				className="pr-5"
+				type="number"
+				value={text}
+				onChange={handleChange}
+				onBlur={handleBlur}
+				min={min}
+				max={max}
+				{...props}
+			/>
+			<div className="absolute text-xs text-text-secondary top-1 right-1">{label}</div>
+		</div>
+	)
+
 	return (
 		<Input
+			className="pr-0"
 			type="number"
 			value={text}
 			onChange={handleChange}
