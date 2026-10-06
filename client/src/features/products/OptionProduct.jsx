@@ -8,6 +8,7 @@ import { addToast } from "../../store/toastSlice";
 import ProductBaseFields from "./ProductBaseFields";
 import Loader from "../../shared/UI/Loader";
 import MessageError from "../../shared/UI/MessageError";
+import FormHeader from "../../shared/UI/FormHeader";
 import Input from "../../shared/UI/Input";
 import NumberInput from "../../shared/UI/NumberInput"
 import Button from "../../shared/UI/Button";
@@ -145,7 +146,7 @@ export default function OptionProduct({ product, isDuplicate, sourceProductId })
 			</div>
 			<div className="w-fit flex flex-1-1 min-h-0 gap-5">
 				<div className="w-fit h-fit shrink-0 flex flex-col p-5 gap-5 bg-surface border border-border-light rounded-lg">
-					<div className="flex items-center gap-1 font-medium text-text-primary"><Package className="size-5" />Товар</div>
+					<FormHeader title='Основні дані' subtitle="Товар з опціями" Icon={Package} />
 					<ProductBaseFields form={form} setForm={setForm} categories={categories} units={units} />
 					<div className="flex gap-5 mt-5 justify-end">
 						<Button className="h-10 w-30" variant="secondary" onClick={cancelForm}>Скасувати</Button>

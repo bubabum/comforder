@@ -18,22 +18,22 @@ export default function ProductBaseFields({ form, setForm, categories, units }) 
 				/>
 			</FormField>
 			<div className="flex justify-between">
-				<FormField label="Категорія товарів" htmlFor="categoryId">
+				<FormField label="Категорія" htmlFor="categoryId">
 					<Select
 						id="categoryId"
 						variant="formField"
-						className="w-60"
+						className="w-55"
 						value={form.categoryId ?? ''}
 						onChange={e => setForm(prev => ({ ...prev, categoryId: e.target.value }))}
 					>
 						{categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
 					</Select>
 				</FormField>
-				<FormField label="Од. вимірювання" htmlFor="unitId">
+				<FormField label="Одиниця вимірювання" htmlFor="unitId">
 					<Select
 						id="unitId"
 						variant="formField"
-						className="h-10 w-35 text-sm"
+						className="h-10 w-40 text-sm"
 						value={form.unitId ?? ''}
 						onChange={e => setForm(prev => ({ ...prev, unitId: e.target.value }))}
 					>

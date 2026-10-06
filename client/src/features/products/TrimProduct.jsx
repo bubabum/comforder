@@ -10,6 +10,7 @@ import ProductBaseFields from "./ProductBaseFields";
 import Loader from "../../shared/UI/Loader";
 import MessageError from "../../shared/UI/MessageError";
 import Select from "../../shared/UI/Select";
+import FormHeader from "../../shared/UI/FormHeader";
 import FormField from "../../shared/UI/FormField";
 import NumberInput from "../../shared/UI/NumberInput"
 import Button from "../../shared/UI/Button";
@@ -160,7 +161,7 @@ export default function TrimProduct({ product, isDuplicate, sourceProductId }) {
 			</div>
 			<div className="flex gap-5">
 				<div className="flex flex-col p-5 gap-5 bg-surface border border-border-light rounded-lg w-fit">
-					<div className="flex items-center gap-1 font-medium text-text-primary"><Package className="size-5" />Товар</div>
+					<FormHeader title='Основні дані' subtitle="Планка" Icon={Package} />
 					<ProductBaseFields form={form} setForm={setForm} categories={categories} units={units} />
 					<div className="flex gap-7.5">
 						<FormField label="Вид планки" htmlFor="trimPriceType">

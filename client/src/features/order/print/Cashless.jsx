@@ -65,7 +65,7 @@ export default function Cashless({ title, order }) {
 			{groupedItems.trimItems &&
 				<div className='w-full'>
 					<div className='text-sm font-bold'>Малюнки планок:</div>
-					<div className='pt-2 grid grid-flow-row grid-cols-6 gap-2'>
+					<div className='pt-2 grid grid-flow-row  gap-2' style={{ gridTemplateColumns: `repeat(6, minmax(0, 1fr))` }}>
 						{groupedItems.trimItems.items.map((item, index) => {
 							return (
 								<div key={index} className='flex'>
@@ -76,6 +76,6 @@ export default function Cashless({ title, order }) {
 					</div>
 				</div>
 			}
-		</div>
+		</div >
 	)
 }	

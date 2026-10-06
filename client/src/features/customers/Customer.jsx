@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToast } from "../../store/toastSlice";
 import Loader from "../../shared/UI/Loader";
+import FormHeader from "../../shared/UI/FormHeader";
 import MessageError from "../../shared/UI/MessageError";
 import FormField from "../../shared/UI/FormField";
 import Input from "../../shared/UI/Input";
@@ -87,7 +88,7 @@ export default function Customer() {
 				</div>
 			</div>
 			<div className="flex flex-col p-5 gap-5 bg-surface border border-border-light rounded-lg w-fit">
-				<div className="flex items-center gap-1 font-medium text-text-primary"><User className="size-5" />Клієнт</div>
+				<FormHeader title='Клієнт' Icon={User} />
 				<div className="flex gap-10">
 					<div className="flex flex-col gap-5">
 						<FormField label="ПІБ/Назва організації" htmlFor="name">

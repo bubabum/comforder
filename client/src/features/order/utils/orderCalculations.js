@@ -16,11 +16,11 @@ export const getTotalLength = item => {
 }
 
 export const getTotal = item => {
-	return round(item.data.quantity * item.data.price)
+	return round(item.data.quantity * item.data.price ?? 0)
 }
 
 export const getSheetItemTotal = item => {
-	return round(getArea(item) * item.data.price)
+	return round(getArea(item) * item.data.price ?? 0)
 }
 
 export const getItemTotal = item => {

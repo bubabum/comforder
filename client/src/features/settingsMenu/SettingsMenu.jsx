@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import ToogleCheckbox from "../../shared/UI/ToogleCheckbox";
 import NumberInput from "../../shared/UI/NumberInput";
 import Button from "../../shared/UI/Button";
+import FormHeader from "../../shared/UI/FormHeader";
+import { Settings, Printer } from "lucide-react";
 
-export default function Settings() {
+export default function SettingsMenu() {
 	const navigate = useNavigate();
 
 	const {
@@ -23,7 +25,8 @@ export default function Settings() {
 					<div className="text-xs text-text-secondary">Параметри застосунку</div>
 				</div>
 			</div>
-			<div className="flex flex-col gap-5">
+			<div className="flex flex-col gap-5 p-5 bg-surface border border-border-light rounded-lg w-fit">
+				<FormHeader title='Загальні' Icon={Settings} />
 				<div className="flex gap-5">
 					<ToogleCheckbox state={inheritLastTrimMaterial} onChange={() => setInheritLastTrimMaterial(!inheritLastTrimMaterial)}></ToogleCheckbox>
 					<div className="ml-6 text-sm">Використовувати попередній матеріал при додаванні планки</div>
@@ -38,6 +41,13 @@ export default function Settings() {
 					/>
 					<div className="text-sm">Розмір шрифту таблиці друкованих форм</div>
 				</div>
+			</div>
+			<div className="flex-col gap-5 p-5 bg-surface border border-border-light rounded-lg w-fit hidden">
+				<FormHeader title='Друк' Icon={Printer} />
+				{
+					//Кількість квадратів під планки
+					//Вивід квадратів під планки у КП
+				}
 			</div>
 		</div>
 	)

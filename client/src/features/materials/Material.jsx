@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { addToast } from "../../store/toastSlice";
 import Loader from "../../shared/UI/Loader";
 import MessageError from "../../shared/UI/MessageError";
+import FormHeader from "../../shared/UI/FormHeader";
 import FormField from "../../shared/UI/FormField";
 import NumberInput from '../../shared/UI/NumberInput';
 import Button from "../../shared/UI/Button";
@@ -138,7 +139,7 @@ export default function Material() {
 				</div>
 			</div>
 			<div className="flex flex-col gap-5 p-5 bg-surface border border-border-light rounded-lg w-fit">
-				<div className="flex items-center gap-1 font-medium text-text-primary"><Layers className="size-5" />Матеріал</div>
+				<FormHeader title='Матеріал' Icon={Layers} />
 				<div className="flex flex-col gap-5">
 					<div className="flex gap-10">
 						<div className="flex gap-5 items-end">
