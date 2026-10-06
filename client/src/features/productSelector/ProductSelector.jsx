@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useGetProductsQuery } from '../../store/api/productsApi';
 import { useGetCategoriesQuery } from '../../store/api/categoriesApi';
 import { useDispatch } from "react-redux";
@@ -14,13 +14,16 @@ import { CircleAlert } from 'lucide-react';
 import { PRODUCT_TYPES } from '../../shared/constants/productTypes';
 
 export default function ProductSelector() {
+
 	const { inheritLastTrimMaterial } = useSettings();
 
 	const dispatch = useDispatch();
 	const order = useSelector(state => state.order);
-	const lastTrimMaterialId = order.items
-		.filter(i => i.type === PRODUCT_TYPES.TRIM)
-		.at(-1)?.data.materialId;
+
+	const lastTrimMaterialId = useMemo(
+		() => order.items.filter(i => i.type === PRODUCT_TYPES.TRIM).at(-1)?.data.materialId,
+		[order.items]
+	);
 
 	const {
 		data: products = [],
@@ -73,7 +76,6 @@ export default function ProductSelector() {
 
 	return (
 		<div className='h-full w-100 p-2 flex flex-col bg-surface border-r border-border-light'>
-
 			<div>
 				<SearchInput
 					value={search}

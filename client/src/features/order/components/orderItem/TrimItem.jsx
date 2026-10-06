@@ -67,16 +67,16 @@ export default function TrimItem({ item }) {
 
 	useEffect(() => {
 		if (!material || isLoadingPrice) return;
-		if (item.data.materialId === null || item.data.price === 0 && item.trimPriceType === TRIM_PRICE_TYPES.FIXED) {
-			dispatch(updateItem({
-				id: item.id,
-				materialId: material.id,
-				price: getPrice(width, material?.trimPriceCategoryId),
-				colorName: material.colorName,
-				coatingName: material.coatingName,
-				thickness: material.thickness,
-			}));
-		}
+		const needsInitialFill = item.data.colorName === null;
+		if (!needsInitialFill) return;
+		dispatch(updateItem({
+			id: item.id,
+			materialId: material.id,
+			price: getPrice(width, material?.trimPriceCategoryId),
+			colorName: material.colorName,
+			coatingName: material.coatingName,
+			thickness: material.thickness,
+		}));
 	}, [material, item.data.materialId, item.id, isLoadingPrice, width, dispatch])
 
 	return (

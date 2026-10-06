@@ -25,7 +25,7 @@ function createSheetItem(product) {
 		id: crypto.randomUUID(),
 		productId: product.id,
 		data: {
-			price: 0,
+			price: null,
 			materialId: null,
 			colorName: null,
 			coatingName: null,
@@ -49,7 +49,7 @@ function createTrimItem(product, lastTrimMaterialId) {
 		data: {
 			quantity: 0,
 			width: product?.width || 0,
-			price: 0,
+			price: null,
 			materialId: lastTrimMaterialId ?? null,
 			colorName: null,
 			coatingName: null,
@@ -67,7 +67,7 @@ function createOptionItem(product) {
 		data: {
 			optionId: null,
 			optionName: null,
-			price: 0,
+			price: null,
 			quantity: 1,
 		}
 	}
